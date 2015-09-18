@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    redirect_to '/auth/facebook'
+    render 'new'
   end
 
   def create

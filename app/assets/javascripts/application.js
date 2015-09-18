@@ -14,3 +14,19 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+  $(document).on("click", "#login-button", function(event){
+    event.preventDefault();
+    $(".login-container").show();
+
+  });
+
+  $(document).on("click", "#x", function(event){
+    $(".login-container").hide();
+  });
+
+
+
+
+});
