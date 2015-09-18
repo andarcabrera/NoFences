@@ -1,9 +1,9 @@
 
 <h1>Services Available</h1>
-<div class="categories-index-container">
+<div id="categories-index-container">
 	<% @categories.each do |category| %>
 		<div class="categories-links" >
-			<%= link_to "#{category.name.upcase}" %>
+			<%= link_to "#{category.name.upcase}", category_path(category) %>
 		</div>
 	<% end %>
 </div>

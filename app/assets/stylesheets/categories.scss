@@ -2,7 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.categories-index-container {
+// CATEGORIES INDEX
+
+#categories-index-container {
 	margin: auto;
 	text-align: center;
 }
@@ -13,4 +15,34 @@
 	height: 75px;
 	background-color: lightgray;
 	display: inline-block;
+}
+
+// CATEGORIES SHOW
+
+.column-left {
+	width: 50%;
+	float: left;
+}
+
+.column-right {
+	width: 50%;
+	float: right;
+}
+
+#category-show-container {
+	text-align: center;
+}
+
+#posts-index-container {
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	background-color: #E8E8E8;
+	height: 750px;
+}
+
+#orgs-index-container {
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	background-color: #E8E8E8;
+	height: 750px;
 }
