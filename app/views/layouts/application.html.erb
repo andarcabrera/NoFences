@@ -35,7 +35,7 @@
 </div>
 
  <%= link_to_unless I18n.locale == :en, "English", locale: :en  %>
- <%= link_to_unless I18n.locale == :en, "Spanish", locale: :es  %>
+ <%= link_to_unless I18n.locale == :es, "Spanish", locale: :es  %>
 <%= yield %>
 </div>
 </body>
