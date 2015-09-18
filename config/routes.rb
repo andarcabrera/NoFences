@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'application#index'
+  scope "(:locale)", :locale => /en|es/ do
+    root 'application#index'
+  end
+
   resources :users
   resources :posts
   # Example of regular route:
