@@ -1,3 +1,9 @@
 
 <h1>Services Available</h1>
-<p>Find me in app/views/categories/index.html.erb</p>
+<div class="categories-index-container">
+	<% @categories.each do |category| %>
+		<div class="categories-links" >
+			<%= link_to "#{category.name.upcase}" %>
+		</div>
+	<% end %>
+</div>
