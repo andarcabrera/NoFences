@@ -7,7 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+ <%= link_to_unless I18n.locale == :en, "English", locale: :en  %>
+ <%= link_to_unless I18n.locale == :en, "Spanish", locale: :es  %>
 <%= yield %>
 
 </body>
