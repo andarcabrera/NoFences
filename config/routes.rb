@@ -1,11 +1,33 @@
 Rails.application.routes.draw do
+
+  get 'posts/index'
+
+  get 'posts/new'
+
+  get 'posts/create'
+
+  get 'posts/edit'
+
+  get 'posts/update'
+
+  get 'posts/destroy'
+
+  get 'posts/show'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'application#index'
-  resources :users
-  resources :posts
+  scope "(:locale)", :locale => /en|es/ do
+    root 'application#index'
+  end
+
+  resources :users, only: [:new, :show, :edit, :create, :destroy, :update]
+  resources :organizations, only: [:index, :show]
+  resources :categories, only: [:index, :show] do
+    resources :posts
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

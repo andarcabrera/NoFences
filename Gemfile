@@ -44,3 +44,7 @@ group :development, :test do
   gem 'spring'
 end
 
+group :test do
+  gem "accept_values_for"
+end
+
