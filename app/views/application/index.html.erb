@@ -27,6 +27,25 @@
     }
   }
 
+function logout() {
+    try {
+        if (FB.getAccessToken() != null) {
+            FB.logout(function(response) {
+                // user is now logged out from facebook do your post request or just redirect
+                window.location.replace('/');
+            });
+        } else {
+            // user is not logged in with facebook, maybe with something else
+            window.location.replace('/');
+        }
+    } catch (err) {
+        // any errors just logout
+        window.location.replace('/');
+    }
+   }
+
+
+
   // This function is called when someone finishes with the Login
   // Button.  See the onlogin handler attached to it in the sample
   // code below.
@@ -81,11 +100,6 @@
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
     });
-
-    function Logout() {
-  FB.logout(function () { document.location.reload(); });
-}
-
   }
 </script>
 
@@ -99,7 +113,7 @@
 <div id="status">
 </div>
 
-<input type="button" value="Logout" onclick="FB:Logout();" />
+<input type="button" value="Logout" onclick="logout();" />
 
 <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button>
