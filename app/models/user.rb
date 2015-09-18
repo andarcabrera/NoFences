@@ -7,17 +7,21 @@ class User < ActiveRecord::Base
 
 
   def self.create_with_omniauth(auth)
-    create! do |user|
-      user.provider = auth['provider']
-      user.uid = auth['uid']
-      if auth['info']
-         user.first_name = auth['info']['name'].split(" ")[0] || ""
-         user.last_name = auth['info']['name'].split(" ")[1] || ""
-         user.password_digest = ""
-         user.email = auth['info']['email'] || "F"
-      end
-    end
+    user = where(provider: auth.provider, uid: auth.uid).first_or_create
+    user_info = user.facebook_email(auth)
+    user.update(
+        first_name: auth.info.name.split(" ")[0],
+        last_name: auth.info.name.split(" ")[1],
+        email: user_info["email"],
+        password_digest: ""
+      )
+    user
+  end
 
+  def facebook_email(auth)
+    token = auth['credentials']['token']
+    @graph = Koala::Facebook::API.new(token)
+    @graph.get_object("me?fields=email")
   end
 
   validates_presence_of :first_name, :last_name, :email

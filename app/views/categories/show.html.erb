@@ -1,2 +1,24 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<h1><%= @category.name %></h1>
+
+<div id="category-show-container">
+	<div class="column-left" id="category-posts-index">
+		<h2>Volunteer Posts</h2>
+		<div id="posts-index-container">
+		<% @category.posts.each do |post| %>
+			<h4><%= link_to "#{post.title}", post_path(post) %></h4>
+			<p><%= post.author %></p>
+			<p><%= post.body %></p>
+		<% end %>
+		</div>
+	</div>
+
+	<div class="column-right" id="categories-orgs-index">
+		<h2>Organizations Available</h2>
+			<div id="orgs-index-container">
+			<% @category.organizations.each do |org| %>
+				<h4><%= link_to "#{org.name}", organization_path(org) %></h4>
+				<p><%= org.description %></p>
+			<% end %>
+			</div>
+	</div>
+</div>
