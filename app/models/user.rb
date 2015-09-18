@@ -11,10 +11,13 @@ class User < ActiveRecord::Base
       user.provider = auth['provider']
       user.uid = auth['uid']
       if auth['info']
-         user.name = auth['info']['name'] || ""
-         user.email = auth['info']['email'] || ""
+         user.first_name = auth['info']['name'].split(" ")[0] || ""
+         user.last_name = auth['info']['name'].split(" ")[1] || ""
+         user.password_digest = ""
+         user.email = auth['info']['email'] || "F"
       end
     end
+
   end
 
   validates_presence_of :first_name, :last_name, :email
