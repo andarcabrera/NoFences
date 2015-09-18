@@ -3,7 +3,7 @@
 <div id="categories-index-container">
 	<% @categories.each do |category| %>
 		<div class="categories-links" >
-			<%= link_to "#{category.name.upcase}", category_path(category) %>
+			<span> <%= link_to "#{category.name.upcase}", category_path(category) %></span>
 		</div>
 	<% end %>
 </div>
