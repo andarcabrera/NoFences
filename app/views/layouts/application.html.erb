@@ -8,6 +8,7 @@
 </head>
 <body>
 
+
 <div id="user-widget">
   <% if current_user %>
     Welcome <strong><%= current_user.first_name %></strong>!
@@ -16,6 +17,10 @@
     <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
 </div>
+
+ <%= link_to_unless I18n.locale == :en, "English", locale: :en  %>
+ <%= link_to_unless I18n.locale == :en, "Spanish", locale: :es  %>
+
 <%= yield %>
 
 </body>

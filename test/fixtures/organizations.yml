@@ -4,8 +4,8 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+one:
+  name: "The Support Foundation"
+  website: "www.help.com"
+  description: "Founded in 1975 and reorganized in 1999, Higher Achievement serves approximately 500 students or 'scholars' in the Washington, D.C. metro area at five sites. Its budget is $1.7 million and there is a current staff of 20. With the assistance of 300 volunteer mentors, Higher Achievement scholars spend 650 hours per year in after-school and summer instruction."
+

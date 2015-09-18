@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   has_many :languages, through: :user_languages
   has_many :posts, foreign_key: :author_id
 
+  has_secure_password :validations => false
+
+
   def self.create_with_omniauth(auth)
     create! do |user|
       user.provider = auth['provider']
@@ -15,4 +18,8 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  validates_presence_of :first_name, :last_name, :email
+
+
 end

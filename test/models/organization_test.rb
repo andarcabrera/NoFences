@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class OrganizationTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should save, even without any specific data" do
+    org = Organization.new
+    assert org.save
+  end
 end
