@@ -6,10 +6,37 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<header class="navbar navbar-fixed-top navbar-default">
+    <div class="container">
+      <%= link_to "No Fences", '#', id: "logo" %>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "About", about_path %></li>
+          <%# if current_user %>
+          <li><%= link_to "Login", signin_path %></li>
+          <%# else %>
+          <li><%= link_to "Logout", signout_path %></li>
+          <%# end %>
+        </ul>
+      </nav>
+    </div>
+  </header>
 <body>
- <%= link_to_unless I18n.locale == :en, "English", locale: :en  %>
- <%= link_to_unless I18n.locale == :en, "Spanish", locale: :es  %>
-<%= yield %>
 
+
+<div id="user-widget">
+  <% if current_user %>
+    Welcome <strong><%= current_user.first_name %></strong>!
+    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+  <% else %>
+    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+  <% end %>
+</div>
+
+ <%= link_to_unless I18n.locale == :en, "English", locale: :en  %>
+ <%= link_to_unless I18n.locale == :es, "Spanish", locale: :es  %>
+<%= yield %>
+</div>
 </body>
 </html>

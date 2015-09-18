@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+  get '/home' => 'static_pages#home'
+  get '/about' => 'static_pages#about'
 
   match '/auth/:provider/callback' => 'sessions#create', via: [:get, :post]
 
