@@ -1,0 +1,17 @@
+<h1>Log In with Your Email Here vvv</h1>
+  <%= form_for(@user) do |f| %>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+
+    <div class="field actions">
+      <%= f.submit "Log In"%>
+    </div>
+  <% end %>
+<h1>Log In with Facebook Here</h1>

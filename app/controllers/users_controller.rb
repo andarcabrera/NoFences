@@ -1,8 +1,18 @@
 class UsersController < ApplicationController
   def new
+    @user = User.new
   end
 
-  def create
+   def create
+    @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id
+      # flash[:success] = "Welcome to NoFences, #{@user.first_name}!"
+      redirect_to categories_path
+    else
+      render "new"
+      # append errors' full messages
+    end
   end
 
   def update

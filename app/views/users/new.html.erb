@@ -1,2 +1,29 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="container">
+<h1>Register with Your Email Here vvv</h1>
+  <%= form_for(@user) do |f| %>
+    <div class="field">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name%>
+    </div>
+
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+
+    <div class="field actions">
+      <%= f.submit "Sign Up"%>
+    </div>
+  <% end %>
+  <h1>Or Register with Facebook Here vvv</h1>
+</div>
