@@ -28,8 +28,8 @@ span {
   width: 80%;
 }
 
-#language-dropdown {
-
+#user-widget {
+  display: inline-block;
 }
 
 .login-container {
