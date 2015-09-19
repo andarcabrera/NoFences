@@ -19,15 +19,13 @@
 $(document).ready(function(){
   $(document).on("click", "#login-button", function(event){
     event.preventDefault();
+    $(".overlay").fadeIn(400);
     $(".login-container").show();
-
   });
 
   $(document).on("click", "#x", function(event){
-    $(".login-container").hide();
+    $(".overlay, .login-container").hide();
   });
-
-
 
 
 });
