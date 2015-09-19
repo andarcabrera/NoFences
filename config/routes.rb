@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  scope "(:locale)", :locale => /en|es/ do
+  scope "(:locale)", :locale => /en|es|fr/ do
     root 'application#index'
   end
 

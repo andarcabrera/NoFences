@@ -31,6 +31,7 @@ body {
 .login-container {
   display: none;
   margin-left: 650px;
+  position: absolute;
 }
 
 html, body {
