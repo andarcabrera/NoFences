@@ -29,11 +29,26 @@ describe User do
     expect(user.errors[:email]).to_not be_empty
   end
 
-  it "IS valid with an email, first name, and last name" do
-    user = User.new(first_name: "kyle", last_name: "heehaw", email: "haha@aol.com")
+  it "is NOT valid without an password or uid" do
+    user = User.new(first_name: "kyle", last_name: "heehaw", email: "haha@b.com")
+    user.valid?
+    expect(user.errors[:password]).to_not be_empty
+  end
+
+
+  it "IS valid with an email, first name, last name, and password" do
+    user = User.new(first_name: "kyle", last_name: "heehaw", email: "haha@aol.com", password: "haha")
     user.valid?
     expect(user.errors).to be_empty
   end
+
+  it "IS valid with an email, first name, last name, and uid" do
+    user = User.new(first_name: "kyle", last_name: "heehaw", email: "haha@aol.com", uid: "haha")
+    user.valid?
+    expect(user.errors).to be_empty
+  end
+
+
 
  end
 
