@@ -1,2 +1,36 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<div id="new-post-container">
+<h1><%= @category.name %></h1>
+<h2>Provide the details of your volunteer services</h2>
+	<div class="errors">
+    <% if @post.errors %>
+      <% @post.errors.full_messages.each do |error| %>
+        <ul><%= error %></ul>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="new-post-form-container">
+		<%= form_for @post, url: category_posts_path(@category, @post) do |f| %>
+	  <div class="column-left" id="new-post-info">
+	  	<%= f.label :title %>
+		  <%= f.text_field :title %>
+	    <%= f.label :body %>
+	    <%= f.text_area :body %>
+    </div>
+    <div class="column-right" id="new-post-contact-info">
+	    <%= f.label :preferred_contact %>
+	    <%= f.text_field :preferred_contact %>
+	    <%= f.label :address_1 %>
+	    <%= f.text_field :address_1 %>
+	    <%= f.label :address_2 %>
+	    <%= f.text_field :address_2 %>
+	    <%= f.label :city %>
+	    <%= f.text_field :city %>
+	    <%= f.label :state %>
+	    <%= f.text_field :state %>
+	    <%= f.label :zipcode %>
+	    <%= f.text_field :zip %>
+	    <%= f.submit "Post service", class: "btn-info" %>
+    </div>
+    <% end %>
+  </div>
+</div>

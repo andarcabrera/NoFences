@@ -1,2 +1,17 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div id="post-show-container">
+	<h1><%= @post.title %></h1>
+	<div class="column-left">
+		<div id="post-info">
+			<h4>VOLUNTEER: <%= @post.author.full_name %></h4>
+			<h6>Languages spoken:</h6>
+			<p><%= @post.body %></p>
+		</div>
+	</div>
+	<div class="column-right">
+		<div id="post-contact">
+			<h4>Preferred Contact: <%=@post.preferred_contact%></h4>
+			<p><%= "#{@post.address_1} #{@post.address_2}" %></p>
+			<p><%= "#{@post.city}, #{@post.state.upcase}, #{@post.zip}" %></p>
+		</div>
+	</div>
+</div>
