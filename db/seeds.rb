@@ -13,16 +13,17 @@
                   password: Faker::Internet.password(8))
 end
 
-recycling = Category.create!(name: "Recycling")
+donations = Category.create!(name: "Donations")
 lang_exchange = Category.create!(name: "Language Exchange")
 immig_serv = Category.create!(name: "Immigration Services")
 transportation = Category.create!(name: "Transportation")
 esl = Category.create!(name: "ESL")
-toefl = Category.create!(name: "TOEFL")
+jobs = Category.create!(name: "Jobs")
 childcare = Category.create!(name: "Childcare")
 legal = Category.create!(name: "Legal")
 misc = Category.create!(name: "Miscellaneous")
 event = Category.create!(name: "Events")
+health = Category.create!(name: "Health Services")
 
 
 
