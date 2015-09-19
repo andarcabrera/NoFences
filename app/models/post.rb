@@ -4,4 +4,6 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :author_id, :title, :body
 
+
+
 end

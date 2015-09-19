@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   end
 
   def show
+
   end
 
   def self.from_omniauth(auth)
