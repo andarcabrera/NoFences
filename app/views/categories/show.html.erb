@@ -1,13 +1,18 @@
+<div id="category-show-container">
+
+<div id="volunteer-button" class="btn btn-info" role="button"><%= link_to 'I want to volunteer!', new_category_post_path(@category)%></div>
+
 <h1><%= @category.name %></h1>
 
-<div id="category-show-container">
 	<div class="column-left" id="category-posts-index">
 		<h2>Volunteer Posts</h2>
 		<div id="posts-index-container">
 		<% @category.posts.each do |post| %>
-			<h4><%= link_to "#{post.title}", post_path(post) %></h4>
-			<p><%= post.author %></p>
-			<p><%= post.body %></p>
+			<div id="individual-post-listing">
+				<h4><%= link_to "#{post.title}", category_post_path(@category,post) %></h4>
+				<p><%= post.author.full_name%></p>
+				<p><%= post.body %></p>
+			</div>
 		<% end %>
 		</div>
 	</div>
