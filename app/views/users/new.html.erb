@@ -1,5 +1,13 @@
 <div class="container">
-<h1>Register with Your Email Here vvv</h1>
+<h1>Register with Your Email Here</h1>
+  <div class="errors">
+    <% if @post.errors %>
+      <% @post.errors.full_messages.each do |error| %>
+        <ul><%= error %></ul>
+      <% end %>
+    <% end %>
+  </div>
+
   <%= form_for(@user) do |f| %>
     <div class="field">
       <%= f.label :first_name %>
