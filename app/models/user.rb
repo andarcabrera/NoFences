@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :posts, foreign_key: :author_id
 
   has_secure_password :validations => false
+  validate :facebook_password_check
 
 
   def self.create_with_omniauth(auth)
@@ -22,6 +23,12 @@ class User < ActiveRecord::Base
     token = auth['credentials']['token']
     @graph = Koala::Facebook::API.new(token)
     @graph.get_object("me?fields=email")
+  end
+
+  def facebook_password_check
+      if self.uid == nil && self.password == nil
+        self.errors[:password] << 'Need a password or facebook account!'
+      end
   end
 
   validates_presence_of :first_name, :last_name, :email
