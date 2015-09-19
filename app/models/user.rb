@@ -14,9 +14,9 @@ class User < ActiveRecord::Base
         first_name: auth.info.name.split(" ")[0],
         last_name: auth.info.name.split(" ")[1],
         email: user_info["email"],
-        password_digest: ""
+        password_digest: "",
       )
-    user
+     p user
   end
 
   def facebook_email(auth)
@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
     @graph = Koala::Facebook::API.new(token)
     @graph.get_object("me?fields=email")
   end
+
 
   def facebook_password_check
       if self.uid == nil && self.password == nil
@@ -33,9 +34,31 @@ class User < ActiveRecord::Base
 
   validates_presence_of :first_name, :last_name, :email
 
-
   def full_name
     self.first_name + " " + self.last_name
   end
+
+  def display_languages
+    language_names = []
+    self.languages.each do |language|
+      language_names << language.name
+    end
+    language_names.join(", ")
+  end
+
+  def get_volunteer_posts
+    @volunteer_posts = []
+    self.posts.each do |post|
+      @volunteer_posts << if post.volunteer
+        end
+      end
+    @volunteer_posts
+  end
+
+  def count_volunteer_posts
+    self.get_volunteer_posts.count
+  end
+
+
 
 end
