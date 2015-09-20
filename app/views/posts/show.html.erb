@@ -10,11 +10,13 @@
 			<p>SERVICE: <%= @post.title %></p>
 			<p>DESCRIPTION: <%= @post.body %></p>
 
-			<p>ZIP: #{@post.zip}" %></p>
+			<p>ZIP: <%= @post.zip %></p>
 			<p>VOLUNTEER: <%= @post.author.full_name %></p>
-			<p><span><i class="fa fa-globe fa-2x fa-spin"></i></span>Translate post</p>
-			<p><i class="fa fa-pencil"></i> Edit this post</p>
+			<% if @post.author_id == current_user.id %>
+			<p><i class="fa fa-pencil"></i><%= link_to ' Edit this post', "/categories/#{@category.id}/posts/#{@post.id}/edit" %></p>
 			<p><i class="fa fa-trash-o fa-1x"></i> Delete this post</p>
+			<% end %>
+			<p><span><i class="fa fa-globe fa-2x fa-spin"></i></span>Translate post</p>
 		</div>
 	</div>
 	<div class="col-lg-4 map">

@@ -1,2 +1,25 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<div id="new-post-container">
+<h1><%= @category.name %></h1>
+<h2>Thank you for volunteering! You can edit your post below.</h2>
+  <div class="errors">
+    <% if @post.errors %>
+      <% @post.errors.full_messages.each do |error| %>
+        <ul><%= error %></ul>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="new-post-form-container">
+    <%= form_for @post, url: "/categories/#{@category.id}/posts/#{@post.id}" do |f| %>
+    <div id="new-post-info">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+      <%= f.label :description %>
+      <%= f.text_area :body %>
+      <%= f.label :zip %>
+      <%= f.text_field :zip %>
+      <%= f.submit "Post service", class: "btn-info" %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
