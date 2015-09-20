@@ -14,23 +14,24 @@
 
 <div class="column-left" id="category-posts-index">
 	<h2>Services</h2>
-		<ul class="nav nav-pills">
+		<ul class="nav nav-pills post-tabs">
 		  <li class="active"><a href="#services-offered">Offered</a></li>
 		  <li><a href="#services-wanted">Wanted</a></li>
 		</ul>
 
 	<div id="posts-index-container">
-		<div id="services-wanted" >
+		<div class="services" id="services-offered" >
+		<% @category.services_offered.each do |post| %>
+			<%= render partial: 'single_post_listing', locals: { post: post } %>
+		<% end %>
+		</div>
+
+		<div class="services" id="services-wanted" >
 		<% @category.services_wanted.each do |post| %>
 			<%= render partial: 'single_post_listing', locals: { post: post } %>
 		<% end %>
 		</div>
 
-		<div id="services-offered" >
-		<% @category.services_offered.each do |post| %>
-			<%= render partial: 'single_post_listing', locals: { post: post } %>
-		<% end %>
-		</div>
 	</div>
 </div>
 

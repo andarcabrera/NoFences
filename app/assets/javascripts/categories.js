@@ -32,3 +32,12 @@
     });
   });
 
+  $(document).on("click", ".post-tabs li", function(event){
+    event.preventDefault();
+    $(".post-tabs li").removeClass("active");
+    $(".services").hide();
+    $(this).addClass("active");
+    var id = $(".active").find("a").attr("href");
+    $(id).show();
+
+  })

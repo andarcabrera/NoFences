@@ -79,6 +79,9 @@
 	height: 700px;
 }
 
+.services {
+	display: none;
+}
 
 #new-post-button {
 	margin: 1%;
@@ -89,7 +92,6 @@
 div#new-post-button.btn.btn-info a{
 	color: white;
 }
-
 
 .individual-post-listing {
 	background-color: white;
@@ -112,7 +114,6 @@ div#new-post-button.btn.btn-info a{
 	background-color: #E8E8E8;
 	height: 750px;
 }
-
 
 p.edit-delete.category-show-page{
 	display: inline-block;
