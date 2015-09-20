@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @category = Category.find(params[:category_id])
     render 'show'
   end
 
@@ -29,12 +30,25 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
+    @category = Category.find(params[:category_id])
   end
 
   def update
+    @post = Post.find(params[:id])
+    @category = Category.find(params[:category_id])
+    if @post.update_attributes(post_params)
+      redirect_to category_path(@category)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    @category = Category.find(params[:category_id])
+    redirect_to category_path(@category)
   end
 
 
