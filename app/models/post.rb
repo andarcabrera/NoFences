@@ -4,4 +4,8 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :author_id, :title, :body
 
+  def posted_date
+    self.created_at.strftime("%m-%d-%y")
+  end
+
 end

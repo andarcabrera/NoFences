@@ -5,21 +5,47 @@
 // CATEGORIES INDEX
 
 #categories-index-container {
+	width: 70%;
 	margin: auto;
+	margin-top: 2%;
 	vertical-align: middle;
   text-align: center;
 }
 
 .categories-links {
-	width: 25%;
-	margin: 1%;
+	width: 20%;
+	margin: 5% 1%;
 	height: 75px;
-	background-color: #E8E8E8;
 	display: inline-block;
 }
 
+.categories-links a {
+	color: #CD0809;
+
+}
+
+.category-icon {
+	color: #CD0809;
+	margin-bottom: 5%;
+}
+
+
 .categories-links span{
 	align-self: center;
+}
+
+.headings{
+	text-align: center;
+	background-color:#66CBFF;
+	padding: 10px;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+}
+
+.headings h3{
+	font-family: 'Indie Flower', cursive;
+	color: white;
+	margin-top: -10px;
 }
 
 // CATEGORIES SHOW
@@ -40,10 +66,6 @@
 	text-align: center;
 }
 
-#category-show-container h1{
-	margin-top: 0;
-}
-
 #posts-index-container {
 	margin-left: 2.5%;
 	margin-right: 2.5%;
@@ -53,8 +75,13 @@
 }
 
 #volunteer-button {
-	margin-left: 75%;
-	margin-bottom: 0;
+	margin: 1%;
+	background-color: #CD0809;
+	border: none;
+}
+
+div#volunteer-button.btn.btn-info a{
+	color: white;
 }
 
 #individual-post-listing {
