@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
     user.update(
         first_name: auth.info.name.split(" ")[0],
         last_name: auth.info.name.split(" ")[1],
-        email: user_info["email"],
+        email: user_info["email"] ||= "no email provided",
         password_digest: "",
       )
      p user
