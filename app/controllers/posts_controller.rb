@@ -13,18 +13,34 @@ class PostsController < ApplicationController
     render 'new'
   end
 
+  # def create
+  #   @category = Category.find(params[:category_id])
+  #   @post = current_user.posts.new(post_params)
+  #   if @post.save
+  #     @category.posts << @post
+  #     if request.xhr?
+  #       @post
+  #     else
+  #       redirect_to category_path(@category)
+  #     end
+  #   else
+  #     render 'new'
+  #   end
+  # end
+
   def create
     @category = Category.find(params[:category_id])
     @post = current_user.posts.new(post_params)
-    if @post.save
-      @category.posts << @post
-      if request.xhr?
-        @post
+    if request.xhr?
+      if @post.save
+        @category.posts << @post
+        redirect_to root_url
       else
-        redirect_to category_path(@category)
+        render :status => 400
       end
     else
-      render 'new'
+      #DO SOMETHING IF NOT AN AJAX REQUEST
+      redirect_to root_url
     end
   end
 
@@ -40,7 +56,7 @@ class PostsController < ApplicationController
 
 private
   def post_params
-    params.require(:post).permit(:title, :body, :address_1, :address_2, :city, :state, :zip, :preferred_contact, :category_id)
+    params.require(:post).permit(:title, :body, :zip, :category_id)
   end
 
 end

@@ -10,9 +10,11 @@
 			<p>SERVICE: <%= @post.title %></p>
 			<p>DESCRIPTION: <%= @post.body %></p>
 
-			<p>ZIP: <%= "#{@post.city} #{@post.state.upcase} #{@post.zip}" %></p>
+			<p>ZIP: #{@post.zip}" %></p>
 			<p>VOLUNTEER: <%= @post.author.full_name %></p>
 			<p><span><i class="fa fa-globe fa-2x fa-spin"></i></span>Translate post</p>
+			<p><i class="fa fa-pencil"></i> Edit this post</p>
+			<p><i class="fa fa-trash-o fa-1x"></i> Delete this post</p>
 		</div>
 	</div>
 	<div class="col-lg-4 map">
