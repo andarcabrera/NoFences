@@ -51,18 +51,28 @@ textarea {
 
 // POST SHOW PAGE
 
-post-show-container {
-	text-align: center;
+#post-info{
+	margin-left: 20px;
 }
 
-#post-info {
-	margin-left: 20%;
-	margin-right: 2.5%;
-	width: 80%;
+.post-title{
+	font-size: 30px;
+	text-align: left;
+	margin-left: 10px;
+
 }
 
-#post-contact{
-	margin-left: 2.5%;
-	margin-right: 20%;
-	width: 80%;
+h3.subtitle.post-show{
+	text-align: left;
+	margin-left: 10px;
 }
+
+i.fa.fa-arrow-right{
+	font-size: 0.9em;
+	padding: 0px 10px;
+}
+
+i.fa.fa-globe.fa-2x.fa-spin{
+	margin-right: 4px;
+}
+
