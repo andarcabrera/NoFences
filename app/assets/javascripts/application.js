@@ -27,5 +27,23 @@ $(document).ready(function(){
     $(".overlay, .login-container").hide();
   });
 
+  $(document).on("submit", ".form-signin", function(event){
+    event.preventDefault();
+    var url = window.location.href;
+    var loginData = $(this).serialize();
+    var request = $.ajax({
+      method: "post",
+      url: "/signin",
+      data: loginData
+    });
 
+    request.done(function(response){
+      if (response){
+        window.location.replace(url)
+      }else{
+        $(".main p").text("Email or Password is Incorrect").css("color", "red")
+      }
+
+    });
+  })
 });

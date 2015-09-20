@@ -1,17 +1,29 @@
-<div id="post-show-container">
-	<h1><%= @post.title %></h1>
-	<div class="column-left">
+<div class="headings">
+	<h1 class="post-title"><%= @post.category.name %> <i class="fa fa-arrow-right"></i> <%= @post.title %></h1>
+	<h3 class="subtitle post-show">If you would like to view this post in another <u>language</u> please use the translation tools below.</h3>
+</div>
+
+
+<div class="row" id="post-details-container">
+	<div class="col-lg-8">
 		<div id="post-info">
-			<h4>VOLUNTEER: <%= @post.author.full_name %></h4>
-			<h6>Languages spoken:</h6>
-			<p><%= @post.body %></p>
+			<p>SERVICE: <%= @post.title %></p>
+			<p>DESCRIPTION: <%= @post.body %></p>
+			<p>DATE POSTED: <%= @post.posted_date %></p>
+			<p>ZIP: <%= @post.zip %></p>
+			<p>VOLUNTEER: <%= @post.author.full_name %></p>
+			<% if @post.author_id == current_user.id %>
+			<p><span class="edit-delete"><i class="fa fa-pencil"></i></span><%= link_to ' Edit this post', "/categories/#{@category.id}/posts/#{@post.id}/edit" %></p>
+			<p><span class="edit-delete"><i class="fa fa-trash-o fa-1x"></span></i><%= link_to " Delete this post", [@category, @post], :method => :delete %></p>
+			<% end %>
+			<p><span class="post-options"><i class="fa fa-globe fa-1x fa-spin"></i></span> Translate post</p>
+			<p><span class="post-options"><i class="fa fa-reply"></i></span> Reply to this listing</p>
 		</div>
 	</div>
-	<div class="column-right">
-		<div id="post-contact">
-			<h4>Preferred Contact: <%=@post.preferred_contact%></h4>
-			<p><%= "#{@post.address_1} #{@post.address_2}" %></p>
-			<p><%= "#{@post.city}, #{@post.state.upcase}, #{@post.zip}" %></p>
+	<div class="col-lg-4 map">
+		<div class="map">
+			<p>Map place-holder</p>
+			<img src="http://placehold.it/300x300">
 		</div>
 	</div>
 </div>

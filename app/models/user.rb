@@ -6,14 +6,13 @@ class User < ActiveRecord::Base
   has_secure_password :validations => false
   validate :facebook_password_check
 
-
   def self.create_with_omniauth(auth)
     user = where(provider: auth.provider, uid: auth.uid).first_or_create
     user_info = user.facebook_email(auth)
     user.update(
         first_name: auth.info.name.split(" ")[0],
         last_name: auth.info.name.split(" ")[1],
-        email: user_info["email"],
+        email: user_info["email"] ||= "no email provided",
         password_digest: "",
       )
      p user
@@ -28,7 +27,7 @@ class User < ActiveRecord::Base
 
   def facebook_password_check
       if self.uid == nil && self.password == nil
-        self.errors[:password] << 'Need a password or facebook account!'
+        self.errors[:password] << 'needed!'
       end
   end
 

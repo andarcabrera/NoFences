@@ -15,13 +15,18 @@
 .categories-links {
 	width: 20%;
 	margin: 5% 1%;
-	height: 75px;
+	height: 125px;
 	display: inline-block;
+	font-size: 1.15em;
+	vertical-align: middle;
+	border: 3px solid #66CBFF;
+	border-radius: 10px;
+	padding: 2%;
+	color: #CD0809;
 }
 
-.categories-links a {
-	color: #CD0809;
-
+#categories-index-container a:hover {
+	border-color: black;
 }
 
 .category-icon {
@@ -71,7 +76,7 @@
 	margin-right: 2.5%;
 	padding: 5px;
 	background-color: #E8E8E8;
-	height: 750px;
+	height: 700px;
 }
 
 #volunteer-button {
@@ -86,8 +91,17 @@ div#volunteer-button.btn.btn-info a{
 
 #individual-post-listing {
 	background-color: white;
-	padding: 5px;
-	margin: 5px;
+	padding: 3px;
+	margin: 10px;
+	box-shadow: 2px 2px 10px #888888;
+}
+
+#individual-post-listing p{
+	line-height: 1em;
+}
+
+#post-date{
+	font-size: 15px;
 }
 
 #orgs-index-container {
@@ -95,4 +109,9 @@ div#volunteer-button.btn.btn-info a{
 	margin-right: 2.5%;
 	background-color: #E8E8E8;
 	height: 750px;
+}
+
+p.edit-delete.category-show-page{
+	display: inline-block;
+	width: 30%;
 }
