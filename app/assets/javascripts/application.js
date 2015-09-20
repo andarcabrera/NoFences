@@ -43,7 +43,18 @@ $(document).ready(function(){
       }else{
         $(".main p").text("Email or Password is Incorrect").css("color", "red")
       }
-
     });
   })
+
+
+  $(".img-circle").mouseover(function(){
+    $("#user-details").fadeIn(500);
+  });
+
+  $(".img-circle").mouseout(function(){
+    $("#user-details").fadeOut(500);
+  });
+
+
+
 });

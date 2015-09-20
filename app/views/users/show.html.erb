@@ -1,11 +1,41 @@
 
-
-<div class="user-info">
-  <div style="image" id="user-image"><img class="img-circle" src= <%="http://graph.facebook.com/#{current_user.uid}/picture?type=large" %>></div>
-  <div class="name"><%= current_user.full_name %></div>
-  <div class="languages">Languages: <%=current_user.display_languages%></div>
-  <div class="membership">Member Since: <%=current_user.created_at.strftime("%B #{current_user.created_at.day.ordinalize}, %Y")  %></div>
-  <div class="volunteered">Volunteer total: <%=current_user.count_volunteer_posts%> posts</div>
-
+<div class= "headings row" id="user-container">
+  <div class="col-sm-6 user-info">
+    <h3>Languages - <%= current_user.display_languages  %></h3>
+    <% if current_user && current_user == @user %>
+    <h3 id="update"><%= link_to "Update Info", edit_user_path(current_user)%></h3>
+    <% end %>
+  </div>
+  <div class="col-sm-3" style="image" id="user-image"><img class="img-circle" src= <%="http://graph.facebook.com/#{current_user.uid}/picture?type=large" %>><h3><%= current_user.full_name %></h3><br>
+  </div>
+  <div class="col-sm-3" id="user-details">
+  </div>
 </div>
+
+<div id="update-form">
+  <h3>I AM A HIDDEN FORM</h3>
+</div>
+
+<div class="row">
+  <div class="col-lg-6 current-posts">
+    <h3>Current Posts</h3>
+  </div>
+  <div class="col-lg-6 recent-messages">
+    <h3>Recent Messages</h3>
+  </div>
+</div>
+
+
+<!--  <div class="row">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-6">
+                <img id="star" src="/assets/chicago-star.png"/>
+                <img id="star" src="/assets/chicago-star.png"/>
+                <img id="star" src="/assets/chicago-star.png"/>
+                <img id="star" src="/assets/chicago-star.png"/>
+            </div>
+            <div class="col-sm-3">
+            </div>
+        </div> -->
 

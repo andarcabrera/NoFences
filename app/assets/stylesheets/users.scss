@@ -3,26 +3,61 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+#user-container {
+
+  border: 1px solid black;
+
+}
+
+
 #user-image {
   height: 250px;
   width: 250px;
+  margin-left: -75px;
+
+
+}
+
+#user-image h3{
+ margin-top: 10px;
+ margin-left: -90px;
+}
+
+.user-info h3 {
+  text-align: left;
+  margin-top: 10px;
 }
 
 .user-info {
-  margin-top: 10px;
-  height: 500px;
   width: 500px;
-  margin-left: 800px;
   text-align: center;
 }
 
 .img-circle {
-  margin-left: 125px;
   border-radius: 50%;
   width: 200px;
   height: 200px;
+  margin-left: -100px;
+  margin-top: 10px;
+  border: 1px solid black;
 }
 
-.name{
+h3 a {
+  text-decoration: none;
+  color: white;
 
 }
+
+h3 a:hover {
+  text-decoration: none;
+  color: #CD0809
+}
+
+#update-form {
+  display: none;
+}
+
+
+
+
+
