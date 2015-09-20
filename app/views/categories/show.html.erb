@@ -5,7 +5,12 @@
 <div class="headings">
 <h1><%= @category.name %></h1>
 <h3 class="subtitle">Click on any posts to see details or click on the volunteer button if you'd like to add another post.</h3>
-<div id="volunteer-button" class="btn btn-info" role="button"><%= link_to 'I want to volunteer!', new_category_post_path(@category)%>
+<div id="volunteer-button" class="btn btn-info" role="button">
+	<% if current_user %>
+		<%= link_to 'I want to volunteer!', new_category_post_path(@category)%>
+	<% else %>
+		<%= link_to 'Signin to volunteer!', signin_path, id: "login-button"%>
+	<% end %>
 </div>
 </div>
 

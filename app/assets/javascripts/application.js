@@ -27,22 +27,23 @@ $(document).ready(function(){
     $(".overlay, .login-container").hide();
   });
 
-  // $(".mg-btm").on("submit", function(event){
-  //   event.preventDefault();
-  //   var loginData = $(this).serialize();
-  //   var request = $.ajax({
-  //     method: "get",
-  //     url: "/signin",
-  //     data: loginData
-  //   });
+  $(document).on("submit", ".form-signin", function(event){
+    event.preventDefault();
+    var url = window.location.href;
+    var loginData = $(this).serialize();
+    var request = $.ajax({
+      method: "post",
+      url: "/signin",
+      data: loginData
+    });
 
-  //   request.done(function(response){
-  //     console.log(response);
-  //     if (response === "success"){
-  //       $(".overlay, .login-container").hide();
-  //     } else {
-  //       $(".login-container").append("You done fucked up.")
-  //     }
-  //   });
-  // })
+    request.done(function(response){
+      if (response){
+        window.location.replace(url)
+      }else{
+        $(".main p").text("Email or Password is Incorrect").css("color", "red")
+      }
+
+    });
+  })
 });
