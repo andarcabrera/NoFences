@@ -27,7 +27,7 @@
   <div class="overlay"></div>
    <div class="login-container">
     <div class="row">
-      <form class="form-signin mg-btm">
+      <form class="form-signin mg-btm" action="signin">
         <h3 class="heading-desc">
           <button type="button" class="close pull-right" id="x" aria-hidden="true">×</button>Log in to NoFences</h3>
             <div class="social-box">
@@ -42,8 +42,8 @@
 
       <div class="main">
 
-        <input type="text" class="form-control" placeholder="Email" autofocus>
-        <input type="password" class="form-control" placeholder="Password">
+        <input name="session[email]" type="text" class="form-control" placeholder="Email" autofocus>
+        <input name="session[password]" type="password" class="form-control" placeholder="Password">
 
         <span class="clearfix"></span>
       </div>
@@ -54,10 +54,9 @@
               <%= link_to "Sign up now", new_user_path %>
             </div>
           </div>
-          <div class="col-xs-6 col-md-6 pull-right" id="login-button">
-            <button type="submit" class="btn btn-large btn-danger pull-right">Login</button>
-          </div>
-
+          <div class="col-xs-6 col-md-6 pull-right">
+            <button type="submit" class="btn btn-large btn-danger pull-right" id="login-submit">Login</button>
+        </div>
         </div>
       </div>
       </form>
