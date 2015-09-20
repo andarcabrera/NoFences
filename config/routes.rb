@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   match '/signout' => 'sessions#destroy', :as => :signout, via: [:get, :post]
 
-  match '/signin' => 'sessions#new', :as => :signin, via: [:get, :post]
+  match '/signin' => 'sessions#create', :as => :signin, via: [:get, :post]
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
