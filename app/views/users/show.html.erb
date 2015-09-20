@@ -14,6 +14,7 @@
 
 
 
+
 <div id="edit-form" class="row">
   <div class="col-lg-3"></div>
   <div class= "col-lg-6" id="edit-user-container">
@@ -41,6 +42,19 @@
   </div>
   <div class="col-lg-3"></div>
 </div>
+
+<div class="user-info">
+  <% if current_user.uid %>
+    <div style="image" id="user-image"><img class="img-circle" src= <%="http://graph.facebook.com/#{current_user.uid}/picture?type=large" %>></div>
+  <% else %>
+    <div style="image" id="user-image"><%= image_tag current_user.photo_url(:thumb).to_s if current_user.photo_url %></div>
+  <% end %>
+
+  <div class="name"><%= current_user.full_name %></div>
+  <div class="languages">Languages: <%=current_user.display_languages%></div>
+  <div class="membership">Member Since: <%=current_user.created_at.strftime("%B #{current_user.created_at.day.ordinalize}, %Y")  %></div>
+  <div class="volunteered">Volunteer total: <%=current_user.count_volunteer_posts%> posts</div>
+
 
 <div class="row">
   <div class="col-lg-6 current-posts">

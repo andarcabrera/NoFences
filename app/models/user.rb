@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_secure_password :validations => false
   validate :facebook_password_check
 
+  mount_uploader :photo, PhotoUploader
+
   def self.create_with_omniauth(auth)
     user = where(provider: auth.provider, uid: auth.uid).first_or_create
     user_info = user.facebook_email(auth)
