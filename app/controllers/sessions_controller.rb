@@ -25,24 +25,24 @@ class SessionsController < ApplicationController
                        :uid => auth['uid']).first || User.create_with_omniauth(auth)
        session[:user_id] = user.id
        redirect_to root_url, :notice => "Signed in!"
-  else
-    user = User.find_by(email: params[:session][:email])
-    if request.xhr?
-
-      if user && user.authenticate(params[:session][:password])
-        log_in(user)
-        p "success" * 100
-        redirect_to root_url
-      else
-        p "failure" * 100
-      end
     else
-      if user && user.authenticate(params[:session][:password])
-        log_in(user)
-        redirect_to root_url
+      user = User.find_by(email: params[:session][:email])
+      if request.xhr?
+
+        if user && user.authenticate(params[:session][:password])
+          log_in(user)
+          p "success" * 100
+          redirect_to root_url
+        else
+          p "failure" * 100
+        end
       else
-        redirect_to root_url
-        flash[:unsuccessful] = "Your email or password were entered incorrectly."
+        if user && user.authenticate(params[:session][:password])
+          log_in(user)
+          redirect_to root_url
+        else
+          redirect_to root_url
+          flash[:unsuccessful] = "Your email or password were entered incorrectly."
       end
     end
   end

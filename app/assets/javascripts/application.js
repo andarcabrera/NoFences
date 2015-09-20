@@ -24,7 +24,7 @@ $(document).ready(function(){
   });
 
   $(document).on("click", "#x", function(event){
-    $(".overlay, .login-container").hide();
+    $(".overlay, .login-container, #new-post-container").hide();
   });
 
   $(document).on("submit", ".form-signin", function(event){

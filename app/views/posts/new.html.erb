@@ -10,15 +10,15 @@
   </div>
   <div id="new-post-form-container">
 		<%= form_for @post, url: category_posts_path(@category, @post) do |f| %>
-	  <div id="new-post-info">
-	  	<%= f.label :title %>
-		  <%= f.text_field :title %>
-	    <%= f.label :description %>
-	    <%= f.text_area :body %>
-      <%= f.label :zip %>
-      <%= f.text_field :zip %>
-      <%= f.submit "Post service", class: "btn-info" %>
-    </div>
+  	  <div id="new-post-info">
+  	  	<%= f.label :title %>
+  		  <%= f.text_field :title %>
+  	    <%= f.label :description %>
+  	    <%= f.text_area :body %>
+        <%= f.label :zip %>
+        <%= f.text_field :zip %>
+        <%= f.submit "Post service", class: "btn-info" %>
+      </div>
     <% end %>
   </div>
 </div>
