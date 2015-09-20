@@ -4,10 +4,12 @@
 </div>
 <div id="categories-index-container">
 	<% @categories.sort.each do |category| %>
-		<div class="categories-links" >
-      <img class="category-icon" src="/assets/<%=category.name.downcase.split(" ")[0]%>.png">
-      <br>
-      <span> <%= link_to I18n.t("#{category.name.upcase}"), category_path(category) %></span>
-		</div>
+		<a href="/categories/<%="#{category.id}"%>">
+			<div class="categories-links" >
+	      <img class="category-icon" src="/assets/<%=category.name.downcase.split(" ")[0]%>.png">
+	      <br>
+	      <span> <%= I18n.t("#{category.name.upcase}")%></span>
+			</div>
+		</a>
 	<% end %>
 </div>
