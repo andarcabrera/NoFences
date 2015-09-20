@@ -66,10 +66,6 @@
 	text-align: center;
 }
 
-#category-show-container h1{
-	margin-top: 0;
-}
-
 #posts-index-container {
 	margin-left: 2.5%;
 	margin-right: 2.5%;
@@ -79,8 +75,13 @@
 }
 
 #volunteer-button {
-	margin-left: 75%;
-	margin-bottom: 0;
+	margin: 1%;
+	background-color: #CD0809;
+	border: none;
+}
+
+div#volunteer-button.btn.btn-info a{
+	color: white;
 }
 
 #individual-post-listing {
@@ -95,4 +96,3 @@
 	background-color: #E8E8E8;
 	height: 750px;
 }
-
