@@ -8,4 +8,11 @@ class Post < ActiveRecord::Base
     self.created_at.strftime("%m-%d-%y")
   end
 
+  def self.services_offered
+  	all.where(volunteer: true)
+  end
+
+  def self.services_wanted
+  	all.where(volunteer: nil)
+  end 
 end
