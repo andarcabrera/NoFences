@@ -1,18 +1,16 @@
 <div id="category-show-container">
 
-
-
-<div class="headings">
-<h1><%= @category.name %></h1>
-<h3 class="subtitle">Click on any posts to see details or click on the volunteer button if you'd like to add another post.</h3>
-<div id="volunteer-button" class="btn btn-info" role="button">
-	<% if current_user %>
-		<%= link_to 'I want to volunteer!', new_category_post_path(@category)%>
-	<% else %>
-		<%= link_to 'Signin to volunteer!', signin_path, id: "login-button"%>
-	<% end %>
-</div>
-</div>
+	<div class="headings">
+		<h1><%= @category.name %></h1>
+		<h3 class="subtitle">Click on any posts to see details or click on the volunteer button if you'd like to add another post.</h3>
+		<div id="new-post-button" class="btn btn-info" role="button">
+			<% if current_user %>
+				<%= link_to 'I want to volunteer!', new_category_post_path(@category), id: "volunteer-button" %>
+			<% else %>
+				<%= link_to 'Signin to volunteer!', signin_path, id: "login-to-post-button"%>
+			<% end %>
+		</div>
+	</div>
 
 
 
@@ -20,6 +18,7 @@
 	<div class="column-left" id="category-posts-index">
 		<h2>Volunteer Posts</h2>
 		<div id="posts-index-container">
+
 		<% @category.posts.each do |post| %>
 			<div id="individual-post-listing">
 				<h4><%= link_to "#{post.title}", category_post_path(@category,post) %></h4>
@@ -36,10 +35,30 @@
 	<div class="column-right" id="categories-orgs-index">
 		<h2>Organizations Available</h2>
 			<div id="orgs-index-container">
-			<% @category.organizations.each do |org| %>
-				<h4><%= link_to "#{org.name}", organization_path(org) %></h4>
-				<p><%= org.description %></p>
-			<% end %>
+				<% @category.organizations.each do |org| %>
+					<h4><%= link_to "#{org.name}", organization_path(org) %></h4>
+					<p><%= org.description %></p>
+				<% end %>
 			</div>
+	</div>
+</div>
+
+<div id="new-post-container">
+	<form>
+		<button type="button" class="close pull-right" id="x" aria-hidden="true">×</button>
+	</form>
+	<h1><%= @category.name %></h1>
+	<h2>Thank you for volunteering! Please provide the details of your volunteer service or donation below.</h2>
+	<p class="errors"></p>
+	<div id="new-post-form-container">
+	  <form class="form-new-post" action="/categories/<%= @category.id %>/posts" method="post">
+		  <div id="new-post-info">
+	      <input name="post[title]" type="text" placeholder="Title">
+	      <textarea name="post[body]" placeholder="Description"></textarea>
+	      <input name="post[zip]" type="text" placeholder="Zip">
+	      <input type="hidden" id="category-id" name="post[category_id]" value=<%=@category.id%>>
+	      <button type="submit" class="btn-info" id="form-submit">Post</button>
+	    </div>
+	  </form>
 	</div>
 </div>

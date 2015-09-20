@@ -79,13 +79,13 @@
 	height: 700px;
 }
 
-#volunteer-button {
+#new-post-button {
 	margin: 1%;
 	background-color: #CD0809;
 	border: none;
 }
 
-div#volunteer-button.btn.btn-info a{
+div#new-post-button.btn.btn-info a{
 	color: white;
 }
 
@@ -109,6 +109,11 @@ div#volunteer-button.btn.btn-info a{
 	margin-right: 2.5%;
 	background-color: #E8E8E8;
 	height: 750px;
+}
+
+.errors {
+	text-align: center;
+	color: red;
 }
 
 p.edit-delete.category-show-page{
