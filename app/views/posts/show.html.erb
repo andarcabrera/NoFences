@@ -14,7 +14,7 @@
 			<p>VOLUNTEER: <%= @post.author.full_name %></p>
 			<% if @post.author_id == current_user.id %>
 			<p><i class="fa fa-pencil"></i><%= link_to ' Edit this post', "/categories/#{@category.id}/posts/#{@post.id}/edit" %></p>
-			<p><i class="fa fa-trash-o fa-1x"></i> Delete this post</p>
+			<p><i class="fa fa-trash-o fa-1x"></i><%= link_to " Delete this post", [@category, @post], :method => :delete %></p>
 			<% end %>
 			<p><span><i class="fa fa-globe fa-2x fa-spin"></i></span>Translate post</p>
 		</div>
