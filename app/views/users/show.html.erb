@@ -11,6 +11,9 @@
   <div class="col-sm-3" id="user-details">
   </div>
 </div>
+
+
+
 <div id="edit-form" class="row">
   <div class="col-lg-3"></div>
   <div class= "col-lg-6" id="edit-user-container">
@@ -19,13 +22,18 @@
     </form>
     <h2>Update Your Info Here!</h2>
     <p class="errors"></p>
-    <div id="edit-user-container">
+    <div id="edit-user-form-container">
       <form class="user-edit" action="/users/<%= @user.id %>/edit" method="post">
         <div id="new-user-info">
-          <input name="user[first_name]" type="text" value=<%=@user.first_name%>><br>
-          <input name="user[last_name]" type="text" value=<%=@user.last_name%>><br>
-          <input name="user[email]" type="text" value=<%=@user.email %>><br>
-          <input name="language[name]" type="text" value=<%=@user.display_languages%>><br>
+          <label for="user[first_name]"> First Name: </label>
+          <input name="user[first_name]" type="text" value=<%=@user.first_name%>><br><br>
+          <label for="user[last_name]"> Last Name: </label>
+          <input name="user[last_name]" type="text" value=<%=@user.last_name%>><br><br>
+          <label for="user[email]"> Email: </label>
+          <input name="user[email]" type="text" value=<%=@user.email %>><br><br>
+          <label for="laguange[name]"> Languages: </label>
+          <% languages = current_user.display_languages %>
+          <input name="language[name]" type="text" value=<%=@user.display_languages%>><br><br>
           <button type="submit" class="btn-info" id="form-submit">Update Info</button>
         </div>
       </form>

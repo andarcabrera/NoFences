@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
     self.languages.each do |language|
       language_names << language.name
     end
-    language_names.join(", ")
+    language_names.join(",")
   end
 
   def get_volunteer_posts
