@@ -43,6 +43,7 @@
 }
 
 h3 a {
+transition: all 0.9s ease;
   text-decoration: none;
   color: white;
 
@@ -53,9 +54,24 @@ h3 a:hover {
   color: #CD0809
 }
 
-#update-form {
-  display: none;
+#edit-form {
+  position: absolute;
+  margin-left: 500px;
+  z-index: 1000;
+  border: 1px solid black;
 }
+
+#edit-user-container {
+  width: 400px;
+  margin: auto;
+}
+
+#user-edit {
+  margin-left: 200px;
+}
+
+
+
 
 
 

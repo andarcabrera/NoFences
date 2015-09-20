@@ -11,9 +11,27 @@
   <div class="col-sm-3" id="user-details">
   </div>
 </div>
-
-<div id="update-form">
-  <h3>I AM A HIDDEN FORM</h3>
+<div id="edit-form" class="row">
+  <div class="col-lg-3"></div>
+  <div class= "col-lg-6" id="edit-user-container">
+    <form>
+      <button type="button" class="close pull-right" id="x" aria-hidden="true">×</button>
+    </form>
+    <h2>Update Your Info Here!</h2>
+    <p class="errors"></p>
+    <div id="edit-user-container">
+      <form class="user-edit" action="/users/<%= @user.id %>/edit" method="post">
+        <div id="new-user-info">
+          <input name="user[first_name]" type="text" value=<%=@user.first_name%>><br>
+          <input name="user[last_name]" type="text" value=<%=@user.last_name%>><br>
+          <input name="user[email]" type="text" value=<%=@user.email %>><br>
+          <input name="language[name]" type="text" value=<%=@user.display_languages%>><br>
+          <button type="submit" class="btn-info" id="form-submit">Update Info</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-lg-3"></div>
 </div>
 
 <div class="row">
