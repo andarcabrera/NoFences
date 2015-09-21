@@ -3,6 +3,7 @@
 	<h3 class="subtitle post-show">If you would like to view this post in another <u>language</u> please use the translation tools below.</h3>
 </div>
 
+<div id="new-message-container"></div>
 
 <div class="row" id="post-details-container">
 	<div class="col-lg-8">
@@ -17,7 +18,7 @@
 			<p><span class="edit-delete"><i class="fa fa-trash-o fa-1x"></span></i><%= link_to " Delete this post", [@category, @post], :method => :delete %></p>
 			<% end %>
 			<p><span class="post-options"><i class="fa fa-globe fa-1x fa-spin"></i></span> Translate post</p>
-			<p><span class="post-options"><i class="fa fa-reply"></i></span> Reply to this listing</p>
+			<p><span class="post-options"><i class="fa fa-reply"></i></span> <%= link_to ' Reply to this post', "/categories/#{@category.id}/posts/#{@post.id}/chains/new", id: "reply-link" %></p>
 		</div>
 	</div>
 	<div class="col-lg-4 map">

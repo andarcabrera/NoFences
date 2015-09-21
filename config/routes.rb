@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -11,7 +13,11 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :show, :edit, :create, :destroy, :update]
   resources :organizations, only: [:index, :show]
   resources :categories, only: [:index, :show] do
-    resources :posts
+    resources :posts do
+      resources :chains do
+        resources :messages
+      end
+    end
   end
 
   # Example of regular route:
