@@ -31,7 +31,6 @@
 			<%= render partial: 'single_post_listing', locals: { post: post } %>
 		<% end %>
 		</div>
-
 	</div>
 </div>
 
@@ -56,6 +55,10 @@
 	<p class="errors"></p>
 	<div id="new-post-form-container">
 	  <form class="form-new-post" action="/categories/<%= @category.id %>/posts" method="post">
+		<div class="radio-inline service-type">
+  		<label><input type="radio" name="post[volunteer]" value="true">I am volunteering</label>
+  		<label><input type="radio" name="post[volunteer]" value="false">I am looking for help</label>
+		</div>
 		  <div id="new-post-info">
 	      <input name="post[title]" type="text" placeholder="Title">
 	      <textarea name="post[body]" placeholder="Description"></textarea>

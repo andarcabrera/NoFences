@@ -24,11 +24,12 @@
     })
 
     .done(function(response){
-        window.location.replace(return_url);
+      $(".overlay").hide();
+      $("#new-post-container").hide();
     })
 
     .fail(function(response) {
-        $(".errors").text("All fields must be filled.");
+      $(".errors").text("All fields must be filled.");
     });
   });
 
@@ -39,5 +40,4 @@
     $(this).addClass("active");
     var id = $(".active").find("a").attr("href");
     $(id).show();
-
-  })
+  });

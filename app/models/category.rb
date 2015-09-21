@@ -6,10 +6,10 @@ class Category < ActiveRecord::Base
   validates_presence_of :name
 
   def services_offered
-  	self.posts.where(volunteer: true)
+  	self.posts.where(volunteer: true).order(created_at: :desc)
   end
 
   def services_wanted
-  	self.posts.where(volunteer: nil)
+  	self.posts.where(volunteer: false).order(created_at: :desc)
   end 
 end

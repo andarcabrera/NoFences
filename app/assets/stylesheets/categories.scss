@@ -79,8 +79,17 @@
 	height: 700px;
 }
 
-.services {
+#services-wanted {
 	display: none;
+}
+
+form .service-type {
+	width: 25%;
+	text-align: left;
+}
+
+form .service-type input{
+	height: 15px;
 }
 
 #new-post-button {
