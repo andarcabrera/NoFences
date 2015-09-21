@@ -6,6 +6,7 @@
 #user-container {
 
   border: 1px solid black;
+  height: 200px;
 
 }
 
@@ -13,19 +14,24 @@
 #user-image {
   height: 250px;
   width: 250px;
-  margin-left: -75px;
+  margin: auto;
+  margin-top: -150px;
 
 
 }
 
-#user-image h3{
- margin-top: 10px;
- margin-left: -90px;
+.col-sm-3 h3{
+  margin-top: 5px;
+ margin-left: -420px;
+}
+
+.col-sm-6 h3{
+
 }
 
 .user-info h3 {
-  text-align: left;
-  margin-top: 10px;
+
+  margin-top: 5px;
 }
 
 .user-info {
@@ -37,8 +43,8 @@
   border-radius: 50%;
   width: 200px;
   height: 200px;
-  margin-left: -100px;
-  margin-top: 10px;
+  margin-left: 30px;
+  margin-top: -15px;
   border: 1px solid black;
 }
 
@@ -58,10 +64,10 @@ h3 a:hover {
 
 
 #edit-user-container {
-
-  width: 25%;
+  display: none;
+  width: 20%;
   margin-top: -10%;
-  margin-left: 37%;
+  margin-left: 40%;
   position: fixed;
   opacity: 1;
   z-index:1002;
@@ -69,11 +75,11 @@ h3 a:hover {
   -webkit-box-shadow: 0px -1px 9px 1px rgba(247,247,247,1);
 }
 
-#form-submit {
-  width: 30%;
+ #user-form-submit {
+  width: 100px;
   margin-top: 3%;
   margin-bottom: 3%;
-  margin: auto;
+  margin-left: 50px;
   text-align: center;
 }
 
@@ -82,7 +88,7 @@ h3 a:hover {
   margin-right: 30px;
 }
 
-#edit-user-form-container input {
+input #text {
   display: block;
   width: 90%;
   margin-top: 0;
@@ -98,6 +104,8 @@ h3 a:hover {
   margin-top: 0;
   padding-left: 10%;
 }
+
+
 
 
 

@@ -1,15 +1,22 @@
 
 <div class= "headings row" id="user-container">
   <div class="col-sm-6 user-info">
-    <h3>Languages - <%= current_user.display_languages  %></h3>
+    <h3>Languages - <%= @user.display_languages  %></h3>
     <% if current_user && current_user == @user %>
     <h3 id="update"><%= link_to "Update Info", edit_user_path(current_user)%></h3>
     <% end %>
   </div>
-  <div class="col-sm-3" style="image" id="user-image"><img class="img-circle" src= <%="http://graph.facebook.com/#{current_user.uid}/picture?type=large" %>><h3><%= current_user.full_name %></h3><br>
+  <div class="col-sm-3">
+    <h3><%= @user.full_name %></h3><br>
   </div>
   <div class="col-sm-3" id="user-details">
+    <h3>Member Since: <%=@user.created_at.strftime("%B #{current_user.created_at.day.ordinalize}, %Y")%></h3>
+    <h3>Volunteer total: <%=@user.count_volunteer_posts%> posts</h3>
   </div>
+</div>
+
+<div id="user-image" style="image">
+<img class="img-circle" src= <%="http://graph.facebook.com/#{current_user.uid}/picture?type=large" %>>
 </div>
 
 
@@ -24,18 +31,20 @@
     <h2>Update Your Info Here!</h2>
     <p class="errors"></p>
     <div id="edit-user-form-container">
-      <form class="user-edit" action="/users/<%= @user.id %>/edit" method="post">
+      <form class="user-edit" action="/users/<%= @user.id %>" method="put">
         <div id="new-user-info">
-          <label for="user[first_name]"> First Name: </label>
-          <input name="user[first_name]" type="text" value=<%=@user.first_name%>><br><br>
+          <label  for="user[first_name]"> First Name: </label>
+          <input id="text" name="user[first_name]" type="text" value=<%=@user.first_name%>><br>
           <label for="user[last_name]"> Last Name: </label>
-          <input name="user[last_name]" type="text" value=<%=@user.last_name%>><br><br>
+          <input id="text" name="user[last_name]" type="text" value=<%=@user.last_name%>><br>
           <label for="user[email]"> Email: </label>
-          <input name="user[email]" type="text" value=<%=@user.email %>><br><br>
-          <label for="laguange[name]"> Languages: </label>
-          <% languages = current_user.display_languages %>
-          <input name="language[name]" type="text" value=<%=@user.display_languages%>><br><br>
-          <button type="submit" class="btn-info" id="form-submit">Update Info</button>
+          <input id="text" name="user[email]" type="text" value=<%=@user.email %>><br>
+          <label for="laguange"> Languages(select all that apply) </label>
+          <input id="check" type="checkbox" name="language[English]" <% if @user.known_language?("English")%> checked <% end %>> English
+          <input id="check" type="checkbox" name="language[Spanish]" <% if @user.known_language?("Spanish")%> checked <% end %>> Spanish
+          <input id="check" type="checkbox" name="language[Japanese]" <% if @user.known_language?("Japanese")%> checked <% end %>> Japanese<br>
+
+          <button type="submit" class="btn-info" id="user-form-submit">Update Info</button>
         </div>
       </form>
     </div>
@@ -43,17 +52,6 @@
   <div class="col-lg-3"></div>
 </div>
 
-<div class="user-info">
-  <% if current_user.uid %>
-    <div style="image" id="user-image"><img class="img-circle" src= <%="http://graph.facebook.com/#{current_user.uid}/picture?type=large" %>></div>
-  <% else %>
-    <div style="image" id="user-image"><%= image_tag current_user.photo_url(:thumb).to_s if current_user.photo_url %></div>
-  <% end %>
-
-  <div class="name"><%= current_user.full_name %></div>
-  <div class="languages">Languages: <%=current_user.display_languages%></div>
-  <div class="membership">Member Since: <%=current_user.created_at.strftime("%B #{current_user.created_at.day.ordinalize}, %Y")  %></div>
-  <div class="volunteered">Volunteer total: <%=current_user.count_volunteer_posts%> posts</div>
 
 
 <div class="row">
