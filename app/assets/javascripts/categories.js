@@ -24,11 +24,20 @@
     })
 
     .done(function(response){
-        window.location.replace(return_url);
+      $(".overlay").hide();
+      $("#new-post-container").hide();
     })
 
     .fail(function(response) {
-        $(".errors").text("All fields must be filled.");
+      $(".errors").text("All fields must be filled.");
     });
   });
 
+  $(document).on("click", ".post-tabs li", function(event){
+    event.preventDefault();
+    $(".post-tabs li").removeClass("active");
+    $(".services").hide();
+    $(this).addClass("active");
+    var id = $(".active").find("a").attr("href");
+    $(id).show();
+  });
