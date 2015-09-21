@@ -44,10 +44,17 @@ $(document).ready(function(){
     $(".errors").empty();
     $(".login-container, #new-post-container").hide();
     // get new user
-    // var request = $.ajax({
-
-    // })
-    $(".register-container").show();
+    var request = $.ajax({
+      method: "get",
+      url: "/users/new"
+    })
+    .done(function(response) {
+      $(".reg-form").append(response);
+      $(".register-container").show();
+    })
+    .fail(function(response) {
+      $(".errors").text("Could not load new user form");
+    });
 
 
   });
