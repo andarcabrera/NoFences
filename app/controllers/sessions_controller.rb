@@ -34,7 +34,7 @@ class SessionsController < ApplicationController
           p "success" * 100
           redirect_to root_url
         else
-          p "failure" * 100
+          render :status => 400
         end
       else
         if user && user.authenticate(params[:session][:password])
