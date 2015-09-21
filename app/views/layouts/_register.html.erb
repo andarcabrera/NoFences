@@ -1,4 +1,4 @@
-<div class="register-container">
+<!-- <div class="register-container">
   <div class="row">
     <form class="form-signin mg-btm" id="register-form" action="/users" enctype="multipart/form-data" accept-charset="UTF-8" method="post">
     <h3 class="heading-desc">
@@ -33,4 +33,65 @@
     </div>
     </form>
   </div>
+</div> -->
+
+<div class="register-container">
+  <div class="row">
+    <%= form_for User.new , :html => { class: "form-signin mg-btm", 'id' => "register-form"} do |f| %>
+    <h3 class="heading-desc">
+      <button type="button" class="close pull-right" id="x" aria-hidden="true">×</button>Sign Up For NoFences</h3>
+      <div class="social-box">
+      <div class="row mg-btm">
+        <div class="col-md-12">
+          <a href="auth/facebook" class="btn btn-primary btn-block">
+          <i class="icon-facebook"></i> Register with Facebook
+          </a>
+        </div>
+      </div>
+      <div class="errors"></div>
+    </div>
+
+      <div class="field">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, {class: "form-control", placeholder: "First Name"} %>
+      </div>
+
+      <div class="field">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, {class: "form-control", placeholder: "Last Name"} %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.text_field :email, {class: "form-control", placeholder: "Email"} %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password, {class: "form-control", placeholder: "Password"} %>
+      </div>
+
+      <div class="field">
+        <%= f.label :photo, "Upload photo:" %>
+        <%= f.file_field :photo%>
+      </div>
+
+
+
+      <span class="clearfix"></span>
+
+      <div class="login-footer">
+        <div class="row">
+          <div class="col-xs-6 col-md-6 pull-right">
+            <!-- <button type="submit" class="btn btn-large btn-danger pull-right" id="register-submit-button">Sign Up</button> -->
+            <!-- <div class="field actions"> -->
+              <%= f.submit "Sign Up", { class: "btn btn-large btn-danger pull-right", id: "register-submit-button"}%>
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
 </div>
+

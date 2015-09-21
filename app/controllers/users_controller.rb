@@ -14,12 +14,12 @@ class UsersController < ApplicationController
         render :status => 400
       end
     else
-        if @user.save
-          session[:user_id] = @user.id
-          redirect_to user_path
-        else
-          p "USER DID NOT SAVE!"
-        end
+      if @user.save
+        session[:user_id] = @user.id
+        redirect_to root_url
+      else
+        render :status => 400
+      end
     end
   end
 

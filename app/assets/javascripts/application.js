@@ -44,13 +44,14 @@ $(document).ready(function(){
     $(".errors").empty();
     $(".login-container, #new-post-container").hide();
     $(".register-container").show();
+
+
   });
 
   $(document).on("submit", "#register-form", function(event){
     event.preventDefault();
     var url = window.location.href;
     var newUserData = $(this).serialize();
-    console.log(newUserData);
     var request = $.ajax({
       method: "post",
       url: "/users",
