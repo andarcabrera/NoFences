@@ -13,7 +13,10 @@ $(document).ready(function(){
   });
 
   $(document).on("click", "#x", function(event){
-    $(".overlay, .login-container, #new-post-container, .register-container").hide();
+
+    $(".overlay, .login-container, #new-post-container, #edit-user-container, register-container").hide();
+
+
   });
 
   $(document).on("submit", "#login-form", function(event){
@@ -62,12 +65,40 @@ $(document).ready(function(){
     });
   });
 
-  $(".img-circle").mouseover(function(){
-    $("#user-details").fadeIn(500);
+  // USER JS
+
+
+  $(document).on("click", "#update", function(event){
+    event.preventDefault();
+    $(".overlay").fadeIn(400);
+    $("#edit-user-container").show();
   });
 
-  $(".img-circle").mouseout(function(){
-    $("#user-details").fadeOut(500);
+  $(document).on("submit", ".user-edit", function(event){
+    event.preventDefault();
+    console.log("Here we are")
+    postData = $(this).serialize();
+    console.log(postData);
+    method = $(this).attr("method");
+    var url = $(this).attr("action");
+    var return_url = window.location.href;
+
+
+    var request = $.ajax({
+                  url: url,
+                  method: method,
+                  data: postData
+                      });
+
+    request.done(function(response){
+      window.location.replace(return_url);
+    });
+
+    request.fail(function(response){
+      $(".errors").text("All fields must be filled.")
+    });
+
+
   });
 
 
