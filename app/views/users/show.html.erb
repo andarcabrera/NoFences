@@ -29,7 +29,13 @@
       <button type="button" class="close pull-right" id="x" aria-hidden="true">×</button>
     </form>
     <h2>Update Your Info Here!</h2>
-    <p class="errors"></p>
+   <div class="errors">
+    <% if @user.errors %>
+      <% @user.errors.full_messages.each do |error| %>
+        <ul><%= error %></ul>
+      <% end %>
+    <% end %>
+  </div>
     <div id="edit-user-form-container">
       <form class="user-edit" action="/users/<%= @user.id %>" method="put">
         <div id="new-user-info">
@@ -53,15 +59,44 @@
 </div>
 
 
+<div class="column-left" id="category-posts-index">
+  <h2>Recent Posts</h2>
 
-<div class="row">
-  <div class="col-lg-6 current-posts">
-    <h3>Current Posts</h3>
-  </div>
-  <div class="col-lg-6 recent-messages">
-    <h3>Recent Messages</h3>
+
+  <div id="posts-index-container">
+    <div class="services" id="services-offered" >
+    <% @user.posts.each do |post| %>
+      <%= render partial: 'user_post_listing', locals: { post: post } %>
+    <% end %>
+    </div>
   </div>
 </div>
+
+<div class="column-right" id="category-posts-index">
+  <h2>Recent Messages</h2>
+
+
+  <div id="posts-index-container">
+    <div class="services" id="services-offered" >
+    <% @user.posts.each do |post| %>
+      <%= render partial: 'user_post_listing', locals: { post: post } %>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--
+<div class="row">
+  <div class="col-lg-6 current-posts">
+    <h2>Current Posts</h2>
+  </div>
+  <div class="col-lg-6 recent-messages">
+    <h2>Recent Messages</h2>
+  </div>
+</div> -->
 
 
 <!--  <div class="row">
