@@ -41,7 +41,7 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'carrierwave'
+  gem 'carrierwave', '0.10.0'
   gem 'mini_magick'
   gem 'fog'
   gem 'figaro'
