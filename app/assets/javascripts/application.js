@@ -43,6 +43,10 @@ $(document).ready(function(){
     event.preventDefault();
     $(".errors").empty();
     $(".login-container, #new-post-container").hide();
+    // get new user
+    // var request = $.ajax({
+
+    // })
     $(".register-container").show();
 
 
@@ -91,18 +95,11 @@ $(document).ready(function(){
                   method: method,
                   data: postData
                       });
-
     request.done(function(response){
       window.location.replace(return_url);
     });
-
     request.fail(function(response){
       $(".errors").text("All fields must be filled.")
     });
-
-
   });
-
-
-
 });
