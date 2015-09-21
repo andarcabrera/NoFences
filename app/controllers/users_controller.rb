@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   def new
     @user = User.new
+    if request.xhr?
+      render partial: "layouts/register", locals: { user: @user }
+    end
   end
 
   def create
