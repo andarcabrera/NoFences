@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    p user_params
     if request.xhr?
       if @user.save
         session[:user_id] = @user.id
@@ -13,7 +14,12 @@ class UsersController < ApplicationController
         render :status => 400
       end
     else
-        @user.save
+      if @user.save
+        session[:user_id] = @user.id
+        redirect_to root_url
+      else
+        render :status => 400
+      end
     end
   end
 

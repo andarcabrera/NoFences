@@ -14,7 +14,7 @@ $(document).ready(function(){
 
   $(document).on("click", "#x", function(event){
 
-    $(".overlay, .login-container, #new-post-container, #edit-user-container, register-container").hide();
+    $(".overlay, .login-container, #new-post-container, #edit-user-container, .register-container").hide();
 
 
   });
@@ -43,7 +43,13 @@ $(document).ready(function(){
     event.preventDefault();
     $(".errors").empty();
     $(".login-container, #new-post-container").hide();
+    // get new user
+    // var request = $.ajax({
+
+    // })
     $(".register-container").show();
+
+
   });
 
   $(document).on("submit", "#register-form", function(event){
@@ -89,21 +95,17 @@ $(document).ready(function(){
                   method: method,
                   data: postData
                       });
-
     request.done(function(response){
       window.location.replace(return_url);
     });
-
     request.fail(function(response){
       $(".errors").text("All fields must be filled.")
     });
-
-
   });
 
-// Goole translate move navbar
-$("#googlenav").on("click", "#google-translate", function(){
-  $("#googlenav").addClass("google-wide")
-})
+  // Goole translate move navbar
+  $("#googlenav").on("click", "#google-translate", function(){
+    $("#googlenav").addClass("google-wide")
+  })
 
 });
