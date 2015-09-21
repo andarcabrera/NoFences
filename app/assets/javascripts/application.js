@@ -14,7 +14,7 @@ $(document).ready(function(){
 
   $(document).on("click", "#x", function(event){
 
-    $(".overlay, .login-container, #new-post-container, #edit-user-container, register-container").hide();
+    $(".overlay, .login-container, #new-post-container, #edit-user-container, .register-container").hide();
 
 
   });
@@ -50,6 +50,7 @@ $(document).ready(function(){
     event.preventDefault();
     var url = window.location.href;
     var newUserData = $(this).serialize();
+    console.log(newUserData);
     var request = $.ajax({
       method: "post",
       url: "/users",
