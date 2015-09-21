@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_secure_password :validations => false
   validate :facebook_password_check
 
+  mount_uploader :photo, PhotoUploader
+
   def self.create_with_omniauth(auth)
     user = where(provider: auth.provider, uid: auth.uid).first_or_create
     user_info = user.facebook_email(auth)
@@ -42,7 +44,7 @@ class User < ActiveRecord::Base
     self.languages.each do |language|
       language_names << language.name
     end
-    language_names.join(", ")
+    language_names.join(",")
   end
 
   def get_volunteer_posts
