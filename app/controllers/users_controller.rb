@@ -3,15 +3,17 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-   def create
+  def create
     @user = User.new(user_params)
-    if @user.save
-      session[:user_id] = @user.id
-      # flash[:success] = "Welcome to NoFences, #{@user.first_name}!"
-      redirect_to categories_path
+    if request.xhr?
+      if @user.save
+        session[:user_id] = @user.id
+        redirect_to root_url
+      else
+        render :status => 400
+      end
     else
-      render "new"
-      # append errors' full messages
+        render "new"
     end
   end
 
