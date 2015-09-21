@@ -329,7 +329,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   capybara
-  carrierwave
+  carrierwave (= 0.10.0)
   coffee-rails (~> 4.1.0)
   faker
   figaro

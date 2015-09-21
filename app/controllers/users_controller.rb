@@ -13,7 +13,7 @@ class UsersController < ApplicationController
         render :status => 400
       end
     else
-        render "new"
+        @user.save
     end
   end
 
