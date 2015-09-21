@@ -26,8 +26,11 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by_id(params[:id])
     if request.xhr?
+
       if @user.valid_edit_form?(params)
-        @user.update_attributes(user_params)
+        p params
+        @user.update_attributes(update_user_params)
+        puts @user.errors.full_messages
         if params[:language]
           @user.update_known_languages(@user.get_new_languages(params[:language]))
         end
@@ -61,5 +64,10 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :photo)
+  end
+
+  def update_user_params
+    params[:user].delete(:password) if params[:user][:password].blank?
+    params.require(:user).permit(:first_name, :last_name, :email)
   end
 end

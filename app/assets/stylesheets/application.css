@@ -104,3 +104,11 @@ p {
   text-align: center;
   color: red;
 }
+
+#google-translate{
+  margin-top: 5%;
+}
+
+.google-wide{
+  margin-top: 30px;
+}

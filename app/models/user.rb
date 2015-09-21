@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
      p user
   end
 
+  def password
+    @password ||= self.password_digest && BCrypt::Password.new(self.password_digest)
+  end
+
   def facebook_email(auth)
     token = auth['credentials']['token']
     @graph = Koala::Facebook::API.new(token)
@@ -84,9 +88,11 @@ class User < ActiveRecord::Base
   end
 
   def known_language?(language_name)
-    self.languages.each do |language|
-      if language_name == language.name
-        return true
+    unless self.languages.empty?
+      self.languages.each do |language|
+        if language_name == language.name
+          return true
+        end
       end
     end
   end

@@ -46,27 +46,8 @@
 
 
 
-<div id="new-post-container">
-	<form>
-		<button type="button" class="close pull-right" id="x" aria-hidden="true">×</button>
-	</form>
-	<h1><%= @category.name %></h1>
-	<h2>Thank you for volunteering! Please provide the details of your volunteer service or donation below.</h2>
-	<p class="errors"></p>
-	<div id="new-post-form-container">
-	  <form class="form-new-post" action="/categories/<%= @category.id %>/posts" method="post">
-		<div class="radio-inline service-type">
-  		<label><input type="radio" name="post[volunteer]" value="true">I am volunteering</label>
-  		<label><input type="radio" name="post[volunteer]" value="false">I am looking for help</label>
-		</div>
-		  <div id="new-post-info">
-	      <input name="post[title]" type="text" placeholder="Title">
-	      <textarea name="post[body]" placeholder="Description"></textarea>
-	      <input name="post[zip]" type="text" placeholder="Zip">
-	      <input type="hidden" id="category-id" name="post[category_id]" value=<%=@category.id%>>
-	      <button type="submit" class="btn-info" id="form-submit">Post</button>
-	    </div>
-	  </form>
+	<div id="new-post-container">
+	<%= render partial: 'posts/new_post_form' %>
 	</div>
 </div>
 

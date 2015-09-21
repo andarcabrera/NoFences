@@ -102,4 +102,10 @@ $(document).ready(function(){
       $(".errors").text("All fields must be filled.")
     });
   });
+
+  // Goole translate move navbar
+  $("#googlenav").on("click", "#google-translate", function(){
+    $("#googlenav").addClass("google-wide")
+  })
+
 });
