@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
     self.languages.each do |language|
       language_names << language.name
     end
-    language_names.join(",")
+    language_names.join(", ")
   end
 
   def get_volunteer_posts
@@ -60,6 +60,38 @@ class User < ActiveRecord::Base
     self.get_volunteer_posts.count
   end
 
+  def update_known_languages(language_array)
+    language_array.each do |new_language|
+      possible_new = Language.find_by(name: new_language)
+      unless self.languages.include?(possible_new)
+        self.languages << possible_new
+      end
+    end
+  end
 
+  def get_new_languages(language_params)
+    languages = []
+    language_params.each do |array|
+        if array.include?("on")
+          languages << array[0]
+        end
+      end
+      languages
+  end
+
+  def valid_edit_form?(params)
+    params[:user][:first_name] != "" && params[:user][:last_name] != "" && params[:user][:email] != ""
+  end
+
+  def known_language?(language_name)
+    self.languages.each do |language|
+      if language_name == language.name
+        return true
+      end
+    end
+  end
 
 end
+
+
+

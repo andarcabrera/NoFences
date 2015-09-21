@@ -16,6 +16,17 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find_by_id(params[:id])
+    if request.xhr?
+      if @user.valid_edit_form?(params)
+        @user.update_attributes(user_params)
+        if params[:language]
+          @user.update_known_languages(@user.get_new_languages(params[:language]))
+        end
+      else
+        render :status => 400
+      end
+    end
   end
 
   def edit
