@@ -1,0 +1,34 @@
+<div class="register-container">
+  <div class="row">
+    <form class="form-signin mg-btm" id="register-form" action="/users" method="post">
+    <h3 class="heading-desc">
+    <button type="button" class="close pull-right" id="x" aria-hidden="true">×</button>Sign Up For NoFences</h3>
+    <div class="social-box">
+      <div class="row mg-btm">
+        <div class="col-md-12">
+          <a href="auth/facebook" class="btn btn-primary btn-block">
+          <i class="icon-facebook"></i> Register with Facebook
+          </a>
+        </div>
+      </div>
+      <div class="errors"></div>
+    </div>
+
+    <div class="main">
+      <input name="user[first_name]" type="text" class="form-control" placeholder="First Name" autofocus>
+      <input name="user[last_name]" type="text" class="form-control" placeholder="Last Name">
+      <input name="user[email]" type="text" class="form-control" placeholder="Email">
+      <input name="user[password]" type="password" class="form-control" placeholder="Password">
+
+      <span class="clearfix"></span>
+    </div>
+    <div class="login-footer">
+      <div class="row">
+      <div class="col-xs-6 col-md-6 pull-right">
+        <button type="submit" class="btn btn-large btn-danger pull-right" id="register-submit-button">Sign Up</button>
+      </div>
+    </div>
+    </div>
+    </form>
+  </div>
+</div>

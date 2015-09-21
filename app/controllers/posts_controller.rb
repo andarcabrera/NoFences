@@ -72,5 +72,4 @@ private
   def post_params
     params.require(:post).permit(:title, :body, :zip, :category_id, :volunteer)
   end
-
 end
