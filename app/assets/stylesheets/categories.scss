@@ -79,6 +79,19 @@
 	height: 700px;
 }
 
+#services-wanted {
+	display: none;
+}
+
+form .service-type {
+	width: 25%;
+	text-align: left;
+}
+
+form .service-type input{
+	height: 15px;
+}
+
 #new-post-button {
 	margin: 1%;
 	background-color: #CD0809;
@@ -89,7 +102,7 @@ div#new-post-button.btn.btn-info a{
 	color: white;
 }
 
-#individual-post-listing {
+.individual-post-listing {
 	background-color: white;
 	padding: 3px;
 	margin: 10px;

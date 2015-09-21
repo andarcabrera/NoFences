@@ -12,25 +12,27 @@
 		</div>
 	</div>
 
+<div class="column-left" id="category-posts-index">
+	<h2>Services</h2>
+		<ul class="nav nav-pills post-tabs">
+		  <li class="active"><a href="#services-offered">Offered</a></li>
+		  <li><a href="#services-wanted">Wanted</a></li>
+		</ul>
 
-
-
-	<div class="column-left" id="category-posts-index">
-		<h2>Volunteer Posts</h2>
-		<div id="posts-index-container">
-
-		<% @category.posts.each do |post| %>
-			<div id="individual-post-listing">
-				<h4><%= link_to "#{post.title}", category_post_path(@category,post) %></h4>
-				<p id="post-date"><%= post.posted_date %></p>
-			<% if current_user && post.author_id == current_user.id %>
-			<p class="edit-delete category-show-page"><span class="edit-delete"><i class="fa fa-pencil"></i></span><%= link_to ' Edit this post', "/categories/#{@category.id}/posts/#{post.id}/edit" %></p>
-			<p class="edit-delete category-show-page"><span class="edit-delete"><i class="fa fa-trash-o fa-1x"></span></i><%= link_to " Delete this post", [@category, post], :method => :delete %></p>
-			<% end %>
-			</div>
+	<div id="posts-index-container">
+		<div class="services" id="services-offered" >
+		<% @category.services_offered.each do |post| %>
+			<%= render partial: 'single_post_listing', locals: { post: post } %>
+		<% end %>
+		</div>
+		
+		<div class="services" id="services-wanted" >
+		<% @category.services_wanted.each do |post| %>
+			<%= render partial: 'single_post_listing', locals: { post: post } %>
 		<% end %>
 		</div>
 	</div>
+</div>
 
 	<div class="column-right" id="categories-orgs-index">
 		<h2>Organizations Available</h2>
@@ -41,7 +43,8 @@
 				<% end %>
 			</div>
 	</div>
-</div>
+
+
 
 <div id="new-post-container">
 	<form>
@@ -52,6 +55,10 @@
 	<p class="errors"></p>
 	<div id="new-post-form-container">
 	  <form class="form-new-post" action="/categories/<%= @category.id %>/posts" method="post">
+		<div class="radio-inline service-type">
+  		<label><input type="radio" name="post[volunteer]" value="true">I am volunteering</label>
+  		<label><input type="radio" name="post[volunteer]" value="false">I am looking for help</label>
+		</div>
 		  <div id="new-post-info">
 	      <input name="post[title]" type="text" placeholder="Title">
 	      <textarea name="post[body]" placeholder="Description"></textarea>
@@ -62,3 +69,4 @@
 	  </form>
 	</div>
 </div>
+

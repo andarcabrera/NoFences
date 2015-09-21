@@ -8,7 +8,7 @@
 	display: none;
 	width: 70%;
 	margin-left: 15%;
-  position: fixed;
+  position: absolute;
   opacity: 1;
   z-index:1002;
   background-color: #F7F7F7;
@@ -48,6 +48,12 @@
 textarea {
 	width: 90%;
 	height: 300px;
+}
+
+
+.errors {
+	text-align: center;
+	color: red;
 }
 
 
