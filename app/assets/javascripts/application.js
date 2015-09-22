@@ -16,7 +16,7 @@ $(document).ready(function(){
 
   $(document).on("click", "#x", function(event){
     $(".overlay, .login-container, #new-post-container, #edit-user-container, register-container").hide();
-    $("form").each(function() { this.reset() });
+    $("form").each(function() { this.reset(); });
   });
 
   $(document).on("submit", "#login-form", function(event){
@@ -134,13 +134,13 @@ $(document).ready(function(){
     var method = $(this).attr("method");
     var messageData = $(this).serialize();
 
-    $.ajax({
+    var request = $.ajax({
       method: method,
       url: url,
       data: messageData
-    })
+    });
 
-    .done(function(response){
+    request.done(function(response){
       $("#new-message-container").empty();
       $(".overlay").fadeOut(400);
       $("#reply").html("Message Sent!");
