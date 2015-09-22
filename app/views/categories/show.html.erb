@@ -12,6 +12,23 @@
 		</div>
 	</div>
 
+	<div id="post-search-results">
+		<div class="errors"></div>
+	</div>
+
+
+
+	<div class="search-bar">
+    <%= form_tag(category_posts_path(@category), :method => "get", id: "search-form") do %>
+    <div class="field">
+    	<%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search all #{@category.name} posts" %>
+    </div>
+    <%= text_field_tag :category_id, params[:category_id], type: "hidden", value: "#{@category.id}" %>
+    <div class="field actions">
+	    <%= submit_tag "Go", class: "btn btn-large btn-danger", :name => nil %>
+	  </div>
+    <% end %>
+  </div>
 
 <div class="column-left" id="category-posts-index">
 	<h2>Services</h2>
