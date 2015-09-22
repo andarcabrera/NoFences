@@ -178,8 +178,4 @@ $(document).ready(function(){
 
 
 
-  // Goole translate move navbar
-  $("#googlenav").on("click", "#google-translate", function(){
-    $("#googlenav").addClass("google-wide");
-  });
 });
