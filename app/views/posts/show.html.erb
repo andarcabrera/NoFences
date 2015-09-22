@@ -1,3 +1,4 @@
+
 <div class="headings">
 	<h1 class="post-title"><%= @post.category.name %> <i class="fa fa-arrow-right"></i> <%= @post.title %></h1>
 	<h3 class="subtitle post-show">If you would like to view this post in another <u>language</u> please use the translation tools below.</h3>
@@ -11,7 +12,7 @@
 			<p>SERVICE: <%= @post.title %></p>
 			<p>DESCRIPTION: <%= @post.body %></p>
 			<p>DATE POSTED: <%= @post.posted_date %></p>
-			<p>ZIP: <%= @post.zip %></p>
+			<p>ZIP: <span id="zip"><%= @post.zip %></span></p>
 			<p>VOLUNTEER: <%= @post.author.full_name %></p>
 			<% if @post.author_id == current_user.id %>
 			<p><span class="edit-delete"><i class="fa fa-pencil"></i></span><%= link_to ' Edit this post', "/categories/#{@category.id}/posts/#{@post.id}/edit" %></p>
@@ -22,9 +23,12 @@
 		</div>
 	</div>
 	<div class="col-lg-4 map">
-		<div class="map">
-			<p>Map place-holder</p>
-			<img src="http://placehold.it/300x300">
+		<div id="map">
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+		var zip = $("#zip").text();
+    codeAddress(zip);
+</script>
