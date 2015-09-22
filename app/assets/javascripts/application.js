@@ -12,14 +12,9 @@ $(document).ready(function(){
     $(".login-container").show();
   });
 
-  $(document).on("click", "#x", function(event){
+ $(document).on("click", "#x", function(event){
 
     $(".overlay, .login-container, #new-post-container, #edit-user-container, register-container").hide();
-
-
-
-
-
 
   });
 
@@ -189,11 +184,6 @@ $(document).ready(function(){
 
 
 
-
-
-
-
-  });
 
   // Goole translate move navbar
   $("#googlenav").on("click", "#google-translate", function(){
