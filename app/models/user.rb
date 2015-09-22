@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_many :user_languages
   has_many :languages, through: :user_languages
   has_many :posts, foreign_key: :author_id
+  has_many :sent_messages, class_name: "Message", foreign_key: :sender_id
+  has_many :received_messages, class_name: "Message", foreign_key: :receiver_id
 
   has_secure_password :validations => false
   validate :facebook_password_check
@@ -96,6 +98,27 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  def messages
+    Message.all.where("(sender_id = ? or receiver_id = ?)", self.id, self.id)
+  end
+
+  def chains
+    user_chains = []
+    self.messages.each do |message|
+      unless user_chains.include?(message.chain)
+        user_chains << message.chain
+      end
+    end
+    if user_chains == [nil]
+      return []
+    else
+      return user_chains
+    end
+  end
+
+
+
 
 end
 

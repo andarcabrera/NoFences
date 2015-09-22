@@ -14,7 +14,11 @@ $(document).ready(function(){
 
   $(document).on("click", "#x", function(event){
 
-    $(".overlay, .login-container, #new-post-container, #edit-user-container, .register-container").hide();
+    $(".overlay, .login-container, #new-post-container, #edit-user-container, register-container").hide();
+
+
+
+
 
 
   });
@@ -36,7 +40,6 @@ $(document).ready(function(){
     .fail(function(response) {
       $(".errors").text("Email or Password is Incorrect");
     });
-
   });
 
   $(document).on("click", ".left-section a", function(event){
@@ -108,6 +111,88 @@ $(document).ready(function(){
     request.fail(function(response){
       $(".errors").text("All fields must be filled.")
     });
+
+  });
+
+  // Chains & Messages
+
+  $(document).on("click", "#reply-link", function(event){
+    event.preventDefault();
+    url = $(this).attr("href");
+
+    $.ajax({
+      method: 'get',
+      url: url
+    })
+
+    .done(function(html){
+      $(".overlay").fadeIn(400);
+      $("#new-message-container").append(html);
+    });
+  });
+
+  $(document).on("click", "#message-close", function(){
+    $("#new-message-container").empty();
+    $(".overlay").fadeOut(400);
+  });
+
+  $(document).on("submit", "#new-message-form", function(event){
+    event.preventDefault();
+    var url = $(this).attr("action");
+    var method = $(this).attr("method");
+    var messageData = $(this).serialize();
+
+
+  $.ajax({
+    method: method,
+    url: url,
+    data: messageData
+  })
+
+  .done(function(response){
+
+
+  });
+
+ });
+
+  $(document).on("click", ".chain-show", function(event){
+    event.preventDefault();
+    var id = ($(this).attr("id"));
+    var url = $(this).attr("href")
+    // eturnUrl = window.location.attr("href");r
+    // var divToReplace = ($(this).parents().eq(1));
+    // console.log(divToReplace);
+    console.log("here")
+
+    request = $.ajax({
+            url: url,
+            method: "get",
+            data: id
+    });
+
+    request.done(function(response){
+      console.log(response)
+      $(".overlay").fadeIn(400);
+      $("#message-container").append(response);
+      $("#message-container").show();
+    });
+
+  });
+
+  $(document).on("click", "#chain-close", function(event){
+    event.preventDefault();
+    $(this).parent().empty();
+    $(this).parent().hide();
+    $(".overlay").fadeOut(400);
+  })
+
+
+
+
+
+
+
   });
 
   // Goole translate move navbar
@@ -115,4 +200,6 @@ $(document).ready(function(){
     $("#googlenav").addClass("google-wide")
   })
 
+
 });
+
