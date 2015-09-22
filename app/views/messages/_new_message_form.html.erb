@@ -1,0 +1,20 @@
+
+<div class="row">
+  <form class="mg-btm" id="new-message-form" action="/categories/<%= category.id %>/posts/<%= post.id %>/chains/<%= chain.id %>/messages" method="post">
+    <button type="button" class="close pull-right" id="message-close" aria-hidden="true">×</button>
+    <h3>Reply to:</h3>
+    <p> <%=post.title%></p>
+    <div class="errors"></div>
+    <div class="main">
+      <input name="message[subject]" type="text" class="form-control" placeholder="Subject" autofocus>
+      <br>
+      <textarea name="message[body]" class="form-control" placeholder="write message here" cols="50" rows="10"></textarea>
+      <span class="clearfix"></span>
+    </div>
+      <button type="submit" class="btn btn-danger" id="new-message-submit">Send</button>
+    </div>
+  </div>
+  </div>
+  </form>
+</div>
+

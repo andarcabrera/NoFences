@@ -28,6 +28,10 @@
 
 
 
+<div id="message-container">
+
+</div>
+
 
 
 <div id="edit-form" class="row">
@@ -69,27 +73,19 @@
 
 <div class="column-left" id="category-posts-index">
   <h2>Recent Posts</h2>
-
-
   <div id="posts-index-container">
-    <div class="services" id="services-offered" >
     <% @user.posts.each do |post| %>
       <%= render partial: 'user_post_listing', locals: { post: post } %>
     <% end %>
-    </div>
   </div>
 </div>
 
 <div class="column-right" id="category-posts-index">
   <h2>Recent Messages</h2>
-
-
   <div id="posts-index-container">
-    <div class="services" id="services-offered" >
-    <% @user.posts.each do |post| %>
-      <%= render partial: 'user_post_listing', locals: { post: post } %>
+    <% @user.chains.each do |chain| %>
+      <%= render partial: '/chains/single_chain_listing', locals: { chain: chain } %>
     <% end %>
-    </div>
   </div>
 </div>
 

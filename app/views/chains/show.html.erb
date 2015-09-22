@@ -1,0 +1,11 @@
+<button type="button" class="close pull-right" id="chain-close" aria-hidden="true">×</button>
+<div class="row">
+  <div id="user-messages">
+    <%@chain.messages.each do |message|  %>
+    <p>From: <%=message.sender.full_name %></p>
+    <p>To: <%=message.receiver.full_name %></p>
+    <p>Subject: <%=message.subject%></p>
+    <p><%= message.body %></p>
+    <% end %>
+  </div>
+</div>
