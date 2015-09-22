@@ -22,7 +22,7 @@ function codeAddress(address) {
                 zoom: 12,
                 center: results[0].geometry.location,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
-            }
+            };
             map = new google.maps.Map(document.getElementById("map"), myOptions);
 
             var marker = new google.maps.Marker({
