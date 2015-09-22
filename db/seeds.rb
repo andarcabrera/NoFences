@@ -26,19 +26,6 @@ event = Category.create!(name: "Events")
 health = Category.create!(name: "Health Services")
 
 
-  create_table "organizations", force: :cascade do |t|
-    t.string   "name"
-    t.string   "website"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "address_1"
-    t.string   "address_2"
-    t.string   "city"
-    t.string   "state"
-    t.integer  "zip"
-  end
-
 donations.organizations << Organization.create!(name: "Word of Truth Outreach", website: "http://wotdmoutreach-com.webs.com/", description: "Helping others every day.", address_1: "1845 W 35TH ST", address_2: "", city: "Chicago", state: "IL", zip: "60609")
 donations.organizations << Organization.create!(name: "530 Fullerton Foundation", website: "http://530fullertonfoundation.org/", description: "", address_1: "530 W FULLERTON PKWY", address_2: "", city: "Chicago", state: "IL", zip: "60614")
 donations.organizations << Organization.create!(name: "San Jose Obrero Mission", website: "http://www.sjom.org/", description: "Phone: 312-532-2775", address_1: "1856 S. Loomis", address_2: "", city: "Chicago", state: "IL", zip: "60608")
