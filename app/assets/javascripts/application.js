@@ -6,6 +6,7 @@
 //= require_tree .
 
 $(document).ready(function(){
+
   $(document).on("click", "#login-button", function(event){
     event.preventDefault();
     $(".errors").empty();
@@ -140,7 +141,9 @@ $(document).ready(function(){
     })
 
     .done(function(response){
-      //?
+      $("#new-message-container").empty();
+      $(".overlay").fadeOut(400);
+      $("#reply").html("Message Sent!")
     });
   });
 
@@ -148,10 +151,7 @@ $(document).ready(function(){
     event.preventDefault();
     var id = ($(this).attr("id"));
     var url = $(this).attr("href");
-    // eturnUrl = window.location.attr("href");r
-    // var divToReplace = ($(this).parents().eq(1));
-    // console.log(divToReplace);
-    console.log("here");
+    divId = ($(this).parents().eq(1).attr("id"))
 
     var request = $.ajax({
             url: url,
@@ -160,7 +160,6 @@ $(document).ready(function(){
     });
 
     request.done(function(response){
-      console.log(response);
       $(".overlay").fadeIn(400);
       $("#message-container").append(response);
       $("#message-container").show();
@@ -170,13 +169,29 @@ $(document).ready(function(){
   $(document).on("click", "#chain-close", function(event){
     event.preventDefault();
     $(this).parent().empty();
-    $(this).parent().hide();
+    $("#message-container").hide();
     $(".overlay").fadeOut(400);
 
   })
 
+  $(document).on("submit", "#new-reply-form", function(event){
+    event.preventDefault();
+    var url = $(this).attr("action");
+    var method = $(this).attr("method");
+    var messageData = $(this).serialize();
 
-
+    $.ajax({
+      method: method,
+      url: url,
+      data: messageData
+    })
+    .done(function(response){
+      $("#message-container").empty();
+      $("#message-container").hide();
+      $(".overlay").fadeOut(400);
+      $("#" + divId).replaceWith(response);
+    });
+  });
 
   // Goole translate move navbar
   $("#googlenav").on("click", "#google-translate", function(){
