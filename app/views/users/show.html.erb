@@ -74,7 +74,7 @@
 <div class="column-left" id="category-posts-index">
   <h2>Recent Posts</h2>
   <div id="posts-index-container">
-    <% @user.posts.each do |post| %>
+    <% @user.posts.last(4).reverse.each do |post| %>
       <%= render partial: 'user_post_listing', locals: { post: post } %>
     <% end %>
   </div>
@@ -83,7 +83,7 @@
 <div class="column-right" id="category-posts-index">
   <h2>Recent Messages</h2>
   <div id="posts-index-container">
-    <% @user.chains.each do |chain| %>
+    <% @user.chains.last(4).reverse.each do |chain| %>
       <%= render partial: '/chains/single_chain_listing', locals: { chain: chain } %>
     <% end %>
   </div>
