@@ -14,34 +14,18 @@ class PostsController < ApplicationController
     render 'new'
   end
 
-  # def create
-  #   @category = Category.find(params[:category_id])
-  #   @post = current_user.posts.new(post_params)
-  #   if @post.save
-  #     @category.posts << @post
-  #     if request.xhr?
-  #       @post
-  #     else
-  #       redirect_to category_path(@category)
-  #     end
-  #   else
-  #     render 'new'
-  #   end
-  # end
-
   def create
     @category = Category.find(params[:category_id])
     @post = current_user.posts.new(post_params)
     if request.xhr?
       if @post.save
         @category.posts << @post
-        redirect_to root_url
+        render partial: "categories/single_post_listing", locals: { post: @post }
       else
         render :status => 400
       end
     else
-      #DO SOMETHING IF NOT AN AJAX REQUEST
-      redirect_to root_url
+      redirect_to category_path(@category)
     end
   end
 
