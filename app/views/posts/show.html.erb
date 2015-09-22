@@ -14,7 +14,7 @@
 			<p>DATE POSTED: <%= @post.posted_date %></p>
 			<p>ZIP: <span id="zip"><%= @post.zip %></span></p>
 			<p>VOLUNTEER: <%= @post.author.full_name %></p>
-			<% if @post.author_id == current_user.id %>
+			<% if current_user && @post.author_id == current_user.id %>
 			<p><span class="edit-delete"><i class="fa fa-pencil"></i></span><%= link_to ' Edit this post', "/categories/#{@category.id}/posts/#{@post.id}/edit" %></p>
 			<p><span class="edit-delete"><i class="fa fa-trash-o fa-1x"></span></i><%= link_to " Delete this post", [@category, @post], :method => :delete %></p>
 			<% end %>
