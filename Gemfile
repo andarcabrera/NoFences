@@ -29,10 +29,7 @@ gem 'faker'
 # Use ActiveModel has_secure_password
  gem 'bcrypt', '~> 3.1.7'
  gem "koala", "~> 2.2"
- gem 'carrierwave', '0.10.0'
-  gem 'mini_magick'
-  gem 'fog'
-  gem 'figaro'
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'
