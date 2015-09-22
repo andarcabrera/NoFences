@@ -27,13 +27,13 @@ $(document).ready(function(){
       method: "post",
       url: "/signin",
       data: loginData
-    })
+    });
 
-    .done(function(response) {
+    request.done(function(response) {
       window.location.replace(url);
-    })
+    });
 
-    .fail(function(response) {
+    request.fail(function(response) {
       $(".errors").text("Email or Password is Incorrect");
     });
   });
@@ -46,12 +46,12 @@ $(document).ready(function(){
     var request = $.ajax({
       method: "get",
       url: "/users/new"
-    })
-    .done(function(response) {
+    });
+    request.done(function(response) {
       $(".reg-form").append(response);
       $(".register-container").show();
-    })
-    .fail(function(response) {
+    });
+    request.fail(function(response) {
       $(".errors").text("Could not load new user form");
     });
   });
@@ -64,13 +64,13 @@ $(document).ready(function(){
       method: "post",
       url: "/users",
       data: newUserData
-    })
+    });
 
-    .done(function(response){
+    request.done(function(response){
       window.location.replace(url);
-    })
+    });
 
-    .fail(function(response) {
+    request.fail(function(response) {
       $(".errors").text("There was a problem with your registration form. Please make sure all fields are filled out correctly.").css("color", "red");
     });
   });
@@ -112,12 +112,12 @@ $(document).ready(function(){
     event.preventDefault();
     var url = $(this).attr("href");
 
-    $.ajax({
+    var request = $.ajax({
       method: 'get',
       url: url
-    })
+    });
 
-    .done(function(html){
+    request.done(function(html){
       $(".overlay").fadeIn(400);
       $("#new-message-container").append(html);
     });
@@ -143,7 +143,7 @@ $(document).ready(function(){
     .done(function(response){
       $("#new-message-container").empty();
       $(".overlay").fadeOut(400);
-      $("#reply").html("Message Sent!")
+      $("#reply").html("Message Sent!");
     });
   });
 
@@ -151,7 +151,7 @@ $(document).ready(function(){
     event.preventDefault();
     var id = ($(this).attr("id"));
     var url = $(this).attr("href");
-    divId = ($(this).parents().eq(1).attr("id"))
+    divId = ($(this).parents().eq(1).attr("id"));
 
     var request = $.ajax({
             url: url,
@@ -172,7 +172,7 @@ $(document).ready(function(){
     $("#message-container").hide();
     $(".overlay").fadeOut(400);
 
-  })
+  });
 
   $(document).on("submit", "#new-reply-form", function(event){
     event.preventDefault();
