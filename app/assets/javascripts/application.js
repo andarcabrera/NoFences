@@ -1,3 +1,4 @@
+//jshint jquery:true
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
@@ -13,14 +14,7 @@ $(document).ready(function(){
   });
 
   $(document).on("click", "#x", function(event){
-
     $(".overlay, .login-container, #new-post-container, #edit-user-container, register-container").hide();
-
-
-
-
-
-
   });
 
   $(document).on("submit", "#login-form", function(event){
@@ -34,7 +28,7 @@ $(document).ready(function(){
     })
 
     .done(function(response) {
-      window.location.replace(url)
+      window.location.replace(url);
     })
 
     .fail(function(response) {
@@ -58,8 +52,6 @@ $(document).ready(function(){
     .fail(function(response) {
       $(".errors").text("Could not load new user form");
     });
-
-
   });
 
   $(document).on("submit", "#register-form", function(event){
@@ -73,11 +65,11 @@ $(document).ready(function(){
     })
 
     .done(function(response){
-        window.location.replace(url);
+      window.location.replace(url);
     })
 
     .fail(function(response) {
-        $(".errors").text("There was a problem with your registration form. Please make sure all fields are filled out correctly.").css("color", "red");
+      $(".errors").text("There was a problem with your registration form. Please make sure all fields are filled out correctly.").css("color", "red");
     });
   });
 
@@ -92,33 +84,31 @@ $(document).ready(function(){
 
   $(document).on("submit", ".user-edit", function(event){
     event.preventDefault();
-    console.log("Here we are")
-    postData = $(this).serialize();
+    console.log("Here we are");
+    var postData = $(this).serialize();
     console.log(postData);
-    method = $(this).attr("method");
+    var method = $(this).attr("method");
     var url = $(this).attr("action");
     var return_url = window.location.href;
-
 
     var request = $.ajax({
                   url: url,
                   method: method,
                   data: postData
-                      });
+                  });
     request.done(function(response){
       window.location.replace(return_url);
     });
     request.fail(function(response){
-      $(".errors").text("All fields must be filled.")
+      $(".errors").text("All fields must be filled.");
     });
-
   });
 
   // Chains & Messages
 
   $(document).on("click", "#reply-link", function(event){
     event.preventDefault();
-    url = $(this).attr("href");
+    var url = $(this).attr("href");
 
     $.ajax({
       method: 'get',
@@ -142,42 +132,38 @@ $(document).ready(function(){
     var method = $(this).attr("method");
     var messageData = $(this).serialize();
 
+    $.ajax({
+      method: method,
+      url: url,
+      data: messageData
+    })
 
-  $.ajax({
-    method: method,
-    url: url,
-    data: messageData
-  })
-
-  .done(function(response){
-
-
+    .done(function(response){
+      //?
+    });
   });
-
- });
 
   $(document).on("click", ".chain-show", function(event){
     event.preventDefault();
     var id = ($(this).attr("id"));
-    var url = $(this).attr("href")
+    var url = $(this).attr("href");
     // eturnUrl = window.location.attr("href");r
     // var divToReplace = ($(this).parents().eq(1));
     // console.log(divToReplace);
-    console.log("here")
+    console.log("here");
 
-    request = $.ajax({
+    var request = $.ajax({
             url: url,
             method: "get",
             data: id
     });
 
     request.done(function(response){
-      console.log(response)
+      console.log(response);
       $(".overlay").fadeIn(400);
       $("#message-container").append(response);
       $("#message-container").show();
     });
-
   });
 
   $(document).on("click", "#chain-close", function(event){
@@ -185,21 +171,10 @@ $(document).ready(function(){
     $(this).parent().empty();
     $(this).parent().hide();
     $(".overlay").fadeOut(400);
-  })
-
-
-
-
-
-
-
   });
 
   // Goole translate move navbar
   $("#googlenav").on("click", "#google-translate", function(){
-    $("#googlenav").addClass("google-wide")
-  })
-
-
+    $("#googlenav").addClass("google-wide");
+  });
 });
-
