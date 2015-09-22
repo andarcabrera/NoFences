@@ -17,25 +17,25 @@
     var method = $(this).attr("method");
     var url = $(this).attr("action");
 
-    $.ajax({
+    var request = $.ajax({
       method: method,
       url: url,
       data: postData
-    })
+    });
 
-    .done(function(response){
+    request.done(function(response){
       $(".overlay").hide();
       $("#new-post-container").hide();
-      var volunteer = $("input[name='post[volunteer]']:checked").val()
+      var volunteer = $("input[name='post[volunteer]']:checked").val();
       if (volunteer === "true") {
-        $("#services-offered").prepend(response)
+        $("#services-offered").prepend(response);
       } else {
-        $("#services-wanted").prepend(response)
-      };
-      $(".form-new-post")[0].reset()
-    })
+        $("#services-wanted").prepend(response);
+      }
+      $(".form-new-post")[0].reset();
+    });
 
-    .fail(function(response) {
+    request.fail(function(response) {
       $(".errors").text("All fields must be filled.");
     });
   });
