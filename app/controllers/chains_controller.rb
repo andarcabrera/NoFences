@@ -18,6 +18,7 @@
 
   def new
     @category = Category.find(params[:category_id])
+     "HERE" * 100
     @post = Post.find(params[:post_id])
     @chain = Chain.new
     @post.chains << @chain
