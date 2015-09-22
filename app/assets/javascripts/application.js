@@ -172,13 +172,11 @@ $(document).ready(function(){
     $(this).parent().empty();
     $(this).parent().hide();
     $(".overlay").fadeOut(400);
-<<<<<<< HEAD
+
   })
 
 
-=======
-  });
->>>>>>> master
+
 
   // Goole translate move navbar
   $("#googlenav").on("click", "#google-translate", function(){
