@@ -26,6 +26,13 @@
     .done(function(response){
       $(".overlay").hide();
       $("#new-post-container").hide();
+      var volunteer = $("input[name='post[volunteer]']:checked").val()
+      if (volunteer === "true") {
+        $("#services-offered").prepend(response)
+      } else {
+        $("#services-wanted").prepend(response)
+      };
+      $(".form-new-post")[0].reset()
     })
 
     .fail(function(response) {

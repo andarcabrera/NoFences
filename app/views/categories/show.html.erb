@@ -12,6 +12,7 @@
 		</div>
 	</div>
 
+
 <div class="column-left" id="category-posts-index">
 	<h2>Services</h2>
 		<ul class="nav nav-pills post-tabs">
@@ -25,7 +26,7 @@
 			<%= render partial: 'single_post_listing', locals: { post: post } %>
 		<% end %>
 		</div>
-		
+
 		<div class="services" id="services-wanted" >
 		<% @category.services_wanted.each do |post| %>
 			<%= render partial: 'single_post_listing', locals: { post: post } %>
@@ -50,4 +51,5 @@
 	<%= render partial: 'posts/new_post_form' %>
 	</div>
 </div>
+
 

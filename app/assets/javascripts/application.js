@@ -15,6 +15,7 @@ $(document).ready(function(){
 
   $(document).on("click", "#x", function(event){
     $(".overlay, .login-container, #new-post-container, #edit-user-container, register-container").hide();
+    $("form").each(function() { this.reset() });
   });
 
   $(document).on("submit", "#login-form", function(event){
@@ -171,10 +172,15 @@ $(document).ready(function(){
     $(this).parent().empty();
     $(this).parent().hide();
     $(".overlay").fadeOut(400);
-  });
+
+  })
+
+
+
 
   // Goole translate move navbar
   $("#googlenav").on("click", "#google-translate", function(){
     $("#googlenav").addClass("google-wide");
   });
+
 });
