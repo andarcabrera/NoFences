@@ -86,9 +86,7 @@ $(document).ready(function(){
 
   $(document).on("submit", ".user-edit", function(event){
     event.preventDefault();
-    console.log("Here we are");
     var postData = $(this).serialize();
-    console.log(postData);
     var method = $(this).attr("method");
     var url = $(this).attr("action");
     var return_url = window.location.href;
@@ -192,5 +190,43 @@ $(document).ready(function(){
       $("#" + divId).replaceWith(response);
     });
   });
+
+  
+  // user photo update
+
+  $(document).on("click", "#user-image-link", function(event){
+    event.preventDefault();
+    $(".overlay").fadeIn(400);
+    $(".update-image-form").show();
+  });
+
+  $(document).on("click", ".close", function(event){
+    event.preventDefault();
+    $(".update-image-form").hide();
+    $(".overlay").fadeOut(400);
+  });
+
+  $(document).on("submit", ".update-image-form", function(event){
+    event.preventDefault();
+    var method = $(this).attr("method");
+    var url = $(this).attr("action");
+    var imgLink = $(".update-image-form").find("input[type=file]").val()
+
+    $.ajax({
+      method: method,
+      url: url,
+      data: { "photo": imgLink }
+    })
+
+    .done(function(response){
+      $("#user-image-form").empty().hide();
+      $(".overlay").fadeOut(400);
+    })
+
+    .fail(function(response) {
+      $(".errors").text("Sorry, your photo could not be uploaded.");
+    });
+  });
+   
 
 });

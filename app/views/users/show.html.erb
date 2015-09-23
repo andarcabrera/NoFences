@@ -1,28 +1,36 @@
-<div class= "headings row" id="user-container">
-  <div class="col-sm-6 user-info">
-    <h3>Languages - <%= @user.display_languages  %></h3>
+<div class= "headings profile-header">
+  <div class="row" id="user-container">
+  <div class="col-sm-4 user-info">
+    <h2>Languages</h2> <h3><%= @user.display_languages  %></h3>
     <% if current_user && current_user == @user %>
     <h3 id="update"><%= link_to "Update Info", edit_user_path(current_user)%></h3>
     <% end %>
   </div>
-  <div class="col-sm-3">
-    <h3><%= @user.full_name %></h3><br>
-  </div>
-  <div class="col-sm-3" id="user-details">
-    <h3>Member Since: <%=@user.created_at.strftime("%B #{current_user.created_at.day.ordinalize}, %Y")%></h3>
-    <h3>Volunteer total: <%=@user.count_volunteer_posts%> posts</h3>
-  </div>
-</div>
-
-
+  <div class="col-sm-4 center-block">
+    <h3><%= @user.full_name%></h3>
   <div id="user-image" style="image">
     <% if @user.uid %>
       <img class="img-circle" src= <%="http://graph.facebook.com/#{current_user.uid}/picture?type=large" %>>
     <% else %>
+      <!-- <a href="#" id="user-image-link"><%= image_tag @user.photo_url, class: "img-circle" %></a> -->
       <%= image_tag @user.photo_url, class: "img-circle" %>
+        <form class="update-image-form" action="/users/<%= @user.id %>" method="put">
+          <button type="button" class="close pull-right" id="x" aria-hidden="true">×</button>
+          <label> Upload Profile Picture </label>
+          <input type="file" name="user[photo]">
+          <input type="submit" class="btn btn-large" id="photo-submit-button" value="Update">
+        </form>
     <% end %>
   </div>
+  </div>
+  <div class="col-sm-4" id="user-details">
+    <h2>Member Since: </h2><h3><%=@user.created_at.strftime("%B #{current_user.created_at.day.ordinalize}, %Y")%></h3>
+    <h2>Volunteer total: </h2><h3><%=@user.count_volunteer_posts%> posts</h3>
+  </div>
+</div>
 
+
+</div>
 
 
 
@@ -80,6 +88,7 @@
     </div>
   </div>
 
+  <% if current_user && current_user == @user %>
   <div id="user-chains-index">
     <h2>Recent Messages</h2>
     <div id="posts-index-container">
@@ -88,6 +97,7 @@
       <% end %>
     </div>
   </div>
+  <% end %>
 </div>
 
 

@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   mount_uploader :photo, PhotoUploader
 
+  # attr_accessible :photo, :photo_cache, :remove_photo
+
   def self.create_with_omniauth(auth)
     user = where(provider: auth.provider, uid: auth.uid).first_or_create
     user_info = user.facebook_email(auth)
@@ -19,7 +21,6 @@ class User < ActiveRecord::Base
         email: user_info["email"] ||= "no email provided",
         password_digest: "",
       )
-     p user
   end
 
   def password
@@ -91,15 +92,15 @@ class User < ActiveRecord::Base
     params[:user][:first_name] != "" && params[:user][:last_name] != "" && params[:user][:email] != ""
   end
 
-  # def known_language?(language_name)
-  #   unless self.languages.empty?
-  #     self.languages.each do |language|
-  #       if language_name == language.name
-  #         return true
-  #       end
-  #     end
-  #   end
-  # end
+  def known_language?(language_name)
+    unless self.languages.empty?
+      self.languages.each do |language|
+        if language_name == language.name
+          return true
+        end
+      end
+    end
+  end
 
   def messages
     Message.all.where("(sender_id = ? or receiver_id = ?)", self.id, self.id)

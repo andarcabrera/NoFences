@@ -2,29 +2,41 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-#user-container {
-  padding-top: 2%;
+.profile-header {
   height: 200px;
+  padding-bottom: 5%;
 }
 
 #user-image {
-  height: 250px;
-  width: 250px;
   margin: auto;
-  margin-top: -150px;
+  text-align: center;
 }
 
-.col-sm-3 h3{
-  margin-top: 5px;
- margin-left: -420px;
+.update-image-form {
+  padding-left: 5%;
+  padding: 2%;
+  display: none;
+  width: 25%;
+  top: 10%;
+  position: fixed;
+  opacity: 1;
+  z-index:1002;
+  background-color: #F7F7F7;
+  -webkit-box-shadow: 0px -1px 9px 1px rgba(247,247,247,1);
 }
 
-.col-sm-6 h3{
+#photo-submit-button {
+  margin-top: 5%;
+  background-color: #66CBFF;
 }
 
-.user-info h3 {
-  margin-top: 5px;
+#user-details h2 {
+  margin-bottom: 4%;
+}
+
+#user-container .center-block h3{
+  font-size: 3em;
+  padding-top: 2%;
 }
 
 .user-info {
@@ -37,8 +49,6 @@
   border-radius: 50%;
   width: 200px;
   height: 200px;
-  margin-left: 30px;
-  margin-top: -15px;
 }
 
 h3 a {
@@ -54,7 +64,7 @@ h3 a:hover {
 
 #user-lists-container {
   margin: auto;
-  width: 80%;
+  width: 90%;
 }
 
 #user-posts-index {
