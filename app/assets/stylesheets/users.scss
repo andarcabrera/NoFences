@@ -2,18 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-
-
-#user-image {
-  height: 250px;
-  width: 250px;
-  margin: auto;
-  margin-top: -150px;
+.profile-header {
+  height: 200px;
+  padding-bottom: 5%;
 }
 
-.user-info h3 {
-  margin-top: 5px;
+#user-image {
+  margin: auto;
+  text-align: center;
+}
+
+#user-details h2 {
+  margin-bottom: 4%;
+}
+
+#user-container .center-block h3{
+  font-size: 3em;
+  padding-top: 2%;
 }
 
 .user-info {
@@ -26,8 +31,6 @@
   border-radius: 50%;
   width: 200px;
   height: 200px;
-  margin-left: 30px;
-  margin-top: -15px;
 }
 
 h3 a {
@@ -43,7 +46,7 @@ h3 a:hover {
 
 #user-lists-container {
   margin: auto;
-  width: 80%;
+  width: 90%;
 }
 
 #user-posts-index {
