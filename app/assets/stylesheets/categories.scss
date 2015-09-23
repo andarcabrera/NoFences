@@ -120,8 +120,13 @@ div#new-post-button.btn.btn-info a{
 	color: white;
 }
 
-.services > div:nth-child(1) {
+.services > div:first-child {
 	padding-top: 2%;
+	margin-top: 1%;
+}
+
+.services > div:last-child {
+	padding-bottom: 2%;
 }
 
 .individual-post-container {
