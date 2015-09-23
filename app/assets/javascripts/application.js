@@ -193,12 +193,4 @@ $(document).ready(function(){
     });
   });
 
-  // Goole translate move navbar
-  // $("#googlenav").on("click", "#google-translate", function(){
-  //   $("#googlenav").addClass("google-wide");
-  // });
-
-  // $(document).on("click", ".goog-te-banner", function(){
-  //   console.log("click!");
-  // })
 });

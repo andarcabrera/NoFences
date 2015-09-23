@@ -55,7 +55,7 @@
     var method = $(this).attr("method");
     var url = $(this).attr("action");
     var searchString = $(this).serialize();
-
+    console.log(searchString)
     $.ajax({
       method: method,
       url: url,
