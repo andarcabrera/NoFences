@@ -1,14 +1,15 @@
-<div class= "headings row" id="user-container">
-  <div class="col-sm-6 user-info">
+<div class= "headings">
+  <div class="row" id="user-container">
+  <div class="col-sm-4 user-info">
     <h3>Languages - <%= @user.display_languages  %></h3>
     <% if current_user && current_user == @user %>
     <h3 id="update"><%= link_to "Update Info", edit_user_path(current_user)%></h3>
     <% end %>
   </div>
-  <div class="col-sm-3">
+  <div class="col-sm-4">
     <h3><%= @user.full_name %></h3><br>
   </div>
-  <div class="col-sm-3" id="user-details">
+  <div class="col-sm-4" id="user-details">
     <h3>Member Since: <%=@user.created_at.strftime("%B #{current_user.created_at.day.ordinalize}, %Y")%></h3>
     <h3>Volunteer total: <%=@user.count_volunteer_posts%> posts</h3>
   </div>
@@ -22,7 +23,7 @@
       <%= image_tag @user.photo_url, class: "img-circle" %>
     <% end %>
   </div>
-
+</div>
 
 
 
