@@ -91,15 +91,15 @@ class User < ActiveRecord::Base
     params[:user][:first_name] != "" && params[:user][:last_name] != "" && params[:user][:email] != ""
   end
 
-  # def known_language?(language_name)
-  #   unless self.languages.empty?
-  #     self.languages.each do |language|
-  #       if language_name == language.name
-  #         return true
-  #       end
-  #     end
-  #   end
-  # end
+  def known_language?(language_name)
+    unless self.languages.empty?
+      self.languages.each do |language|
+        if language_name == language.name
+          return true
+        end
+      end
+    end
+  end
 
   def messages
     Message.all.where("(sender_id = ? or receiver_id = ?)", self.id, self.id)
