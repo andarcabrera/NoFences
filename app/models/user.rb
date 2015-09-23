@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   mount_uploader :photo, PhotoUploader
 
+  # attr_accessible :photo, :photo_cache, :remove_photo
+
   def self.create_with_omniauth(auth)
     user = where(provider: auth.provider, uid: auth.uid).first_or_create
     user_info = user.facebook_email(auth)
@@ -19,7 +21,6 @@ class User < ActiveRecord::Base
         email: user_info["email"] ||= "no email provided",
         password_digest: "",
       )
-     p user
   end
 
   def password

@@ -30,9 +30,12 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     if request.xhr?
 
-      if @user.valid_edit_form?(params)
+      if params[:photo]
+        p params[:photo]
+        @user.update_attributes(photo: params[:photo])
+      elsif @user.valid_edit_form?(params)
         p params
-        @user.update_attributes(update_user_params)
+        @user.update_attributes(user_params)
         puts @user.errors.full_messages
         if params[:language]
           @user.update_known_languages(@user.get_new_languages(params[:language]))

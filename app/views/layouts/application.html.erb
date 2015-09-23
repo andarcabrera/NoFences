@@ -32,13 +32,13 @@
 </head>
 <body>
   <%= render partial: "layouts/navbar" %>
-  <span>
+  <div class="page-under-nav">
   <div class="overlay"></div>
   <%= render partial: "layouts/login" %>
   <div class="reg-form">
   </div>
     <%= yield %>
   </div>
-  </span>
+  </div>
 </body>
 </html>
