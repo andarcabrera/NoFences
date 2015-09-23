@@ -1,43 +1,46 @@
-<div id="category-show-container">
+	<div id="new-post-container">
+	<%= render partial: 'posts/new_post_form' %>
+	</div>
+	
+	<div id="post-search-results">
+		<div class="errors"></div>
+	</div>
 
 	<div class="headings">
 		<h1><%= @category.name %></h1>
 		<h3 class="subtitle">Click on any posts to see details or click on the volunteer button if you'd like to add another post.</h3>
 		<div id="new-post-button" class="btn btn-info" role="button">
 			<% if current_user %>
-				<%= link_to 'I want to volunteer!', new_category_post_path(@category), id: "volunteer-button" %>
+				<%= link_to 'Add a new post', new_category_post_path(@category), class: "btn-large", id: "volunteer-button" %>
 			<% else %>
 				<%= link_to 'Signin to volunteer!', signin_path, id: "login-to-post-button"%>
 			<% end %>
 		</div>
 	</div>
 
-	<div id="post-search-results">
-		<div class="errors"></div>
-	</div>
 
+<div id="category-show-container">
 
-
-	<div class="search-bar">
-    <%= form_tag(category_posts_path(@category), :method => "get", id: "search-form") do %>
-    <div class="field">
-    	<%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search all #{@category.name} posts" %>
-    </div>
-    <%= text_field_tag :category_id, params[:category_id], type: "hidden", value: "#{@category.id}" %>
-    <div class="field actions">
-	    <%= submit_tag "Go", class: "btn btn-large btn-danger", :name => nil %>
-	  </div>
-    <% end %>
-  </div>
+  
 
 <div class="column-left" id="category-posts-index">
-	<h2>Services</h2>
-		<ul class="nav nav-pills post-tabs">
-		  <li class="active"><a href="#services-offered">Offered</a></li>
-		  <li><a href="#services-wanted">Wanted</a></li>
-		</ul>
-
 	<div id="posts-index-container">
+		<h2>Services</h2>
+			<nav>
+				<ul class="nav nav-pills post-tabs">
+				  <li class="active tab"><a href="#services-offered">Offered</a></li>
+				  <li class="tab"><a href="#services-wanted">Wanted</a></li>
+				    <%= form_tag(category_posts_path(@category), :method => "get", class: "pull-right", id: "search-form") do %>
+				    <div class="field">
+				    	<%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search all #{@category.name} posts" %>
+				    </div>
+				    <%= text_field_tag :category_id, params[:category_id], type: "hidden", value: "#{@category.id}" %>
+				    <div class="field actions">
+					    <%= submit_tag "Go", class: "btn btn-large", :name => nil %>
+					  </div>
+				    <% end %>
+				</ul>
+			</nav>
 		<div class="services" id="services-offered" >
 		<% @category.services_offered.each do |post| %>
 			<%= render partial: 'single_post_listing', locals: { post: post } %>
@@ -64,9 +67,6 @@
 
 
 
-	<div id="new-post-container">
-	<%= render partial: 'posts/new_post_form' %>
-	</div>
 </div>
 
 

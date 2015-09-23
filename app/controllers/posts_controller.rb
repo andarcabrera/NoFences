@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   def index
     if request.xhr?
       if @posts = Post.search(params[:search]).where(category_id: params[:category_id])
-        p "#{@posts}" *100
+        p "#{params[:category_id]}" *100
         render partial: 'post_search_results', layout: false, locals: { post: @posts }
       else
         p "ERROR #{@posts}" * 100
