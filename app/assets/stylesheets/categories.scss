@@ -128,3 +128,35 @@ p.edit-delete.category-show-page{
 	display: inline-block;
 	width: 30%;
 }
+
+#post-search-results {
+	display: none;
+	width: 50%;
+	margin-left: 25%;
+  position: absolute;
+  opacity: 1;
+  z-index:1002;
+  background-color: #F7F7F7;
+	-webkit-box-shadow: 0px -1px 9px 1px rgba(247,247,247,1);
+}
+
+#search-form {
+	margin: auto;
+	width: 40%;
+}
+
+#search-form .field {
+display: inline-block;
+	width: 43%;
+}
+
+input#search.form-control {
+	width: 95%;
+	display: inline-block;
+}
+
+#search-form .actions {
+	display: inline-block;
+	width: 5%;
+}
+

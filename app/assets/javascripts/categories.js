@@ -17,25 +17,25 @@
     var method = $(this).attr("method");
     var url = $(this).attr("action");
 
-    $.ajax({
+    var request = $.ajax({
       method: method,
       url: url,
       data: postData
-    })
+    });
 
-    .done(function(response){
+    request.done(function(response){
       $(".overlay").hide();
       $("#new-post-container").hide();
-      var volunteer = $("input[name='post[volunteer]']:checked").val()
+      var volunteer = $("input[name='post[volunteer]']:checked").val();
       if (volunteer === "true") {
-        $("#services-offered").prepend(response)
+        $("#services-offered").prepend(response);
       } else {
-        $("#services-wanted").prepend(response)
-      };
-      $(".form-new-post")[0].reset()
-    })
+        $("#services-wanted").prepend(response);
+      }
+      $(".form-new-post")[0].reset();
+    });
 
-    .fail(function(response) {
+    request.fail(function(response) {
       $(".errors").text("All fields must be filled.");
     });
   });
@@ -48,3 +48,30 @@
     var id = $(".active").find("a").attr("href");
     $(id).show();
   });
+
+  // search feature
+  $(document).on("submit", "#search-form", function(event){
+    event.preventDefault();
+    var method = $(this).attr("method");
+    var url = $(this).attr("action");
+    var searchString = $(this).serialize();
+
+    $.ajax({
+      method: method,
+      url: url,
+      data: searchString
+    })
+
+    .done(function(response){
+      console.log(response);
+      $("#post-search-results").empty();
+      $(".overlay").show();
+      $("#post-search-results").append(response);
+      $("#post-search-results").show();
+    })
+
+    .fail(function(response) {
+      $(".errors").text("Sorry, no matching posts were found.");
+    });
+  });
+

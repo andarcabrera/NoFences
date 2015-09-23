@@ -1,0 +1,694 @@
+/* line 7, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+#categories-index-container {
+  width: 70%;
+  margin: auto;
+  margin-top: 2%;
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* line 15, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+.categories-links {
+  width: 20%;
+  margin: 5% 1%;
+  height: 125px;
+  display: inline-block;
+  font-size: 1.15em;
+  vertical-align: middle;
+  border: 3px solid #66CBFF;
+  border-radius: 10px;
+  padding: 2%;
+  color: #CD0809;
+}
+
+/* line 28, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+#categories-index-container a:hover {
+  border-color: black;
+}
+
+/* line 32, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+.category-icon {
+  color: #CD0809;
+  margin-bottom: 5%;
+}
+
+/* line 38, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+.categories-links span {
+  align-self: center;
+}
+
+/* line 42, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+.headings {
+  text-align: center;
+  background-color: #66CBFF;
+  padding: 10px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+/* line 50, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+.headings h3 {
+  font-family: 'Indie Flower', cursive;
+  color: white;
+  margin-top: -10px;
+}
+
+/* line 58, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+.column-left {
+  width: 50%;
+  float: left;
+  text-align: center;
+}
+
+/* line 64, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+.column-right {
+  width: 50%;
+  float: right;
+  text-align: center;
+}
+
+/* line 70, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+#category-show-container {
+  text-align: center;
+}
+
+/* line 74, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+#posts-index-container {
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  padding: 5px;
+  background-color: #E8E8E8;
+  height: 700px;
+}
+
+/* line 82, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+#services-wanted {
+  display: none;
+}
+
+/* line 86, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+form .service-type {
+  width: 25%;
+  text-align: left;
+}
+
+/* line 91, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+form .service-type input {
+  height: 15px;
+}
+
+/* line 95, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+#new-post-button {
+  margin: 1%;
+  background-color: #CD0809;
+  border: none;
+}
+
+/* line 101, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+div#new-post-button.btn.btn-info a {
+  color: white;
+}
+
+/* line 105, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+.individual-post-listing {
+  background-color: white;
+  padding: 3px;
+  margin: 10px;
+  box-shadow: 2px 2px 10px #888888;
+}
+
+/* line 112, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+#individual-post-listing p {
+  line-height: 1em;
+}
+
+/* line 116, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+#post-date {
+  font-size: 15px;
+}
+
+/* line 120, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+#orgs-index-container {
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  background-color: #E8E8E8;
+  height: 750px;
+}
+
+/* line 127, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/categories.scss */
+p.edit-delete.category-show-page {
+  display: inline-block;
+  width: 30%;
+}
+/* line 1, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/index.scss */
+body {
+  padding-top: 50px;
+  /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+/* line 6, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/index.scss */
+.business-header {
+  height: 400px;
+  background-color: #66CBFF;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+/* line 15, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/index.scss */
+#star-container {
+  text-align: center;
+}
+
+/* line 19, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/index.scss */
+#star {
+  width: 50px;
+  height: 55px;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: inline-block;
+}
+
+/* line 27, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/index.scss */
+.tagline {
+  text-shadow: 0 0 10px #000;
+  color: #fff;
+}
+
+/* line 32, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/index.scss */
+.img-center {
+  padding: 8px;
+}
+
+/* line 36, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/index.scss */
+.img-center:hover {
+  border: 4px solid #66CBFF;
+  border-offset: 10px;
+}
+
+/* line 41, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/index.scss */
+img.img-circle.img-responsive.img-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 46, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/index.scss */
+footer {
+  margin: 50px 0;
+}
+
+/* line 51, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/index.scss */
+div.col-lg-3.map {
+  margin-top: 50px;
+}
+
+/* line 55, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/index.scss */
+.role-description {
+  text-align: center;
+}
+
+/*.home-screen-circle:hover {
+    border: 10px solid blue;
+}*/
+/* line 63, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/index.scss */
+.welcome-message {
+  margin-top: 60px;
+  color: white;
+}
+
+/* line 68, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/index.scss */
+.fa-star {
+  color: #CD0809;
+  margin-left: 40px;
+}
+
+/* line 73, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/index.scss */
+.welcome-text {
+  font-family: 'Indie Flower', cursive;
+  font-size: 30px;
+}
+
+/* line 79, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/index.scss */
+.take-action {
+  font-size: 13px;
+  line-height: 10px;
+}
+/* line 6, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/messages.scss */
+#new-message-container {
+  width: 20%;
+  margin-left: 40%;
+  position: fixed;
+  opacity: 1;
+  z-index: 1002;
+  background-color: #F7F7F7;
+  -webkit-box-shadow: 0px -1px 9px 1px #f7f7f7;
+}
+
+/* line 16, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/messages.scss */
+#new-message-form {
+  height: 450px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+/* line 22, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/messages.scss */
+#new-message-submit {
+  width: 25%;
+  margin-left: 37.5%;
+  background-color: #66CBFF;
+  border: white;
+}
+
+/* line 29, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/messages.scss */
+#message-container {
+  display: none;
+  width: 20%;
+  margin-top: -10%;
+  margin-left: 40%;
+  position: fixed;
+  opacity: 1;
+  z-index: 1002;
+  background-color: #F7F7F7;
+  -webkit-box-shadow: 0px -1px 9px 1px #f7f7f7;
+}
+
+/* line 41, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/messages.scss */
+#user-messages {
+  height: 450px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+/* line 7, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/posts.scss */
+#new-post-container {
+  display: none;
+  width: 70%;
+  margin-left: 15%;
+  position: absolute;
+  opacity: 1;
+  z-index: 1002;
+  background-color: #F7F7F7;
+  -webkit-box-shadow: 0px -1px 9px 1px #f7f7f7;
+}
+
+/* line 18, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/posts.scss */
+#form-submit {
+  width: 25%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  margin: auto;
+  text-align: center;
+}
+
+/* line 26, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/posts.scss */
+#new-post-form-container {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+/* line 31, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/posts.scss */
+#new-post-form-container input {
+  display: block;
+  width: 90%;
+  margin-top: 0;
+  margin-bottom: 2%;
+}
+
+/* line 38, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/posts.scss */
+#new-post-form-container label {
+  margin-bottom: 0;
+  display: block;
+}
+
+/* line 43, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/posts.scss */
+#new-post-info {
+  margin-top: 0;
+  padding-left: 10%;
+}
+
+/* line 48, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/posts.scss */
+textarea {
+  width: 90%;
+  height: 300px;
+}
+
+/* line 54, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/posts.scss */
+.errors {
+  text-align: center;
+  color: red;
+}
+
+/* line 62, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/posts.scss */
+#post-info {
+  margin-left: 20px;
+}
+
+/* line 66, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/posts.scss */
+.post-title {
+  font-size: 30px;
+  text-align: left;
+  margin-left: 10px;
+}
+
+/* line 73, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/posts.scss */
+h3.subtitle.post-show {
+  text-align: left;
+  margin-left: 10px;
+}
+
+/* line 78, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/posts.scss */
+i.fa.fa-arrow-right {
+  font-size: 0.9em;
+  padding: 0px 10px;
+}
+
+/* line 83, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/posts.scss */
+i.fa.fa-globe.fa-2x.fa-spin {
+  margin-right: 4px;
+}
+
+/* line 88, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/posts.scss */
+.edit-delete {
+  color: #CD0809;
+}
+
+/* line 92, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/posts.scss */
+.post-options {
+  color: #66CBFF;
+}
+/* line 5, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/sessions.scss */
+.form-signin {
+  max-width: 600px;
+  background-color: #f7f7f7;
+  -moz-box-shadow: 0 0 3px 3px #888;
+  -webkit-box-shadow: 0 0 3px 3px #888;
+  box-shadow: 0 0 3px 3px #888;
+  border-radius: 2px;
+}
+
+/* line 14, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/sessions.scss */
+.main {
+  padding: 38px;
+}
+
+/* line 18, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/sessions.scss */
+.social-box {
+  margin: 0 auto;
+  padding: 38px;
+  border-bottom: 1px #ccc solid;
+}
+
+/* line 24, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/sessions.scss */
+.social-box a {
+  font-weight: bold;
+  font-size: 18px;
+  padding: 8px;
+}
+
+/* line 30, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/sessions.scss */
+.social-box a i {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* line 35, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/sessions.scss */
+.heading-desc {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 38px 38px 0px 38px;
+}
+
+/* line 41, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/sessions.scss */
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+
+/* line 46, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/sessions.scss */
+.form-signin .checkbox {
+  font-weight: normal;
+}
+
+/* line 50, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/sessions.scss */
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: 20px;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 60, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/sessions.scss */
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+/* line 64, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/sessions.scss */
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+/* line 69, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/sessions.scss */
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+/* line 74, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/sessions.scss */
+.login-footer {
+  background: #f0f0f0;
+  margin: 0 auto;
+  border-top: 1px solid #dadada;
+  padding: 20px;
+}
+
+/* line 81, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/sessions.scss */
+.login-footer .left-section a {
+  font-weight: bold;
+  color: #8a8a8a;
+  line-height: 19px;
+}
+
+/* line 87, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/sessions.scss */
+.mg-btm {
+  margin-bottom: 20px;
+}
+/* line 6, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/users.scss */
+#user-container {
+  border: 1px solid black;
+  height: 200px;
+}
+
+/* line 13, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/users.scss */
+#user-image {
+  height: 250px;
+  width: 250px;
+  margin: auto;
+  margin-top: -150px;
+}
+
+/* line 20, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/users.scss */
+.col-sm-3 h3 {
+  margin-top: 5px;
+  margin-left: -420px;
+}
+
+/* line 28, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/users.scss */
+.user-info h3 {
+  margin-top: 5px;
+}
+
+/* line 32, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/users.scss */
+.user-info {
+  width: 500px;
+  text-align: center;
+}
+
+/* line 37, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/users.scss */
+.img-circle {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  margin-left: 30px;
+  margin-top: -15px;
+  border: 1px solid black;
+}
+
+/* line 46, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/users.scss */
+h3 a {
+  transition: all 0.9s ease;
+  text-decoration: none;
+  color: white;
+}
+
+/* line 52, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/users.scss */
+h3 a:hover {
+  text-decoration: none;
+  color: #CD0809;
+}
+
+/* line 57, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/users.scss */
+#edit-user-container {
+  display: none;
+  width: 20%;
+  margin-top: -10%;
+  margin-left: 40%;
+  position: fixed;
+  opacity: 1;
+  z-index: 1002;
+  background-color: #F7F7F7;
+  -webkit-box-shadow: 0px -1px 9px 1px #f7f7f7;
+}
+
+/* line 69, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/users.scss */
+#user-form-submit {
+  width: 100px;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  margin-left: 50px;
+  text-align: center;
+}
+
+/* line 77, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/users.scss */
+#edit-user-form-container {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+/* line 82, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/users.scss */
+input #text {
+  display: block;
+  width: 90%;
+  margin-top: 0;
+  margin-bottom: 2%;
+}
+
+/* line 89, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/users.scss */
+#edit-user-form-container label {
+  margin-bottom: 0;
+  display: block;
+}
+
+/* line 94, /Users/andacabrera29/Desktop/NoFences/NoFences/app/assets/stylesheets/users.scss */
+#new-user-info {
+  margin-top: 0;
+  padding-left: 10%;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+/*@import "bootstrap-sprockets";*/
+
+@import "bootstrap";
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+
+/* typography */
+body {
+  width: 100%;
+  margin: auto;
+}
+
+span {
+  width: 80%;
+}
+
+#user-widget {
+  display: inline-block;
+}
+
+.overlay {
+    position : fixed;
+    display: none;
+    top      : 0;
+    bottom   : 0;
+    left     : 0;
+    right    : 0;
+    background-color: rgb(0,0,0);
+    opacity  : 0.8;
+    z-index  : 1001;
+}
+
+.login-container {
+  display: none;
+  margin-left: 40%;
+  position: fixed;
+  opacity: 1;
+  z-index:1002;
+}
+
+.register-container {
+  display: none;
+  margin-left: 40%;
+  position: fixed;
+  opacity: 1;
+  z-index:1002;
+}
+
+html, body {
+    width  : 100%;
+    height : 100%;
+}
+
+
+
+.btn-facebook{color:#fff;background-color:#3b5998;border-color:rgba(0,0,0,0.2)}.btn-facebook:hover,.btn-facebook:focus,.btn-facebook:active,.btn-facebook.active,.open .dropdown-toggle.btn-facebook{color:#fff;background-color:#30487b;border-color:rgba(0,0,0,0.2)}
+.btn-facebook:active,.btn-facebook.active,.open .dropdown-toggle.btn-facebook{background-image:none}
+.btn-facebook.disabled,.btn-facebook[disabled],fieldset[disabled] .btn-facebook,.btn-facebook.disabled:hover,.btn-facebook[disabled]:hover,fieldset[disabled] .btn-facebook:hover,.btn-facebook.disabled:focus,.btn-facebook[disabled]:focus,fieldset[disabled] .btn-facebook:focus,.btn-facebook.disabled:active,.btn-facebook[disabled]:active,fieldset[disabled] .btn-facebook:active,.btn-facebook.disabled.active,.btn-facebook[disabled].active,fieldset[disabled] .btn-facebook.active{background-color:#3b5998;border-color:rgba(0,0,0,0.2)}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.5em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+.container {
+  width: 85%;
+}
+
+.errors {
+  width: 225px;
+  text-align: center;
+  color: red;
+}
+
+#google-translate{
+  margin-top: 5%;
+}
+
+.google-wide{
+  margin-top: 30px;
+}

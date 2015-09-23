@@ -19,13 +19,13 @@ class MessagesController < ApplicationController
       @message.receiver_id = @post.author_id
     else
       if @chain.messages.last.sender_id == current_user.id
-        @message.reciever_id = @chain.messages.last.reciever_id
+        @message.receiver_id = @chain.messages.last.receiver_id
       else
         @message.receiver_id = @chain.messages.last.sender_id
       end
     end
     @chain.messages << @message
-    redirect_to current_user
+    render partial: '/chains/single_chain_listing', locals: { chain: @chain }
   end
 
   end
