@@ -5,7 +5,8 @@
 // CATEGORIES INDEX
 
 #categories-index-container {
-	width: 70%;
+	height: 100px;
+	width: 60%;
 	margin: auto;
 	margin-top: 2%;
 	vertical-align: middle;
@@ -14,15 +15,19 @@
 
 .categories-links {
 	width: 20%;
-	margin: 5% 1%;
-	height: 125px;
+	margin: 2%;
+	height: 150px;
 	display: inline-block;
-	font-size: 1.15em;
+	font-size: 1em;
 	vertical-align: middle;
 	border: 3px solid #66CBFF;
 	border-radius: 10px;
-	padding: 2%;
+	padding: 3%;
 	color: #CD0809;
+}
+
+#categories-index-container a {
+	height: 40px;
 }
 
 #categories-index-container a:hover {
@@ -41,7 +46,7 @@
 
 .headings{
 	text-align: center;
-	background-color:#66CBFF;
+	background-color: #66CBFF;
 	padding: 10px;
 	padding-bottom: 20px;
 	margin-bottom: 20px;
@@ -55,28 +60,46 @@
 
 // CATEGORIES SHOW
 
+h2 {
+	margin-top: 0;
+}
+
 .column-left {
-	width: 50%;
+	margin-top: 0;
+	margin-left: 5%;
+	width: 60%;
 	float: left;
 	text-align: center;
 }
 
+li.tab a {
+	border: 1px solid #66CBFF;
+}
+
+li.active a{
+	border: 1px solid #337ab7;
+}
+
 .column-right {
-	width: 50%;
+	width: 30%;
+	margin-right: 5%;
 	float: right;
 	text-align: center;
 }
 
 #category-show-container {
 	text-align: center;
+	margin: 0% 5%;
 }
 
 #posts-index-container {
 	margin-left: 2.5%;
 	margin-right: 2.5%;
-	padding: 5px;
-	background-color: #E8E8E8;
 	height: 700px;
+}
+
+.form-new-post {
+	padding: 0 5%;
 }
 
 #services-wanted {
@@ -92,6 +115,15 @@ form .service-type input{
 	height: 15px;
 }
 
+.form-new-post textarea {
+	height: 100px;
+}
+
+.form-new-post button {
+	background-color: #66CBFF;
+	margin-left: 50%;
+}
+
 #new-post-button {
 	margin: 1%;
 	background-color: #CD0809;
@@ -102,10 +134,18 @@ div#new-post-button.btn.btn-info a{
 	color: white;
 }
 
+.services > div:first-child {
+	margin-top: 1%;
+}
+
+.services > div:last-child {
+	margin-bottom: 2%;
+}
+
 .individual-post-listing {
 	background-color: white;
-	padding: 3px;
-	margin: 10px;
+	padding: 1%;
+	margin-top: 2%;
 	box-shadow: 2px 2px 10px #888888;
 }
 
@@ -140,14 +180,19 @@ p.edit-delete.category-show-page{
 	-webkit-box-shadow: 0px -1px 9px 1px rgba(247,247,247,1);
 }
 
+.search-bar {
+	margin-left: 10%;
+	width: 50%;
+}
+
 #search-form {
 	margin: auto;
-	width: 40%;
+	width: 50%;
 }
 
 #search-form .field {
 display: inline-block;
-	width: 43%;
+	width: 86%;
 }
 
 input#search.form-control {
@@ -157,6 +202,11 @@ input#search.form-control {
 
 #search-form .actions {
 	display: inline-block;
-	width: 5%;
+	width: 10%;
+}
+
+#search-form > div.field.actions > input {
+	background-color: #337ab7;
+	color: white;
 }
 
