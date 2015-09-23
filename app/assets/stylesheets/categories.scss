@@ -67,7 +67,7 @@ h2 {
 .column-left {
 	margin-top: 0;
 	margin-left: 5%;
-	width: 60%;
+	width: 55%;
 	float: left;
 	text-align: center;
 }
@@ -104,6 +104,9 @@ li.active a{
 
 #services-wanted {
 	display: none;
+}
+
+ul.nav.nav-pills.post-tabs{
 }
 
 form .service-type {
@@ -157,11 +160,24 @@ div#new-post-button.btn.btn-info a{
 	font-size: 15px;
 }
 
+#categories-orgs-index h2{
+	margin-top: 6%;
+	margin-bottom: 10%;
+}
+
 #orgs-index-container {
-	margin-left: 2.5%;
-	margin-right: 2.5%;
-	background-color: #E8E8E8;
-	height: 750px;
+	margin: auto;
+	margin-bottom: 30px;
+	width: 70%;
+	border-bottom: solid 1px gray;
+}
+
+div#orgs-index-container h4{
+	line-height: 1em;
+}
+
+div#orgs-index-container p{
+	line-height: 0.7em;
 }
 
 p.edit-delete.category-show-page{
@@ -192,7 +208,7 @@ p.edit-delete.category-show-page{
 
 #search-form .field {
 display: inline-block;
-	width: 86%;
+	width: 80%;
 }
 
 input#search.form-control {
