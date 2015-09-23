@@ -56,7 +56,8 @@ class User < ActiveRecord::Base
   def get_volunteer_posts
     @volunteer_posts = []
     self.posts.each do |post|
-      @volunteer_posts << if post.volunteer
+      if post.volunteer == true
+        @volunteer_posts << post
         end
       end
     @volunteer_posts
@@ -69,6 +70,7 @@ class User < ActiveRecord::Base
   def update_known_languages(language_array)
     language_array.each do |new_language|
       possible_new = Language.find_by(name: new_language)
+
       unless self.languages.include?(possible_new)
         self.languages << possible_new
       end
@@ -89,15 +91,15 @@ class User < ActiveRecord::Base
     params[:user][:first_name] != "" && params[:user][:last_name] != "" && params[:user][:email] != ""
   end
 
-  def known_language?(language_name)
-    unless self.languages.empty?
-      self.languages.each do |language|
-        if language_name == language.name
-          return true
-        end
-      end
-    end
-  end
+  # def known_language?(language_name)
+  #   unless self.languages.empty?
+  #     self.languages.each do |language|
+  #       if language_name == language.name
+  #         return true
+  #       end
+  #     end
+  #   end
+  # end
 
   def messages
     Message.all.where("(sender_id = ? or receiver_id = ?)", self.id, self.id)
