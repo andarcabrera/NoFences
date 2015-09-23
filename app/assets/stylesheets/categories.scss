@@ -97,6 +97,10 @@ li.active a{
 	height: 700px;
 }
 
+.form-new-post {
+	padding: 0 5%;
+}
+
 #services-wanted {
 	display: none;
 }
@@ -108,6 +112,15 @@ form .service-type {
 
 form .service-type input{
 	height: 15px;
+}
+
+.form-new-post textarea {
+	height: 100px;
+}
+
+.form-new-post button {
+	background-color: #66CBFF;
+	margin-left: 50%;
 }
 
 #new-post-button {
