@@ -2,9 +2,34 @@ require 'rails_helper'
 
 describe Post do
 
+  before(:each) do
+    @post = Post.create!(title: "test", body: "this is a test", author_id: 1)
+  end
 
-#METHOD TESTS WILL LIVE HERE!
+  after(:each) do
+    Post.destroy_all
+  end
 
+  describe "#posted_date" do
+    it "returns the date of the post in month day year format" do
+    expect(@post.posted_date).to eq(DateTime.now.strftime("%m-%d-%y"))
+    end
+  end
+
+  describe "#search" do
+    it "returns a post with the same or similiar title" do
+      expect(Post.search("tes")).to include(@post)
+    end
+
+    it "returns a post that has something similiar in its body" do
+      expect(Post.search("this")).to include(@post)
+    end
+
+    it "does NOT return a post with a non similiar title and non similiar body" do
+      expect(Post.search("bop")).to_not include(@post)
+    end
+
+  end
 
 
   describe "validations" do
@@ -33,9 +58,6 @@ describe Post do
       expect(post.errors).to be_empty
     end
 
-
-
   end
-
 
 end
