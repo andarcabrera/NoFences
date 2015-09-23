@@ -178,4 +178,5 @@ $(document).ready(function(){
   $("#googlenav").on("click", "#google-translate", function(){
     $("#googlenav").addClass("google-wide");
   });
+
 });
