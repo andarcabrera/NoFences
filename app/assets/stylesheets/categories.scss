@@ -6,7 +6,7 @@
 
 #categories-index-container {
 	height: 100px;
-	width: 70%;
+	width: 60%;
 	margin: auto;
 	margin-top: 2%;
 	vertical-align: middle;
@@ -66,7 +66,8 @@ h2 {
 
 .column-left {
 	margin-top: 0;
-	width: 65%;
+	margin-left: 5%;
+	width: 60%;
 	float: left;
 	text-align: center;
 }
@@ -81,6 +82,7 @@ li.active a{
 
 .column-right {
 	width: 30%;
+	margin-right: 5%;
 	float: right;
 	text-align: center;
 }
@@ -93,7 +95,6 @@ li.active a{
 #posts-index-container {
 	margin-left: 2.5%;
 	margin-right: 2.5%;
-	padding: 5px;
 	height: 700px;
 }
 
@@ -134,23 +135,17 @@ div#new-post-button.btn.btn-info a{
 }
 
 .services > div:first-child {
-	padding-top: 2%;
 	margin-top: 1%;
 }
 
 .services > div:last-child {
-	padding-bottom: 2%;
-}
-
-.individual-post-container {
-	background-color: #E8E8E8;
-	padding: 1% 2%;
+	margin-bottom: 2%;
 }
 
 .individual-post-listing {
 	background-color: white;
-	padding: 3px;
-	
+	padding: 1%;
+	margin-top: 2%;
 	box-shadow: 2px 2px 10px #888888;
 }
 

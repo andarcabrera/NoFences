@@ -1,4 +1,4 @@
-<div class="individual-post-container">
+
 	<div class="individual-post-listing">
 		<h4><%= link_to "#{post.title}", category_post_path(post.category,post) %></h4>
 			<p id="post-date"><%= post.posted_date %></p>
@@ -7,4 +7,4 @@
 				<p class="edit-delete category-show-page"><span class="edit-delete"><i class="fa fa-trash-o fa-1x"></span></i><%= link_to " Delete this post", [post.category, post], :method => :delete %></p>
 			<% end %>
 	</div>
-</div> 
+
