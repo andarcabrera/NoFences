@@ -4,17 +4,30 @@
 	<h1><%= @category.name %></h1>
 	<h2>Thank you for volunteering! Please provide the details of your volunteer service or donation below.</h2>
 	<p class="errors"></p>
-	<div id="new-post-form-container">
-	  <form class="form-new-post" action="/categories/<%= @category.id %>/posts" method="post">
-		<div class="radio-inline service-type">
-  		<label><input type="radio" name="post[volunteer]" value="true">I am volunteering</label>
-  		<label><input type="radio" name="post[volunteer]" value="false">I am looking for help</label>
-		</div>
-		  <div id="new-post-info">
-	      <input name="post[title]" type="text" placeholder="Title">
-	      <textarea name="post[body]" placeholder="Description"></textarea>
-	      <input name="post[zip]" type="text" placeholder="Zip">
-	      <input type="hidden" id="category-id" name="post[category_id]" value=<%=@category.id%>>
-	      <button type="submit" class="btn-info" id="form-submit">Post</button>
+	
+	<div id="new-post-form-container main row">
+	  
+	  <form class="form-new-post mg-btm" action="/categories/<%= @category.id %>/posts" method="post">
+			
+			<div class="radio-inline service-type field mg-btm">
+	  		<label><input class="form-control" type="radio" name="post[volunteer]" value="true">I am volunteering</label>
+	  		<label><input class="form-control" type="radio" name="post[volunteer]" value="false">I am looking for help</label>
+			</div>
+		  
+		  <div id="new-post-info mg-btm">
+	      <div class="field mg-btm">
+	      	<input class="form-control" name="post[title]" type="text" placeholder="Title">
+	      </div>
+	      <div class="field mg-btm">
+	      	<textarea class="form-control" name="post[body]" placeholder="Description" rows="10" cols="50"></textarea>
+	      </div>
+	      <div class="field mg-btm">
+	      	<input class="form-control" name="post[zip]" type="text" placeholder="Zip">
+	      </div>
+		      <input type="hidden" id="category-id" name="post[category_id]" value=<%=@category.id%>>
+	      <div class="form-action text-center">
+	      	<button type="submit" class="btn btn-large" id="form-submit">Post</button>
+	      </div>
 	    </div>
-	  </form>
+		</form>
+	</div>

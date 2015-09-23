@@ -117,6 +117,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  def already_messaged?(post)
+    self.chains.each do |chain|
+      if chain.post_id == post.id
+        return true
+      end
+    end
+    false
+  end
+
 
 
 

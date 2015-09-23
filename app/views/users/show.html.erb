@@ -1,4 +1,3 @@
-
 <div class= "headings row" id="user-container">
   <div class="col-sm-6 user-info">
     <h3>Languages - <%= @user.display_languages  %></h3>
@@ -71,21 +70,23 @@
 </div>
 
 
-<div class="column-left" id="category-posts-index">
-  <h2>Recent Posts</h2>
-  <div id="posts-index-container">
-    <% @user.posts.each do |post| %>
-      <%= render partial: 'user_post_listing', locals: { post: post } %>
-    <% end %>
+<div id="user-lists-container" class="text-center">
+  <div id="user-posts-index">
+    <h2>Recent Posts</h2>
+    <div id="posts-index-container">
+      <% @user.posts.last(4).reverse.each do |post| %>
+        <%= render partial: 'user_post_listing', locals: { post: post } %>
+      <% end %>
+    </div>
   </div>
-</div>
 
-<div class="column-right" id="category-posts-index">
-  <h2>Recent Messages</h2>
-  <div id="posts-index-container">
-    <% @user.chains.each do |chain| %>
-      <%= render partial: '/chains/single_chain_listing', locals: { chain: chain } %>
-    <% end %>
+  <div id="user-chains-index">
+    <h2>Recent Messages</h2>
+    <div id="posts-index-container">
+      <% @user.chains.last(4).reverse.each do |chain| %>
+        <%= render partial: '/chains/single_chain_listing', locals: { chain: chain } %>
+      <% end %>
+    </div>
   </div>
 </div>
 

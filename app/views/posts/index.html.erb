@@ -1,2 +1,11 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+
+<button type="button" class="close pull-right" id="x" aria-hidden="true">×</button>
+  <% if @posts.count > 0 %>
+    <h2>Search results within <%=@posts.first.category.name%></h2>
+    <% @posts.order(created_at: :desc).each do |post|%>
+      <%= render partial: '/categories/single_post_listing', locals: { post: post } %>
+    <% end %>
+  <% else %>
+    <h2>Sorry, no posts matched your search.</h2>
+  <% end %>
+

@@ -1,11 +1,30 @@
 <button type="button" class="close pull-right" id="chain-close" aria-hidden="true">×</button>
 <div class="row">
   <div id="user-messages">
-    <%@chain.messages.each do |message|  %>
-    <p>From: <%=message.sender.full_name %></p>
-    <p>To: <%=message.receiver.full_name %></p>
-    <p>Subject: <%=message.subject%></p>
-    <p><%= message.body %></p>
+    <%@chain.messages.last(2).reverse.each do |message|  %>
+      <div id="message">
+        <p>To: <%=message.receiver.full_name %></p>
+        <p>From: <%=message.sender.full_name %></p>
+        <p>Subject: <%=message.subject%></p>
+        <p><%= message.body %></p>
+
+      </div>
     <% end %>
+
+    <form class="mg-btm" id="new-reply-form" action="/categories/<%= @category.id %>/posts/<%= @post.id %>/chains/<%= @chain.id %>/messages" method="post">
+    <div class="errors"></div>
+    <div class="main">
+      <input name="message[subject]" type="text" class="form-control" value="<%=@chain.messages.last.subject%>" autofocus>
+      <br>
+      <textarea name="message[body]" class="form-control" placeholder="write reply here" cols="50" rows="5"></textarea>
+      <span class="clearfix"></span>
+    </div>
+      <button type="submit" class="btn btn-danger" id="new-reply-submit">Reply</button>
+    </div>
+  </div>
+  </div>
+  </form>
+</div>
+
   </div>
 </div>

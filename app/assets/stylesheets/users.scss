@@ -6,9 +6,7 @@
 #user-container {
   border: 1px solid black;
   height: 200px;
-
 }
-
 
 #user-image {
   height: 250px;
@@ -54,6 +52,25 @@ h3 a:hover {
   color: #CD0809
 }
 
+#user-lists-container {
+  margin: auto;
+  width: 80%;
+}
+
+#user-posts-index {
+  float: left;
+  width: 50%;
+}
+
+#user-chains-index {
+  float: right;
+  width: 50%;
+}
+
+#user-chain-index {
+  background-color: lightgray;
+}
+
 #edit-user-container {
   display: none;
   width: 20%;
@@ -95,7 +112,6 @@ input #text {
   margin-top: 0;
   padding-left: 10%;
 }
-
 
 
 

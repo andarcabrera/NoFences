@@ -1,0 +1,292 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+/*@import "bootstrap-sprockets";*/
+@import "bootstrap";
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+
+/* typography */
+body {
+  width: 100%;
+  margin: auto;
+}
+
+.navbar {
+  margin-top: -50px;
+  margin-bottom: -20px;
+}
+
+span {
+  width: 80%;
+}
+
+#user-widget {
+  display: inline-block;
+}
+
+.overlay {
+    position : fixed;
+    display: none;
+    top      : 0;
+    bottom   : 0;
+    left     : 0;
+    right    : 0;
+    background-color: rgb(0,0,0);
+    opacity  : 0.8;
+    z-index  : 1001;
+}
+
+.login-container {
+  display: none;
+  margin-left: 40%;
+  position: fixed;
+  opacity: 1;
+  z-index:1002;
+}
+
+.register-container {
+  display: none;
+  margin-left: 40%;
+  position: fixed;
+  opacity: 1;
+  z-index:1002;
+}
+
+html, body {
+    width  : 100%;
+    height : 100%;
+}
+
+
+
+.btn-facebook{color:#fff;background-color:#3b5998;border-color:rgba(0,0,0,0.2)}.btn-facebook:hover,.btn-facebook:focus,.btn-facebook:active,.btn-facebook.active,.open .dropdown-toggle.btn-facebook{color:#fff;background-color:#30487b;border-color:rgba(0,0,0,0.2)}
+.btn-facebook:active,.btn-facebook.active,.open .dropdown-toggle.btn-facebook{background-image:none}
+.btn-facebook.disabled,.btn-facebook[disabled],fieldset[disabled] .btn-facebook,.btn-facebook.disabled:hover,.btn-facebook[disabled]:hover,fieldset[disabled] .btn-facebook:hover,.btn-facebook.disabled:focus,.btn-facebook[disabled]:focus,fieldset[disabled] .btn-facebook:focus,.btn-facebook.disabled:active,.btn-facebook[disabled]:active,fieldset[disabled] .btn-facebook:active,.btn-facebook.disabled.active,.btn-facebook[disabled].active,fieldset[disabled] .btn-facebook.active{background-color:#3b5998;border-color:rgba(0,0,0,0.2)}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.5em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+.container {
+  width: 85%;
+}
+
+.errors {
+  width: 225px;
+  text-align: center;
+  color: red;
+}
+
+#google-translate{
+  margin-top: 5%;
+}
+
+.google-wide{
+  margin-top: 39px;
+}
+
+#x {
+  margin-top: 1%;
+  margin-right: 2%;
+}
+
+/*Multi-lingual scroll*/
+
+.content-scroll-translate {
+  /*width:100;*/
+  font-size:20px;
+  line-height:40px;
+  font-family:'Indie Flower', 'cursive';
+  color:#CD0809;
+  height:30px;
+  /*position:absolute;*/
+  top:50%;
+  left:5%;
+  margin-left:-80px;
+}
+
+.visible-translate {
+  float:left;
+  font-weight:600;
+  overflow:hidden;
+  height:40px;
+}
+
+p.translate-paragraph {
+  display:inline;
+  float:left;
+  width: 10px;
+  margin-left: 80px;
+}
+
+ul.translate-list {
+  margin-top:0;
+  padding-left:110px;
+  text-align:left;
+  list-style:none;
+  animation:60s linear 0s normal none infinite change;
+  -webkit-animation:60s linear 0s normal none infinite change;
+  -moz-animation:60s linear 0s normal none infinite change;
+  -o-animation:60s linear 0s normal none infinite change;
+}
+
+.translate-list li {
+  line-height:40px;
+  margin:0;
+}
+
+@-webkit-keyframes opacity {
+  0%   {opacity:0;}
+  50%  {opacity:1;}
+  100% {opacity:0;}
+}
+@keyframes opacity {
+  0%   {opacity:0;}
+  50%  {opacity:1;}
+  100% {opacity:0;}
+}
+
+@-webkit-keyframes change {
+  0%   {margin-top:0;}
+  2%  {margin-top:0;}
+  4%  {margin-top:-40px;}
+  6%  {margin-top:-40px;}
+  8%  {margin-top:-80px;}
+  10%  {margin-top:-80px;}
+  12%  {margin-top:-120px;}
+  14%  {margin-top:-120px;}
+  16%  {margin-top:-160px;}
+  18% {margin-top:-160px;}
+  20%  {margin-top:-200px;}
+  22%  {margin-top:-200px;}
+  24%  {margin-top:-240px;}
+  26%  {margin-top:-240px;}
+  28%  {margin-top:-280px;}
+  30%  {margin-top:-280px;}
+  32%  {margin-top:-320px;}
+  34%  {margin-top:-320px;}
+  36%  {margin-top:-360px;}
+  38%  {margin-top:-360px;}
+  40%  {margin-top:-400px;}
+  42%  {margin-top:-400px;}
+  44%  {margin-top:-440px;}
+  46%  {margin-top:-440px;}
+  48%  {margin-top:-480px;}
+  50%  {margin-top:-480px;}
+  52%  {margin-top:-440px;}
+  54%  {margin-top:-440px;}
+  56%  {margin-top:-400px;}
+  58%  {margin-top:-400px;}
+  60%  {margin-top:-360px;}
+  62%  {margin-top:-360px;}
+  64%  {margin-top:-320px;}
+  66%  {margin-top:-320px;}
+  68%  {margin-top:-280px;}
+  70%  {margin-top:-280px;}
+  72%  {margin-top:-240px;}
+  74%  {margin-top:-240px;}
+  76%  {margin-top:-200px;}
+  78%  {margin-top:-200px;}
+  80%  {margin-top:-180px;}
+  82%  {margin-top:-180px;}
+  84%  {margin-top:-160px;}
+  86%  {margin-top:-160px;}
+  88%  {margin-top:-140px;}
+  90%  {margin-top:-140px;}
+  91%  {margin-top:-100px;}
+  92%  {margin-top:-100px;}
+  93%  {margin-top:-60px;}
+  94%  {margin-top:-60px;}
+  95%  {margin-top:-40px;}
+  96%  {margin-top:-40px;}
+  100%  {margin-top:0;}
+}
+
+@keyframes change {
+  0%   {margin-top:0;}
+  2%  {margin-top:0;}
+  4%  {margin-top:-40px;}
+  6%  {margin-top:-40px;}
+  8%  {margin-top:-80px;}
+  10%  {margin-top:-80px;}
+  12%  {margin-top:-120px;}
+  14%  {margin-top:-120px;}
+  16%  {margin-top:-160px;}
+  18% {margin-top:-160px;}
+  20%  {margin-top:-200px;}
+  22%  {margin-top:-200px;}
+  24%  {margin-top:-240px;}
+  26%  {margin-top:-240px;}
+  28%  {margin-top:-280px;}
+  30%  {margin-top:-280px;}
+  32%  {margin-top:-320px;}
+  34%  {margin-top:-320px;}
+  36%  {margin-top:-360px;}
+  38%  {margin-top:-360px;}
+  40%  {margin-top:-400px;}
+  42%  {margin-top:-400px;}
+  44%  {margin-top:-440px;}
+  46%  {margin-top:-440px;}
+  48%  {margin-top:-480px;}
+  50%  {margin-top:-480px;}
+  52%  {margin-top:-440px;}
+  54%  {margin-top:-440px;}
+  56%  {margin-top:-400px;}
+  58%  {margin-top:-400px;}
+  60%  {margin-top:-360px;}
+  62%  {margin-top:-360px;}
+  64%  {margin-top:-320px;}
+  66%  {margin-top:-320px;}
+  68%  {margin-top:-280px;}
+  70%  {margin-top:-280px;}
+  72%  {margin-top:-240px;}
+  74%  {margin-top:-240px;}
+  76%  {margin-top:-200px;}
+  78%  {margin-top:-200px;}
+  80%  {margin-top:-180px;}
+  82%  {margin-top:-180px;}
+  84%  {margin-top:-160px;}
+  86%  {margin-top:-160px;}
+  88%  {margin-top:-140px;}
+  90%  {margin-top:-140px;}
+  91%  {margin-top:-100px;}
+  92%  {margin-top:-100px;}
+  93%  {margin-top:-60px;}
+  94%  {margin-top:-60px;}
+  95%  {margin-top:-40px;}
+  96%  {margin-top:-40px;}
+  100%  {margin-top:0;}
+}

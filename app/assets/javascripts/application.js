@@ -6,6 +6,7 @@
 //= require_tree .
 
 $(document).ready(function(){
+
   $(document).on("click", "#login-button", function(event){
     event.preventDefault();
     $(".errors").empty();
@@ -14,8 +15,8 @@ $(document).ready(function(){
   });
 
   $(document).on("click", "#x", function(event){
-    $(".overlay, .login-container, #new-post-container, #edit-user-container, register-container").hide();
-    $("form").each(function() { this.reset() });
+    $(".overlay, .login-container, #new-post-container, #edit-user-container, .register-container, #post-search-results").hide();
+    $("form").each(function() { this.reset(); });
   });
 
   $(document).on("submit", "#login-form", function(event){
@@ -26,13 +27,13 @@ $(document).ready(function(){
       method: "post",
       url: "/signin",
       data: loginData
-    })
+    });
 
-    .done(function(response) {
+    request.done(function(response) {
       window.location.replace(url);
-    })
+    });
 
-    .fail(function(response) {
+    request.fail(function(response) {
       $(".errors").text("Email or Password is Incorrect");
     });
   });
@@ -45,12 +46,12 @@ $(document).ready(function(){
     var request = $.ajax({
       method: "get",
       url: "/users/new"
-    })
-    .done(function(response) {
+    });
+    request.done(function(response) {
       $(".reg-form").append(response);
       $(".register-container").show();
-    })
-    .fail(function(response) {
+    });
+    request.fail(function(response) {
       $(".errors").text("Could not load new user form");
     });
   });
@@ -63,13 +64,13 @@ $(document).ready(function(){
       method: "post",
       url: "/users",
       data: newUserData
-    })
+    });
 
-    .done(function(response){
+    request.done(function(response){
       window.location.replace(url);
-    })
+    });
 
-    .fail(function(response) {
+    request.fail(function(response) {
       $(".errors").text("There was a problem with your registration form. Please make sure all fields are filled out correctly.").css("color", "red");
     });
   });
@@ -111,12 +112,12 @@ $(document).ready(function(){
     event.preventDefault();
     var url = $(this).attr("href");
 
-    $.ajax({
+    var request = $.ajax({
       method: 'get',
       url: url
-    })
+    });
 
-    .done(function(html){
+    request.done(function(html){
       $(".overlay").fadeIn(400);
       $("#new-message-container").append(html);
     });
@@ -133,14 +134,16 @@ $(document).ready(function(){
     var method = $(this).attr("method");
     var messageData = $(this).serialize();
 
-    $.ajax({
+    var request = $.ajax({
       method: method,
       url: url,
       data: messageData
-    })
+    });
 
-    .done(function(response){
-      //?
+    request.done(function(response){
+      $("#new-message-container").empty();
+      $(".overlay").fadeOut(400);
+      $("#reply").html("Message Sent!");
     });
   });
 
@@ -148,10 +151,7 @@ $(document).ready(function(){
     event.preventDefault();
     var id = ($(this).attr("id"));
     var url = $(this).attr("href");
-    // eturnUrl = window.location.attr("href");r
-    // var divToReplace = ($(this).parents().eq(1));
-    // console.log(divToReplace);
-    console.log("here");
+    divId = ($(this).parents().eq(1).attr("id"));
 
     var request = $.ajax({
             url: url,
@@ -160,7 +160,6 @@ $(document).ready(function(){
     });
 
     request.done(function(response){
-      console.log(response);
       $(".overlay").fadeIn(400);
       $("#message-container").append(response);
       $("#message-container").show();
@@ -170,17 +169,28 @@ $(document).ready(function(){
   $(document).on("click", "#chain-close", function(event){
     event.preventDefault();
     $(this).parent().empty();
-    $(this).parent().hide();
+    $("#message-container").hide();
     $(".overlay").fadeOut(400);
 
-  })
+  });
 
+  $(document).on("submit", "#new-reply-form", function(event){
+    event.preventDefault();
+    var url = $(this).attr("action");
+    var method = $(this).attr("method");
+    var messageData = $(this).serialize();
 
-
-
-  // Goole translate move navbar
-  $("#googlenav").on("click", "#google-translate", function(){
-    $("#googlenav").addClass("google-wide");
+    $.ajax({
+      method: method,
+      url: url,
+      data: messageData
+    })
+    .done(function(response){
+      $("#message-container").empty();
+      $("#message-container").hide();
+      $(".overlay").fadeOut(400);
+      $("#" + divId).replaceWith(response);
+    });
   });
 
 });

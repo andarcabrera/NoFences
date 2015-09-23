@@ -3,13 +3,13 @@
   end
 
   def show
+      @category = Category.find(params[:category_id])
       @chain = Chain.find(params[:id])
       @post = Post.find(params[:post_id])
       if request.xhr?
-      puts "HERE" * 100
       p params
       p @chain
-      render :show, locals: {chain: @chain }, :layout => false
+      render :show, locals: {chain: @chain, post: @post, category: @category }, :layout => false
     else
       p "FAIL" * 100
 
@@ -18,7 +18,6 @@
 
   def new
     @category = Category.find(params[:category_id])
-     "HERE" * 100
     @post = Post.find(params[:post_id])
     @chain = Chain.new
     @post.chains << @chain
