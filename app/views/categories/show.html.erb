@@ -54,12 +54,15 @@
 
 	<div class="column-right" id="categories-orgs-index">
 		<h2>Organizations Available</h2>
-			<div id="orgs-index-container">
 				<% @category.organizations.each do |org| %>
-					<h4><%= link_to "#{org.name}", organization_path(org) %></h4>
+			<div id="orgs-index-container">
+					<h4><%= org.name %></h4>
 					<p><%= org.description %></p>
-				<% end %>
+					<p><a href="<%= org.website %>"><%= org.website %></a></p>
+					<p><%= org.address_1 %> <%= org.address_2 %></p>
+					<p><%= org.city %> <%= org.state %> <%= org.zip %></p>
 			</div>
+			<% end %>
 	</div>
 
 
