@@ -1,11 +1,12 @@
 <button type="button" class="close pull-right" id="chain-close" aria-hidden="true">×</button>
 <div class="row">
   <div id="user-messages">
+    <h2>REPLY</h2>
     <%@chain.messages.last(2).reverse.each do |message|  %>
       <div id="message">
-        <p>To: <%=message.receiver.full_name %></p>
-        <p>From: <%=message.sender.full_name %></p>
-        <p>Subject: <%=message.subject%></p>
+        <p><b>To:</b> <%=message.receiver.full_name %></p>
+        <p><b>From:</b> <%=message.sender.full_name %></p>
+        <p><b>Subject:</b> <%=message.subject%></p>
         <p><%= message.body %></p>
 
       </div>
@@ -13,13 +14,14 @@
 
     <form class="mg-btm" id="new-reply-form" action="/categories/<%= @category.id %>/posts/<%= @post.id %>/chains/<%= @chain.id %>/messages" method="post">
     <div class="errors"></div>
-    <div class="main">
+    <div id="reply-main">
       <input name="message[subject]" type="text" class="form-control" value="<%=@chain.messages.last.subject%>" autofocus>
       <br>
-      <textarea name="message[body]" class="form-control" placeholder="write reply here" cols="50" rows="5"></textarea>
+      <textarea name="message[body]" class="form-control" placeholder="write reply here" cols="50" rows="8"></textarea>
       <span class="clearfix"></span>
-    </div>
       <button type="submit" class="btn btn-danger" id="new-reply-submit">Reply</button>
+    </div>
+
     </div>
   </div>
   </div>
