@@ -1,34 +1,40 @@
-
 <div class="headings">
-	<h1 class="post-title"><%= @post.category.name %> <i class="fa fa-arrow-right"></i> <%= @post.title %></h1>
+	<h1 class="post-title"><%= @post.category.name %>  </h1>
 	<h3 class="subtitle post-show">“Be the change that you wish to see in the world.” -Ghandi</h3>
 </div>
-
+<!-- <h4><i class="fa fa-arrow-right"></i></h4> -->
 <div id="new-message-container"></div>
 
+<div id="post-show-container">
 <div class="row" id="post-details-container">
-	<div class="col-lg-8">
+	<div class="col-md-2 text-center"></div>
+	<div class="col-md-4">
 		<div id="post-info">
-			<p>SERVICE: <%= @post.title %></p>
-			<p>DESCRIPTION: <%= @post.body %></p>
-			<p>DATE POSTED: <%= @post.posted_date %></p>
-			<p>ZIP: <span id="zip"><%= @post.zip %></span></p>
-			<p>VOLUNTEER: <%= link_to "#{@post.author.full_name}", user_path(@post.author) %></p>
+			
+
+			<p class="text-left lead"><%= @post.title %></p>
+			<hr>
+			<p><em><%= @post.body %></em></p>
+			<p>Posted on <%= @post.posted_date %></p>
+			<p>Posted by <%= link_to "#{@post.author.full_name}", user_path(@post.author) %></p>
+			<p>Location <span id="zip"><%= @post.zip %></span></p>
 			<% if current_user && @post.author_id == current_user.id %>
 			<p><span class="edit-delete"><i class="fa fa-pencil"></i></span><%= link_to ' Edit this post', "/categories/#{@category.id}/posts/#{@post.id}/edit" %></p>
 			<p><span class="edit-delete"><i class="fa fa-trash-o fa-1x"></span></i><%= link_to " Delete this post", [@category, @post], :method => :delete %></p>
-			<% end %>
-			<% if current_user.already_messaged?(@post) %>
-			<p>Message Sent!</p>
-			<% else %>
-			<p id="reply"><span class="post-options"><i class="fa fa-reply"></i></span> <%= link_to ' Reply to this post', "/categories/#{@category.id}/posts/#{@post.id}/chains/new", id: "reply-link" %></p>
+				<% if current_user.already_messaged?(@post) %>
+				<p>Message Sent!</p>
+				<% else %>
+				<p id="reply"><span class="post-options"><i class="fa fa-reply"></i></span> <%= link_to ' Reply to this post', "/categories/#{@category.id}/posts/#{@post.id}/chains/new", id: "reply-link" %></p>
+				<% end %>
 			<% end %>
 		</div>
 	</div>
-	<div class="col-lg-4 map">
-		<div id="map">
+	<div class="col-md-4 map">
+		<div id="map" class="img-thumbnail">
 		</div>
 	</div>
+	<div class="col-md-2"></div>
+</div>
 </div>
 
 <script type="text/javascript">
