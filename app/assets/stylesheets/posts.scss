@@ -4,7 +4,7 @@
 
 // NEW POST PAGE
 
-#new-post-container {
+#new-post-container, #edit-post-container {
 	display: none;
 	width: 70%;
 	margin-left: 15%;
@@ -53,6 +53,12 @@ textarea {
 .errors {
 	text-align: center;
 	color: red;
+}
+
+// EDIT POST
+
+#edit-post-container {
+	display: none;
 }
 
 // POST SHOW PAGE

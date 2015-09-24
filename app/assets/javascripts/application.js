@@ -229,21 +229,7 @@ $(document).ready(function(){
     });
   });
 
-  // Delete post link
-
-  $(document).on("click", "#delete-post-link", function(event) {
-    event.preventDefault();
-    var url = $(this).attr("href")
-    var $postDiv = $(this).closest(".individual-post-listing")
-    $.ajax({
-      method: "delete",
-      url: url
-    })
-
-    .done(function(response){
-      $postDiv.remove();
-    });
-  });
+  
    
 
 });
