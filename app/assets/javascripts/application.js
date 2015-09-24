@@ -233,7 +233,7 @@ $(document).ready(function(){
 
   $(document).on("click", "#delete-post-link", function(event) {
     event.preventDefault();
-    // url = $(this).attr("href")
+    url = $(this).attr("href")
     // var postDiv = $(this).closest(".individual-post-listing")
     // $.ajax({
     //   method: "delete",
