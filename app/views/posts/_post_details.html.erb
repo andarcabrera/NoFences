@@ -8,6 +8,11 @@
 				<p><span class="edit-delete"><i class="fa fa-pencil"></i></span><%= link_to ' Edit this post', "/categories/#{@category.id}/posts/#{@post.id}/edit", id: "edit-post-link" %></p>
 				<p><span class="edit-delete"><i class="fa fa-trash-o fa-1x"></span></i>
 				<%= link_to " Delete this post", category_post_path(@category, @post), method: :delete%></p>
+				<% if @post.active == true %>
+				 <%= link_to "Deactivate", "/categories/#{@category.id}/posts/#{@post.id}", :class => "btn btn-deactivate", :id => "activation"%>
+			  <% else %>
+			  <%= link_to "Activate", "/categories/#{@category.id}/posts/#{@post.id}", :class => "btn btn-activate", :id => "activation"%>
+			<% end %>
 			<% elsif current_user.already_messaged?(@post)%>
 				<p>Message Sent!</p>
 			<% else %>

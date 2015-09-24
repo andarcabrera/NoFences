@@ -126,6 +126,9 @@
     .fail(function(response) {
       $(".errors").text("Sorry, no matching posts were found.");
     });
+
+
+
   });
 
   // Delete post link

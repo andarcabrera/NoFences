@@ -46,15 +46,18 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    @category = Category.find(params[:category_id])
     if request.xhr?
-      if @post.update_attributes(post_params)
-        @category = Category.find(params[:category_id])
-        render partial: "posts/post_details", locals: { post: @post }
-      else
-        render :status => 400
-      end
+       if params[:active]
+          @post.active = params[:active]
+          @post.save
+        elsif @post.update_attributes(post_params)
+          render partial: "posts/post_details", locals: { post: @post }
+        else
+          render :status => 400
+        end
     else
-      redirect_to category_path(@category)
+        redirect_to '/categories/#{@category.id}/posts/#{@post.id}'
     end
   end
 
