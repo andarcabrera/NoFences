@@ -55,6 +55,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    p "#{params}" * 100
     @post = Post.find(params[:id])
     @post.destroy
     @category = Category.find(params[:category_id])
