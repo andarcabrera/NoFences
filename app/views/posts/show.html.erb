@@ -2,6 +2,9 @@
 	<h1 class="post-title"><%= @post.category.name %>  </h1>
 	<h3 class="subtitle post-show">“Be the change that you wish to see in the world.” -Ghandi</h3>
 </div>
+	<div id="edit-post-container">
+			<%= render partial: 'posts/edit_post_form', locals: { post: @post } %>
+	</div>
 <!-- <h4><i class="fa fa-arrow-right"></i></h4> -->
 <div id="new-message-container"></div>
 
@@ -9,24 +12,14 @@
 <div class="row" id="post-details-container">
 	<div class="col-md-2 text-center"></div>
 	<div class="col-md-4">
-		<div id="post-info">
 
-
-			<p class="text-left lead"><%= @post.title %></p>
-			<hr>
-			<p><em><%= @post.body %></em></p>
-			<p>Posted on <%= @post.posted_date %></p>
-			<p>Posted by <%= link_to "#{@post.author.full_name}", user_path(@post.author) %></p>
-			<p>Location <span id="zip"><%= @post.zip %></span></p>
-			<% if current_user && @post.author_id == current_user.id %>
-				<p><span class="edit-delete"><i class="fa fa-pencil"></i></span><%= link_to ' Edit this post', "/categories/#{@category.id}/posts/#{@post.id}/edit" %></p>
-				<p><span class="edit-delete"><i class="fa fa-trash-o fa-1x"></span></i><%= link_to " Delete this post", [@category, @post], :method => :delete %></p>
-			<% elsif current_user.already_messaged?(@post)%>
-				<p>Message Sent!</p>
-			<% else %>
-				<p id="reply"><span class="post-options"><i class="fa fa-reply"></i></span> <%= link_to ' Reply to this post', "/categories/#{@category.id}/posts/#{@post.id}/chains/new", id: "reply-link" %></p>
-			<% end %>
+		<div id="edit-post-container">
+			<%= render partial: 'posts/edit_post_form', locals: { post: @post } %>
 		</div>
+		<div id="post-info">
+			<%= render partial: 'posts/post_details', locals: { post: @post } %>
+		</div>
+
 	</div>
 	<div class="col-md-4 map">
 		<div id="map" class="img-thumbnail">

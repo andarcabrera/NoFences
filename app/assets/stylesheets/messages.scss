@@ -2,4 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+.column-right {
+  overflow: scroll;
+  height: 700px;
+}
+.services {
+  overflow: scroll;
+  height: 600px;
+}
+.individual-post-listing {
+  width: 97%;
+  margin-left: 5px;
+}
