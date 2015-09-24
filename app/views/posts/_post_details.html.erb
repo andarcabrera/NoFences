@@ -20,9 +20,15 @@
 				 <%= link_to "Deactivate", "/categories/#{@category.id}/posts/#{@post.id}", :class => "btn btn-deactivate", :id => "activation"%>
 			  <% else %>
 			  <%= link_to "Activate", "/categories/#{@category.id}/posts/#{@post.id}", :class => "btn btn-activate", :id => "activation"%>
+			  <% end %>
 			<% end %>
-			<% elsif current_user.already_messaged?(@post)%>
+			<% if current_user %>
+				<% if current_user.already_messaged?(@post)%>
 				<p>Message Sent!</p>
-			<% else %>
+				<% else %>
 				<p id="reply"><span class="post-options"><i class="fa fa-reply"></i></span> <%= link_to ' Reply to this post', "/categories/#{@category.id}/posts/#{@post.id}/chains/new", id: "reply-link" %></p>
+				<% end %>
+				<% else %>
+					<p>Login to reply to this post</p>
 			<% end %>
+
