@@ -51,15 +51,15 @@
   height: 200px;
 }
 
-h3 a {
+h5 a {
 transition: all 0.9s ease;
   text-decoration: none;
   color: white;
 }
 
-h3 a:hover {
+h5 a:hover {
   text-decoration: none;
-  color: #CD0809
+  color: #CD0809;
 }
 
 #user-lists-container {
@@ -123,6 +123,19 @@ input #text {
   padding-left: 10%;
 }
 
+#inactive-posts {
+  display: none;
+}
+
+.btn-deactivate{
+  background-color: #CD0809;
+  color: white;
+}
+
+.btn-activate{
+  background-color: #66CBFF;
+  color: white;
+}
 
 
 

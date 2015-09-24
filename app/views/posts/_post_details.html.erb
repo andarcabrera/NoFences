@@ -1,0 +1,34 @@
+<p class="text-left lead post-title"><%= @post.title %>
+	<span id="active-icon">
+		<% if @post.active %>
+			<i class="fa fa-check-square-o"></i>
+		<% else %>
+			<i class="fa fa-minus-square"></i>
+		<% end %>
+	<span>
+</p>
+			<hr>
+			<p><em><%= @post.body %></em></p>
+			<p>Posted on <%= @post.posted_date %></p>
+			<p>Posted by <%= link_to "#{@post.author.full_name}", user_path(@post.author) %></p>
+			<p>Location <span id="zip"><%= @post.zip %></span></p>
+			<% if current_user && @post.author_id == current_user.id %>
+				<p><span class="edit-delete"><i class="fa fa-pencil"></i></span><%= link_to ' Edit this post', "/categories/#{@category.id}/posts/#{@post.id}/edit", id: "edit-post-link" %></p>
+				<p><span class="edit-delete"><i class="fa fa-trash-o fa-1x"></span></i>
+				<%= link_to " Delete this post", category_post_path(@category, @post), method: :delete%></p>
+				<% if @post.active == true %>
+				 <%= link_to "Deactivate", "/categories/#{@category.id}/posts/#{@post.id}", :class => "btn btn-deactivate", :id => "activation"%>
+			  <% else %>
+			  <%= link_to "Activate", "/categories/#{@category.id}/posts/#{@post.id}", :class => "btn btn-activate", :id => "activation"%>
+			  <% end %>
+			<% end %>
+			<% if current_user %>
+				<% if current_user.already_messaged?(@post)%>
+				<p>Message Sent!</p>
+				<% else %>
+				<p id="reply"><span class="post-options"><i class="fa fa-reply"></i></span> <%= link_to ' Reply to this post', "/categories/#{@category.id}/posts/#{@post.id}/chains/new", id: "reply-link" %></p>
+				<% end %>
+				<% else %>
+					<p>Login to reply to this post</p>
+			<% end %>
+

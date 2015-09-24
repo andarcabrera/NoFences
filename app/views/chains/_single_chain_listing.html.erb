@@ -2,5 +2,4 @@
 	<h4><%= link_to "Post: #{chain.post.title}", category_post_path(chain.post.category, chain.post) %></h4>
     <p><%= link_to "RE: #{chain.messages.last.subject}", category_post_chain_path(chain.post.category, chain.post, chain), class: "chain-show" %></p>
 		<p id="post-date"><%= chain.messages.last.created_at.to_date%> - <%=chain.messages.last.sender.full_name %></p>
-    <p><span class="post-options"><i class="fa fa-reply" ></i></span><%= link_to 'Reply', new_category_post_chain_message_path(chain.post.category, chain.post, chain), class: "message-reply", id: chain.id %></p>
 </div>

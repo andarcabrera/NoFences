@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923201854) do
+ActiveRecord::Schema.define(version: 20150924141803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,12 +65,12 @@ ActiveRecord::Schema.define(version: 20150923201854) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer  "author_id",         null: false
+    t.integer  "author_id",                        null: false
     t.integer  "category_id"
-    t.string   "title",             null: false
-    t.text     "body",              null: false
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.string   "title",                            null: false
+    t.text     "body",                             null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "address_1"
     t.string   "address_2"
     t.string   "city"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20150923201854) do
     t.integer  "zip"
     t.string   "preferred_contact"
     t.boolean  "volunteer"
+    t.boolean  "active",            default: true, null: false
   end
 
   create_table "ratings", force: :cascade do |t|

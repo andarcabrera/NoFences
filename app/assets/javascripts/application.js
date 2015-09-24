@@ -192,7 +192,7 @@ $(document).ready(function(){
     });
   });
 
-  
+
   // user photo update
 
   $(document).on("click", "#user-image-link", function(event){
@@ -229,21 +229,44 @@ $(document).ready(function(){
     });
   });
 
-  // Delete post link
-
-  $(document).on("click", "#delete-post-link", function(event) {
+// user show page post tabs
+   $(document).on("click", ".post-user-tabs li", function(event){
     event.preventDefault();
-    var url = $(this).attr("href")
-    var $postDiv = $(this).closest(".individual-post-listing")
+    $(".post-user-tabs li").removeClass("active");
+    $(".user-posts").hide();
+    $(this).addClass("active");
+    var id = $(".active").find("a").attr("href");
+    $(id).show();
+  });
+
+// post deactivate button
+   $(document).on("click", '#activation', function(event){
+    event.preventDefault();
+    var url = $(this).attr("action");
+    if ($(this).text() === "Activate"){
+      data = { "active": true };
+      var linkText = "Deactivate";
+      var color = "#CD0809"
+      var activeIconId = "fa fa-check-square-o"
+    } else {
+      data = { "active": false }
+      var linkText = "Activate"
+      var color = "#66CBFF"
+      var activeIconId = "fa fa-minus-square"
+    }
+
     $.ajax({
-      method: "delete",
-      url: url
+      method: "put",
+      url: url,
+      data: data
     })
 
     .done(function(response){
-      $postDiv.remove();
+      $("#activation").text(linkText);
+      $("#activation").css("background-color", color).css("color", "white");
+      $("#active-icon i").removeClass();
+      $("#active-icon i").addClass(activeIconId);
     });
   });
-   
 
 });
