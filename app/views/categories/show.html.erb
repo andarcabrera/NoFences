@@ -40,13 +40,17 @@
 			</nav>
 		<div class="services" id="services-offered" >
 		<% @category.services_offered.each do |post| %>
+			<% if post.active %>
 			<%= render partial: 'single_post_listing', locals: { post: post } %>
+			<% end %>
 		<% end %>
 		</div>
 
 		<div class="services" id="services-wanted" >
 		<% @category.services_wanted.each do |post| %>
+			<% if post.active %>
 			<%= render partial: 'single_post_listing', locals: { post: post } %>
+			<% end %>
 		<% end %>
 		</div>
 	</div>

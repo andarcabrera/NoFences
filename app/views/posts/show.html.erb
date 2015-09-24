@@ -1,5 +1,5 @@
 <div class="headings">
-	<h1 class="post-title"><%= @post.category.name %>  </h1>
+	<h1 class="post-title"><%= link_to "#{@post.category.name}", category_path(@post.category), style: "color:black"%> </h1>
 	<h3 class="subtitle post-show">“Be the change that you wish to see in the world.” -Ghandi</h3>
 </div>
 	<div id="edit-post-container">
