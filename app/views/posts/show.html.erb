@@ -10,7 +10,7 @@
 	<div class="col-md-2 text-center"></div>
 	<div class="col-md-4">
 		<div id="post-info">
-			
+
 
 			<p class="text-left lead"><%= @post.title %></p>
 			<hr>
@@ -19,13 +19,12 @@
 			<p>Posted by <%= link_to "#{@post.author.full_name}", user_path(@post.author) %></p>
 			<p>Location <span id="zip"><%= @post.zip %></span></p>
 			<% if current_user && @post.author_id == current_user.id %>
-			<p><span class="edit-delete"><i class="fa fa-pencil"></i></span><%= link_to ' Edit this post', "/categories/#{@category.id}/posts/#{@post.id}/edit" %></p>
-			<p><span class="edit-delete"><i class="fa fa-trash-o fa-1x"></span></i><%= link_to " Delete this post", [@category, @post], :method => :delete %></p>
-				<% if current_user.already_messaged?(@post) %>
+				<p><span class="edit-delete"><i class="fa fa-pencil"></i></span><%= link_to ' Edit this post', "/categories/#{@category.id}/posts/#{@post.id}/edit" %></p>
+				<p><span class="edit-delete"><i class="fa fa-trash-o fa-1x"></span></i><%= link_to " Delete this post", [@category, @post], :method => :delete %></p>
+			<% elsif current_user.already_messaged?(@post)%>
 				<p>Message Sent!</p>
-				<% else %>
+			<% else %>
 				<p id="reply"><span class="post-options"><i class="fa fa-reply"></i></span> <%= link_to ' Reply to this post', "/categories/#{@category.id}/posts/#{@post.id}/chains/new", id: "reply-link" %></p>
-				<% end %>
 			<% end %>
 		</div>
 	</div>
