@@ -38,51 +38,79 @@
 
     <script>
 
-        $(function () {
+        $(function() {
 
             var $map = $("#map");
             var map = new google.maps.Map($map[0], {
-                    zoom: 10,
+                    zoom: 11,
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
                     center: new google.maps.LatLng(41.8400, -87.6339), // Chicago
                     styles:[{"stylers": [{"saturation": -25},{"lightness": 35}]}]
             });
 
-            d3.json("neighborhoods.json", function(json){
-                var overlay = new google.maps.OverlayView();
+            var color = d3.scale.category20b();
 
+            // var color = d3.scale.quantize()
+            //         .range(["rgb(237,248,233)","rgb(186,228,179)","rgb(116,196,118)","rgb(49,163,84)","rgb(0,109,44)"]);
+            d3.csv("chicago-languages.csv", function(data){
 
-                overlay.onAdd = function() {
+                color.domain([
+                    d3.min(data, function(d) { return d.PERCENTAGE; }),
+                    d3.max(data, function(d) { return d.PERCENTAGE; })
+                ]);
 
-                    var layer = d3.select(this.getPanes().overlayLayer).append("div").attr("class", "SvgOverlay");
-                    var svg = layer.append("svg");
-                    var adminDivisions = svg.append("g").attr("class", "AdminDivisions");
+                d3.json("neighborhoods.json", function(json){
+                    for (var i = 0; i < data.length; i++) {
+                        var dataNeighborhood = data[i].NEIGHBORHOOD;
+                        var dataPercentage = parseFloat(data[i].PERCENTAGE);
 
-                    overlay.draw = function() {
-                        var markerOverlay = this;
-                        var overlayProjection = markerOverlay.getProjection();
-
-                        // Turn the overlay projection into a d3 projection
-                        var googleMapProjection = function(coordinates) {
-                            var googleCoordinates = new google.maps.LatLng(coordinates[1], coordinates[0]);
-                            var pixelCoordinates = overlayProjection.fromLatLngToDivPixel(googleCoordinates);
-                            return [pixelCoordinates.x + 4000, pixelCoordinates.y + 4000];
+                        for (var j = 0; j < json.features.length; j++) {
+                            var jsonNeighborhood = json.features[j].properties.PRI_NEIGH;
+                            if (dataNeighborhood == jsonNeighborhood) {
+                                json.features[j].properties.percentage = dataPercentage;
+                                break;
+                            }
                         }
+                    }
 
-                        path = d3.geo.path().projection(googleMapProjection);
-                        adminDivisions.selectAll("path")
-                            .data(json.features)
-                            .attr("d", path) // update existing paths
-                            .enter().append("svg:path")
-                            .attr("d", path);
+                    var overlay = new google.maps.OverlayView();
+                    overlay.onAdd = function(){
+                        console.log("We Out Here");
+                        var layer = d3.select(this.getPanes().overlayLayer).append("div").attr("class", "SvgOverlay");
+                        var svg = layer.append("svg");
+                        var adminDivisions = svg.append("g").attr("class", "AdminDivisions");
+
+                        overlay.draw = function() {
+                            var markerOverlay = this;
+                            var overlayProjection = markerOverlay.getProjection();
+
+                            // Turn the overlay projection into a d3 projection
+                            var googleMapProjection = function(coordinates) {
+                                var googleCoordinates = new google.maps.LatLng(coordinates[1], coordinates[0]);
+                                var pixelCoordinates = overlayProjection.fromLatLngToDivPixel(googleCoordinates);
+                                return [pixelCoordinates.x + 4000, pixelCoordinates.y + 4000];
+                            };
+                            path = d3.geo.path().projection(googleMapProjection);
+                            adminDivisions.selectAll("path")
+                                .data(json.features)
+                                .attr("d", path) // update existing paths
+                                .enter().append("svg:path")
+                                .attr("d", path)
+                                .style("fill", function(d) {
+                                    var value = d.properties.percentage;
+                                    if (value) {
+                                        return color(value);
+                                    } else {
+                                        return "#ccc";
+                                    }
+                                });
+                        };
                     };
-                };
-            overlay.setMap(map);
-            });
 
-
-
-    });
+                    overlay.setMap(map);
+                });
+        });
+});
 </script>
 
 </body>
