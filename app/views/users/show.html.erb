@@ -12,9 +12,13 @@
     <% if @user.uid %>
       <img class="img-circle" src= <%="http://graph.facebook.com/#{current_user.uid}/picture?type=large" %>>
     <% else %>
-      <!-- <a href="#" id="user-image-link"><%= image_tag @user.photo_url, class: "img-circle" %></a> -->
-      <%= image_tag @user.photo_url, class: "img-circle" %>
-        <!-- <form class="update-image-form" action="/users/<%= @user.id %>" method="put">
+      <% if @user.photo? %>
+        <%= image_tag @user.photo_url, class: "img-circle" %>
+      <% else %>
+        <%= image_tag "chicago-star" %>
+      <% end %>
+        <!-- <form class="update-image-form" action="/users/<%#= @user.id %>" method="put">
+>>>>>>> master
           <button type="button" class="close pull-right" id="x" aria-hidden="true">×</button>
           <label> Upload Profile Picture </label>
           <input type="file" name="user[photo]">
