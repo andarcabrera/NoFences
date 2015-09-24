@@ -1,9 +1,51 @@
 <html>
 <head>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
     <style>
+
+        #map-wrap {
+            margin-left: 10%;
+        }
+
         #map {
-            width: 800px;
-            height: 800px;
+            width: 80em;
+            height: 60em;
+        }
+
+        path:hover {
+            fill: orange;
+        }
+
+        #tooltip {
+            position: absolute;
+            width: 400px;
+            height: auto;
+            padding: 10px;
+            background-color: white;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -border-radius: 10px;
+            -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+            -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+            pointer-events: none;
+            background-color: #FFFBF3;
+        }
+
+        #value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 16px;
+        }
+
+        #tooltip.hidden {
+            display: none;
+        }
+
+        #tooltip p {
+            margin: 0;
+            font-family: sans-serif;
+            font-size: 16px;
+            line-height: 20px;
         }
 
         .SvgOverlay {
@@ -30,88 +72,138 @@
     </style>
 </head>
 <body>
-
-    <div id="map-wrap">
-        <div id="map">
+    <div id="data-container">
+        <div id="map-wrap">
+            <div id="map">
+            </div>
         </div>
-    </div>
 
-    <script>
+        <div id="tooltip" class="hidden">
+            <p><span id="value"></span></p>
+        </div>
 
-        $(function() {
+        <h3>This visualization represents residents aged 5 years or older in Chicago who “speak English less than very well,” by the non-English language spoken at home and community area of residence, for the years 2008 – 2012.</h3>
+        <p>See the full dataset description for more information at:<a href="https://data.cityofchicago.org/Health-Human-Services/Census-Data-Languages-spoken-in-Chicago-2008-2012/a2fk-ec6q">The City of Chicago's Data Portal</a><p>
 
-            var $map = $("#map");
-            var map = new google.maps.Map($map[0], {
-                    zoom: 11,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP,
-                    center: new google.maps.LatLng(41.8400, -87.6339), // Chicago
-                    styles:[{"stylers": [{"saturation": -25},{"lightness": 35}]}]
-            });
+        <script>
+            $(function() {
 
-            var color = d3.scale.category20b();
+                var $map = $("#map");
+                var map = new google.maps.Map($map[0], {
+                        zoom: 11,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                        center: new google.maps.LatLng(41.8400, -87.6339), // Chicago
+                        styles:[{"stylers": [{"saturation": -50}, {"lightness": 20}]}]
+                });
 
-            // var color = d3.scale.quantize()
-            //         .range(["rgb(237,248,233)","rgb(186,228,179)","rgb(116,196,118)","rgb(49,163,84)","rgb(0,109,44)"]);
-            d3.csv("chicago-languages.csv", function(data){
+                var languageOne = d3.scale.quantize()
+                        .range(["#80B2FF","#4D94FF","#66A3FF", "#3385FF","#1975FF","#0066FF","#005CE6","#0052CC","#0047B2","#003D99","#003380","#002966","#001F4C" ]);
 
-                color.domain([
-                    d3.min(data, function(d) { return d.PERCENTAGE; }),
-                    d3.max(data, function(d) { return d.PERCENTAGE; })
-                ]);
+                var languageTwo = d3.scale.quantize()
+                         .range(["#FF8080","#FF6666","#FF4D4D","#FF3333", "#FF1919","#FF0000","#E60000","#CC0000",
+                             "#B20000", "#990000", "#800000", "#660000", "#4C0000" ]);
 
-                d3.json("neighborhoods.json", function(json){
-                    for (var i = 0; i < data.length; i++) {
-                        var dataNeighborhood = data[i].NEIGHBORHOOD;
-                        var dataPercentage = parseFloat(data[i].PERCENTAGE);
+                 var languageThree = d3.scale.quantize()
+                       .range(["#70DB70", "#47D147", "#1A661A", "#0F3D0F"]);
 
-                        for (var j = 0; j < json.features.length; j++) {
-                            var jsonNeighborhood = json.features[j].properties.PRI_NEIGH;
-                            if (dataNeighborhood == jsonNeighborhood) {
-                                json.features[j].properties.percentage = dataPercentage;
-                                break;
+                var languageFour = d3.scale.quantize()
+                        .range(["#BF6C19", "#B85C00"]);
+
+                d3.csv("chicago-languages.csv", function(data){
+
+                    var percentageDomain =  [d3.min(data, function(d) { return d.PERCENTAGE; }),
+                        d3.max(data, function(d) { return d.PERCENTAGE; })];
+
+                    languageOne.domain(percentageDomain);
+                    languageTwo.domain(percentageDomain);
+                    languageThree.domain(percentageDomain);
+                    languageFour.domain(percentageDomain);
+
+                    d3.json("neighborhoods.json", function(json){
+                        for (var i = 0; i < data.length; i++) {
+                            var dataNeighborhood = data[i].NEIGHBORHOOD;
+                            var dataPercentage = parseFloat(data[i].PERCENTAGE);
+                            var secondLanguage = data[i].LANGUAGE;
+
+
+                            for (var j = 0; j < json.features.length; j++) {
+                                var jsonNeighborhood = json.features[j].properties.PRI_NEIGH;
+                                if (dataNeighborhood == jsonNeighborhood) {
+                                    json.features[j].properties.percentage = dataPercentage;
+                                    json.features[j].properties.secondlanguage = secondLanguage;
+                                    break;
+                                }
                             }
                         }
-                    }
 
-                    var overlay = new google.maps.OverlayView();
-                    overlay.onAdd = function(){
-                        console.log("We Out Here");
-                        var layer = d3.select(this.getPanes().overlayLayer).append("div").attr("class", "SvgOverlay");
-                        var svg = layer.append("svg");
-                        var adminDivisions = svg.append("g").attr("class", "AdminDivisions");
+                        var overlay = new google.maps.OverlayView();
+                        overlay.onAdd = function(){
+                            var layer = d3.select(this.getPanes().overlayMouseTarget).append("div").attr("class", "SvgOverlay");
+                            var svg = layer.append("svg");
+                            var adminDivisions = svg.append("g").attr("class", "AdminDivisions");
 
-                        overlay.draw = function() {
-                            var markerOverlay = this;
-                            var overlayProjection = markerOverlay.getProjection();
+                            overlay.draw = function() {
+                                var markerOverlay = this;
+                                var overlayProjection = markerOverlay.getProjection();
 
-                            // Turn the overlay projection into a d3 projection
-                            var googleMapProjection = function(coordinates) {
-                                var googleCoordinates = new google.maps.LatLng(coordinates[1], coordinates[0]);
-                                var pixelCoordinates = overlayProjection.fromLatLngToDivPixel(googleCoordinates);
-                                return [pixelCoordinates.x + 4000, pixelCoordinates.y + 4000];
+                                // Turn the overlay projection into a d3 projection
+                                var googleMapProjection = function(coordinates) {
+                                    var googleCoordinates = new google.maps.LatLng(coordinates[1], coordinates[0]);
+                                    var pixelCoordinates = overlayProjection.fromLatLngToDivPixel(googleCoordinates);
+                                    return [pixelCoordinates.x + 4000, pixelCoordinates.y + 4000];
+                                };
+                                path = d3.geo.path().projection(googleMapProjection);
+                                adminDivisions.selectAll("path")
+                                    .data(json.features)
+                                    .attr("d", path) // update existing paths
+                                    .enter()
+                                    .append("svg:path")
+                                    .attr("d", path)
+                                    .style("fill", function(d) {
+                                        var value = d.properties.percentage;
+                                        if (value) {
+                                            if (d.properties.secondlanguage === "SPANISH") {
+                                                return languageOne(value);
+                                            } else if (d.properties.secondlanguage === "POLISH")
+                                            {
+                                                return languageTwo(value);
+                                            } else if (d.properties.secondlanguage === "CHINESE") {
+                                                return languageThree(value);
+                                            } else
+                                             {
+                                                return languageFour(value);
+                                            }
+                                        } else {
+                                            return "#ccc";
+                                        }
+                                    })
+                                    .on("mouseover", function(d) {
+                                        d3.select(this)
+                                            .style("stroke-width", 3);
+
+                                        var x = d3.event.pageX;
+                                        var y = d3.event.pageY;
+    var details =  d.properties.PRI_NEIGH.bold() + "<br>" + "Most Prominent Non-English Language: " + d.properties.secondlanguage + " (" + d.properties.percentage + "%)";
+                                        d3.select("#tooltip")
+                                            .style("left", (x+50) + "px")
+                                            .style("top", y + "px")
+                                            .select("#value")
+                                            .html(details);
+
+                                        d3.select("#tooltip").classed("hidden", false);
+                                    })
+                                   .on("mouseout", function() {
+                                        d3.select("#tooltip").classed("hidden", true);
+                                        d3.select(this).style("stroke-width", 1);
+                                   });
                             };
-                            path = d3.geo.path().projection(googleMapProjection);
-                            adminDivisions.selectAll("path")
-                                .data(json.features)
-                                .attr("d", path) // update existing paths
-                                .enter().append("svg:path")
-                                .attr("d", path)
-                                .style("fill", function(d) {
-                                    var value = d.properties.percentage;
-                                    if (value) {
-                                        return color(value);
-                                    } else {
-                                        return "#ccc";
-                                    }
-                                });
                         };
-                    };
 
-                    overlay.setMap(map);
-                });
-        });
-});
-</script>
-
+                        overlay.setMap(map);
+                    });
+            });
+    });
+    </script>
+</div>
 </body>
 </html>
