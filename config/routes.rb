@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
   get '/home' => 'static_pages#home'
   get '/about' => 'static_pages#about'
+  get '/data' => 'visualizations#index'
 
   match '/auth/:provider/callback' => 'sessions#create', via: [:get, :post]
 
