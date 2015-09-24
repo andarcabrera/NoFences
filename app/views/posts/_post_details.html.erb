@@ -1,4 +1,12 @@
-<p class="text-left lead"><%= @post.title %></p>
+<p class="text-left lead post-title"><%= @post.title %>
+	<span id="active-icon">
+		<% if @post.active %>
+			<i class="fa fa-check-square-o"></i>
+		<% else %>
+			<i class="fa fa-minus-square"></i>
+		<% end %>
+	<span>
+</p>
 			<hr>
 			<p><em><%= @post.body %></em></p>
 			<p>Posted on <%= @post.posted_date %></p>
