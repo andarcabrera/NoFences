@@ -47,10 +47,19 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @category = Category.find(params[:category_id])
-    if @post.update_attributes(post_params)
-      redirect_to category_path(@category)
-    else
-      render 'edit'
+    if params[:active]
+      if request.xhr?
+        @post.active = params[:active]
+        @post.save
+      else
+        redirect_to '/categories/#{@category.id}/posts/#{@post.id}'
+      end
+    elsif params != { "active": false }
+      if @post.update_attributes(post_params)
+        redirect_to category_path(@category)
+      else
+        render 'edit'
+      end
     end
   end
 

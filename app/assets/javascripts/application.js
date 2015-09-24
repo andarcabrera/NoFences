@@ -192,7 +192,7 @@ $(document).ready(function(){
     });
   });
 
-  
+
   // user photo update
 
   $(document).on("click", "#user-image-link", function(event){
@@ -228,6 +228,41 @@ $(document).ready(function(){
       $(".errors").text("Sorry, your photo could not be uploaded.");
     });
   });
-   
+
+// user show page post tabs
+   $(document).on("click", ".post-user-tabs li", function(event){
+    event.preventDefault();
+    $(".post-user-tabs li").removeClass("active");
+    $(".user-posts").hide();
+    $(this).addClass("active");
+    var id = $(".active").find("a").attr("href");
+    $(id).show();
+  });
+
+// post deactivate button
+   $(document).on("click", '#activation', function(event){
+    event.preventDefault();
+    var url = $(this).attr("action");
+    if ($(this).text() === "Activate"){
+      data = { "active": true };
+      var linkText = "Deactivate";
+      var color = "#CD0809"
+    } else {
+      data = { "active": false }
+      var linkText = "Activate"
+      var color = "#66CBFF"
+    }
+
+    $.ajax({
+      method: "put",
+      url: url,
+      data: data
+    })
+
+    .done(function(response){
+      $("#activation").text(linkText);
+      $("#activation").css("background-color", color).css("color", "white")
+    });
+  });
 
 });
