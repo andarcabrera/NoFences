@@ -233,16 +233,16 @@ $(document).ready(function(){
 
   $(document).on("click", "#delete-post-link", function(event) {
     event.preventDefault();
-    url = $(this).attr("href")
-    // var postDiv = $(this).closest(".individual-post-listing")
-    // $.ajax({
-    //   method: "delete",
-    //   url: url
-    // })
+    var url = $(this).attr("href")
+    var $postDiv = $(this).closest(".individual-post-listing")
+    $.ajax({
+      method: "delete",
+      url: url
+    })
 
-    // .done(function(response){
-    //   postDiv.remove();
-    // });
+    .done(function(response){
+      $postDiv.remove();
+    });
   });
    
 
