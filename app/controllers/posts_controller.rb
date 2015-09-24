@@ -58,7 +58,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     @category = Category.find(params[:category_id])
-    redirect_to category_path(@category)
+    redirect_to category_path(@category) unless request.xhr?
   end
 
 
