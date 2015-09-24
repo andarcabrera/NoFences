@@ -247,10 +247,12 @@ $(document).ready(function(){
       data = { "active": true };
       var linkText = "Deactivate";
       var color = "#CD0809"
+      var activeIconId = "fa fa-check-square-o"
     } else {
       data = { "active": false }
       var linkText = "Activate"
       var color = "#66CBFF"
+      var activeIconId = "fa fa-minus-square"
     }
 
     $.ajax({
@@ -261,7 +263,9 @@ $(document).ready(function(){
 
     .done(function(response){
       $("#activation").text(linkText);
-      $("#activation").css("background-color", color).css("color", "white")
+      $("#activation").css("background-color", color).css("color", "white");
+      $("#active-icon i").removeClass();
+      $("#active-icon i").addClass(activeIconId);
     });
   });
 

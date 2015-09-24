@@ -3,23 +3,23 @@
   <div class="col-sm-4 user-info">
     <h2>Languages</h2> <h3><%= @user.display_languages  %></h3>
     <% if current_user && current_user == @user %>
-    <h3 id="update"><%= link_to "Update Info", edit_user_path(current_user)%></h3>
     <% end %>
   </div>
   <div class="col-sm-4 center-block">
     <h3><%= @user.full_name%></h3>
+    <h5 id="update"><%= link_to "Update Info", edit_user_path(current_user)%></h5>
   <div id="user-image" style="image">
     <% if @user.uid %>
       <img class="img-circle" src= <%="http://graph.facebook.com/#{current_user.uid}/picture?type=large" %>>
     <% else %>
       <!-- <a href="#" id="user-image-link"><%= image_tag @user.photo_url, class: "img-circle" %></a> -->
       <%= image_tag @user.photo_url, class: "img-circle" %>
-        <form class="update-image-form" action="/users/<%= @user.id %>" method="put">
+        <!-- <form class="update-image-form" action="/users/<%= @user.id %>" method="put">
           <button type="button" class="close pull-right" id="x" aria-hidden="true">×</button>
           <label> Upload Profile Picture </label>
           <input type="file" name="user[photo]">
           <input type="submit" class="btn btn-large" id="photo-submit-button" value="Update">
-        </form>
+        </form> -->
     <% end %>
   </div>
   </div>
