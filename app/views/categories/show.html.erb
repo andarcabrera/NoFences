@@ -1,5 +1,5 @@
 	<div id="new-post-container">
-	<%= render partial: 'posts/new_post_form' %>
+		<%= render partial: 'posts/new_post_form', locals: { post: @post } %>
 	</div>
 	
 	<div id="post-search-results">
@@ -8,7 +8,7 @@
 
 	<div class="headings">
 		<h1><%= @category.name %></h1>
-		<h3 class="subtitle">Click on any posts to see details or click on the volunteer button if you'd like to add another post.</h3>
+		<h3 class="subtitle">Click on any posts to see details or add a new post.</h3>
 		<div id="new-post-button" class="btn btn-info" role="button">
 			<% if current_user %>
 				<%= link_to 'Add a new post', new_category_post_path(@category), class: "btn-large", id: "volunteer-button" %>
@@ -18,10 +18,7 @@
 		</div>
 	</div>
 
-
 <div id="category-show-container">
-
-  
 
 <div class="column-left" id="category-posts-index">
 	<div id="posts-index-container">
