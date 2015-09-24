@@ -48,7 +48,7 @@ body {
 }
 
 .overlay {
-    position : fixed;
+    position: fixed;
     display: none;
     top      : 0;
     bottom   : 0;
@@ -62,7 +62,7 @@ body {
 .login-container {
   display: none;
   margin-left: 40%;
-  position: fixed;
+  position: absolute;
   opacity: 1;
   z-index:1002;
 }
@@ -70,7 +70,7 @@ body {
 .register-container {
   display: none;
   margin-left: 40%;
-  position: fixed;
+  position: absolute;
   opacity: 1;
   z-index:1002;
 }
