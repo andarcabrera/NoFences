@@ -3,3 +3,4 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   {scope: "email"}
 end
 
+
