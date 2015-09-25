@@ -69,6 +69,15 @@
             fill-opacity: .3;
         }
 
+        #map-description {
+            margin-left: 16%;
+            margin-right: 15%;
+        }
+
+        #map-wrap {
+            margin-left: 16%;
+        }
+
     </style>
 </head>
 <body>
@@ -82,8 +91,10 @@
             <p><span id="value"></span></p>
         </div>
 
-        <h3>This visualization represents residents aged 5 years or older in Chicago who “speak English less than very well,” by the non-English language spoken at home and community area of residence, for the years 2008 – 2012.</h3>
-        <p>See the full dataset description for more information at:<a href="https://data.cityofchicago.org/Health-Human-Services/Census-Data-Languages-spoken-in-Chicago-2008-2012/a2fk-ec6q">The City of Chicago's Data Portal</a><p>
+        <div id="map-description">
+            <h4>This visualization represents residents aged 5 years or older in Chicago who “speak English less than very well,” by the non-English language spoken at home and community area of residence, for the years 2008 – 2012.</h4>
+            <p>See the full dataset description for more information at:<a href="https://data.cityofchicago.org/Health-Human-Services/Census-Data-Languages-spoken-in-Chicago-2008-2012/a2fk-ec6q">The City of Chicago's Data Portal</a><p>
+        </div>
 
         <script>
             $(function() {
@@ -183,7 +194,11 @@
 
                                         var x = d3.event.pageX;
                                         var y = d3.event.pageY;
-    var details =  d.properties.PRI_NEIGH.bold() + "<br>" + "Most Prominent Non-English Language: " + d.properties.secondlanguage + " (" + d.properties.percentage + "%)";
+                                        if (d.properties.secondlanguage) {
+                                            var details =  d.properties.PRI_NEIGH.bold() + "<br>" + "Most Prominent Non-English Language: " + d.properties.secondlanguage + " (" + d.properties.percentage + "%)";
+                                        } else {
+                                            var details = d.properties.PRI_NEIGH.bold() + "<br>" + "There is no language data available for this neighborhood."
+                                        }
                                         d3.select("#tooltip")
                                             .style("left", (x+50) + "px")
                                             .style("top", y + "px")
