@@ -6,11 +6,11 @@
     <% end %>
   </div>
   <div class="col-sm-4 center-block">
-    <h3><%= @user.full_name%></h3>
+    <h3 class="notranslate"><%= @user.full_name%></h3>
     <h5 id="update"><%= link_to "Update Info", edit_user_path(current_user)%></h5>
   <div id="user-image" style="image">
     <% if @user.uid %>
-      <img class="img-circle" src= <%="http://graph.facebook.com/#{current_user.uid}/picture?type=large" %>>
+      <img class="img-circle" src= <%="http://graph.facebook.com/#{@user.uid}/picture?type=large" %>>
     <% else %>
       <% if @user.photo? %>
         <%= image_tag @user.photo_url, class: "img-circle" %>
@@ -28,7 +28,7 @@
   </div>
   </div>
   <div class="col-sm-4" id="user-details">
-    <h2>Member Since: </h2><h3><%=@user.created_at.strftime("%B #{current_user.created_at.day.ordinalize}, %Y")%></h3>
+    <h2>Member Since: </h2><h3><%=@user.created_at.strftime("%B #{@user.created_at.day.ordinalize}, %Y")%></h3>
     <h2>Volunteer total: </h2><h3><%=@user.count_volunteer_posts%> posts</h3>
   </div>
 </div>
@@ -63,15 +63,21 @@
       <form class="user-edit" action="/users/<%= @user.id %>" method="put">
         <div id="new-user-info">
           <label  for="user[first_name]"> First Name: </label>
-          <input id="text" name="user[first_name]" type="text" value=<%=@user.first_name%>><br>
+          <input class="notranslate" id="text" name="user[first_name]" type="text" value=<%=@user.first_name%>><br>
           <label for="user[last_name]"> Last Name: </label>
-          <input id="text" name="user[last_name]" type="text" value=<%=@user.last_name%>><br>
+          <input class="notranslate" id="text" name="user[last_name]" type="text" value=<%=@user.last_name%>><br>
           <label for="user[email]"> Email: </label>
-          <input id="text" name="user[email]" type="text" value=<%=@user.email %>><br>
+          <input class="notranslate" id="text" name="user[email]" type="text" value=<%=@user.email %>><br>
           <label for="laguange"> Languages(select all that apply) </label>
           <input id="check" type="checkbox" name="language[English]" <% if @user.known_language?("English")%> checked <% end %>> English
           <input id="check" type="checkbox" name="language[Spanish]" <% if @user.known_language?("Spanish")%> checked <% end %>> Spanish
-          <input id="check" type="checkbox" name="language[Japanese]" <% if @user.known_language?("Japanese")%> checked <% end %>> Japanese<br>
+          <input id="check" type="checkbox" name="language[Polish]" <% if @user.known_language?("Polish")%> checked <% end %>> Polish
+          <input id="check" type="checkbox" name="language[Russian]" <% if @user.known_language?("Russian")%> checked <% end %>> Russian
+          <input id="check" type="checkbox" name="language[Arabic]" <% if @user.known_language?("Arabic")%> checked <% end %>> Arabic
+          <input id="check" type="checkbox" name="language[French]" <% if @user.known_language?("French")%> checked <% end %>> French
+          <input id="check" type="checkbox" name="language[Romanian]" <% if @user.known_language?("Romanian")%> checked <% end %>> Romanian
+          <input id="check" type="checkbox" name="language[Chinese]" <% if @user.known_language?("Chinese")%> checked <% end %>> Chinese<br>
+
 
           <button type="submit" class="btn-info" id="user-form-submit">Update Info</button>
         </div>
@@ -92,7 +98,7 @@
         </ul>
       </nav>
     <div id="active-posts" class="user-posts">
-      <% @user.posts.last(4).reverse.each do |post| %>
+      <% @user.posts.last(10).reverse.each do |post| %>
         <% if post.active == true %>
           <%= render partial: 'user_post_listing', locals: { post: post } %>
         <% end %>
@@ -100,7 +106,7 @@
     </div>
 
     <div id="inactive-posts" class="user-posts">
-      <% @user.posts.last(4).reverse.each do |post| %>
+      <% @user.posts.last(10).reverse.each do |post| %>
         <% if post.active == false %>
           <%= render partial: 'user_post_listing', locals: { post: post } %>
         <% end %>
@@ -111,8 +117,8 @@
   <% if current_user && current_user == @user %>
   <div id="user-chains-index">
     <h2>Recent Messages</h2>
-    <div id="posts-index-container">
-      <% @user.chains.last(4).reverse.each do |chain| %>
+    <div id="user-posts-index-container">
+      <% @user.chains.last(10).reverse.each do |chain| %>
         <%= render partial: '/chains/single_chain_listing', locals: { chain: chain } %>
       <% end %>
     </div>

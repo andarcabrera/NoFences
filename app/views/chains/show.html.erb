@@ -4,8 +4,8 @@
     <div id="user-messages">
       <%@chain.messages.last(2).reverse.each do |message|  %>
         <div id="message">
-          <p>To: <%=message.receiver.full_name %></p>
-          <p>From: <%=message.sender.full_name %></p>
+          <p class="notranslate">To: <%=message.receiver.full_name %></p>
+          <p class="notranslate">From: <%=message.sender.full_name %></p>
           <p>Subject: <%=message.subject%></p>
           <p><%= message.body %></p>
 

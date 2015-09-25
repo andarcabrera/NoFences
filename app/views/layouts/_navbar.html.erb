@@ -30,7 +30,7 @@
     </form> -->
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-          <li><%= link_to "#{current_user.first_name}", user_path(current_user) %>
+          <li class="notranslate"><%= link_to "#{current_user.first_name}", user_path(current_user) %>
           <li><%= link_to I18n.t("Logout"), signout_path %></li>
           <% else %>
           <li><%= link_to I18n.t("Login"), signin_path, id:"login-button" %></li>
