@@ -10,7 +10,7 @@
     <h5 id="update"><%= link_to "Update Info", edit_user_path(current_user)%></h5>
   <div id="user-image" style="image">
     <% if @user.uid %>
-      <img class="img-circle" src= <%="http://graph.facebook.com/#{current_user.uid}/picture?type=large" %>>
+      <img class="img-circle" src= <%="http://graph.facebook.com/#{@user.uid}/picture?type=large" %>>
     <% else %>
       <% if @user.photo? %>
         <%= image_tag @user.photo_url, class: "img-circle" %>
@@ -28,7 +28,7 @@
   </div>
   </div>
   <div class="col-sm-4" id="user-details">
-    <h2>Member Since: </h2><h3><%=@user.created_at.strftime("%B #{current_user.created_at.day.ordinalize}, %Y")%></h3>
+    <h2>Member Since: </h2><h3><%=@user.created_at.strftime("%B #{@user.created_at.day.ordinalize}, %Y")%></h3>
     <h2>Volunteer total: </h2><h3><%=@user.count_volunteer_posts%> posts</h3>
   </div>
 </div>
@@ -71,7 +71,13 @@
           <label for="laguange"> Languages(select all that apply) </label>
           <input id="check" type="checkbox" name="language[English]" <% if @user.known_language?("English")%> checked <% end %>> English
           <input id="check" type="checkbox" name="language[Spanish]" <% if @user.known_language?("Spanish")%> checked <% end %>> Spanish
-          <input id="check" type="checkbox" name="language[Japanese]" <% if @user.known_language?("Japanese")%> checked <% end %>> Japanese<br>
+          <input id="check" type="checkbox" name="language[Polish]" <% if @user.known_language?("Polish")%> checked <% end %>> Polish
+          <input id="check" type="checkbox" name="language[Russian]" <% if @user.known_language?("Russian")%> checked <% end %>> Russian
+          <input id="check" type="checkbox" name="language[Arabic]" <% if @user.known_language?("Arabic")%> checked <% end %>> Arabic
+          <input id="check" type="checkbox" name="language[French]" <% if @user.known_language?("French")%> checked <% end %>> French
+          <input id="check" type="checkbox" name="language[Romanian]" <% if @user.known_language?("Romanian")%> checked <% end %>> Romanian
+          <input id="check" type="checkbox" name="language[Chinese]" <% if @user.known_language?("Chinese")%> checked <% end %>> Chinese<br>
+
 
           <button type="submit" class="btn-info" id="user-form-submit">Update Info</button>
         </div>
