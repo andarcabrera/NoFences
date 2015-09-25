@@ -6,7 +6,7 @@
     <% end %>
   </div>
   <div class="col-sm-4 center-block">
-    <h3><%= @user.full_name%></h3>
+    <h3 class="notranslate"><%= @user.full_name%></h3>
     <h5 id="update"><%= link_to "Update Info", edit_user_path(current_user)%></h5>
   <div id="user-image" style="image">
     <% if @user.uid %>
@@ -63,11 +63,11 @@
       <form class="user-edit" action="/users/<%= @user.id %>" method="put">
         <div id="new-user-info">
           <label  for="user[first_name]"> First Name: </label>
-          <input id="text" name="user[first_name]" type="text" value=<%=@user.first_name%>><br>
+          <input class="notranslate" id="text" name="user[first_name]" type="text" value=<%=@user.first_name%>><br>
           <label for="user[last_name]"> Last Name: </label>
-          <input id="text" name="user[last_name]" type="text" value=<%=@user.last_name%>><br>
+          <input class="notranslate" id="text" name="user[last_name]" type="text" value=<%=@user.last_name%>><br>
           <label for="user[email]"> Email: </label>
-          <input id="text" name="user[email]" type="text" value=<%=@user.email %>><br>
+          <input class="notranslate" id="text" name="user[email]" type="text" value=<%=@user.email %>><br>
           <label for="laguange"> Languages(select all that apply) </label>
           <input id="check" type="checkbox" name="language[English]" <% if @user.known_language?("English")%> checked <% end %>> English
           <input id="check" type="checkbox" name="language[Spanish]" <% if @user.known_language?("Spanish")%> checked <% end %>> Spanish
@@ -92,7 +92,7 @@
         </ul>
       </nav>
     <div id="active-posts" class="user-posts">
-      <% @user.posts.last(4).reverse.each do |post| %>
+      <% @user.posts.last(10).reverse.each do |post| %>
         <% if post.active == true %>
           <%= render partial: 'user_post_listing', locals: { post: post } %>
         <% end %>
@@ -100,7 +100,7 @@
     </div>
 
     <div id="inactive-posts" class="user-posts">
-      <% @user.posts.last(4).reverse.each do |post| %>
+      <% @user.posts.last(10).reverse.each do |post| %>
         <% if post.active == false %>
           <%= render partial: 'user_post_listing', locals: { post: post } %>
         <% end %>
@@ -111,8 +111,8 @@
   <% if current_user && current_user == @user %>
   <div id="user-chains-index">
     <h2>Recent Messages</h2>
-    <div id="posts-index-container">
-      <% @user.chains.last(4).reverse.each do |chain| %>
+    <div id="user-posts-index-container">
+      <% @user.chains.last(10).reverse.each do |chain| %>
         <%= render partial: '/chains/single_chain_listing', locals: { chain: chain } %>
       <% end %>
     </div>
