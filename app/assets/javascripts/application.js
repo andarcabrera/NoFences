@@ -2,7 +2,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require turbolinks
 //= require d3
 //= require_tree .
 
@@ -239,6 +238,7 @@ $(document).ready(function(){
     $(id).show();
   });
 
+
 // post deactivate button
    $(document).on("click", '#activation', function(event){
     event.preventDefault();
@@ -268,5 +268,4 @@ $(document).ready(function(){
       $("#active-icon i").addClass(activeIconId);
     });
   });
-
 });
